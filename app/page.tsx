@@ -1,221 +1,195 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
-
-// Progress utility function
-function getModuleProgress(moduleSlug: string) {
-  if (typeof window === 'undefined') return { completed: 0, total: 11, percentage: 0 };
-  
-  const progressKey = `pupilmd_progress_${moduleSlug}`;
-  const savedProgress = localStorage.getItem(progressKey);
-  
-  if (!savedProgress) {
-    return { completed: 0, total: 11, percentage: 0 };
-  }
-  
-  const progress = JSON.parse(savedProgress);
-  const completed = progress.currentSection || 0;
-  const total = 11;
-  const percentage = Math.round((completed / total) * 100);
-  
-  return { completed, total, percentage };
-}
+import ModuleCard from './components/ModuleCard';
+import { cellularInjuryChapter } from './data/cellularInjury';
+import { acidBaseChapter } from './data/acidBase';
 
 export default function Home() {
-  const [cellularProgress, setCellularProgress] = useState({ completed: 0, total: 11, percentage: 0 });
-  const [acidBaseProgress, setAcidBaseProgress] = useState({ completed: 0, total: 11, percentage: 0 });
-
-  useEffect(() => {
-    // Load progress on client side
-    setCellularProgress(getModuleProgress('cellular-injury'));
-    setAcidBaseProgress(getModuleProgress('acid-base'));
-  }, []);
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-orange-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Learn Medicine Through Understanding, Not Memorization
-          </h1>
-          <p className="text-xl text-gray-700 mb-8">
-            Master pathophysiology concepts in 20-25 minutes with narrative-based explanations that stick.
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-700 to-orange-500 opacity-5"></div>
+        <div className="relative max-w-6xl mx-auto px-6 py-20 text-center">
+          <div className="mb-8">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-blue-600 to-orange-600 bg-clip-text text-transparent animate-gradient">
+              Learning Medicine By First Understanding
+            </h1>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Have a grasp of medical concepts (in under 90 mins) with narrative-based explanations sponsored by Marable™.
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap gap-4 justify-center mt-8">
+            <Link 
+              href="#modules"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+            >
+              Start Learning →
+            </Link>
+            <Link 
+              href="#about"
+              className="px-8 py-4 bg-white text-blue-700 border-2 border-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200"
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* What is Marable Section */}
+      <section id="about" className="max-w-6xl mx-auto px-6 py-16">
+        <div className="bg-white rounded-2xl shadow-lg p-8 border-l-4 border-orange-500">
+          <div className="flex items-start gap-4">
+            <span className="text-4xl">💡</span>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">What is a Marable™?</h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                A <span className="font-semibold text-blue-700">Marable™</span> (medical + parable) is our unique approach to medical education. 
+                Instead of starting with complex terminology, we begin with relatable everyday stories that mirror the medical concepts you need to understand.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                Your brain learns better through narrative. We leverage this by teaching you medicine the way humans have shared knowledge for millennia: through stories.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CRASHCHAPTER Explanation */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="bg-gradient-to-br from-blue-600 to-orange-500 rounded-2xl shadow-xl p-8 text-white">
+          <h2 className="text-3xl font-bold mb-4">Introducing: CRASHCHAPTER™</h2>
+          <p className="text-blue-50 mb-6 text-lg leading-relaxed">
+            Each CRASHCHAPTER condenses a full pathophysiology chapter into a digestible, story-driven learning experience.
           </p>
-          <Link
-            href="#modules"
-            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Start Learning Now
-          </Link>
-        </div>
-      </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <h3 className="font-semibold text-xl mb-2 flex items-center gap-2">
+                <span>📖</span> Sections 0-9: Core understanding
+              </h3>
+              <p className="text-blue-50">
+                <span className="font-semibold text-white">under 90 mins</span> · Master the essential concepts through Marable™-first learning
+              </p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <h3 className="font-semibold text-xl mb-2 flex items-center gap-2">
+                <span>🔬</span> Section 10: Deep Dive
+              </h3>
+              <p className="text-blue-50">
+                <span className="font-semibold text-white">5-7 mins</span> · Optional advanced content for those who want to go deeper
+              </p>
+            </div>
+          </div>
 
-      {/* Why PupilMD Section */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-          Why PupilMD?
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg border border-gray-200">
-            <div className="text-4xl mb-4">💡</div>
-            <h3 className="text-xl font-semibold mb-2">Simple First</h3>
-            <p className="text-gray-600">
-              We explain concepts in plain language before introducing medical terminology.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg border border-gray-200">
-            <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-xl font-semibold mb-2">80/20 Focused</h3>
-            <p className="text-gray-600">
-              Sections 0-9 give you 80% of what you need. Section 10 is optional for depth.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg border border-gray-200">
-            <div className="text-4xl mb-4">📖</div>
-            <h3 className="text-xl font-semibold mb-2">Story-Driven</h3>
-            <p className="text-gray-600">
-              Learn through narrative flow, not isolated facts. See how concepts build on each other naturally.
-            </p>
+          <div className="mt-6 bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+            <h3 className="font-semibold text-xl mb-3 flex items-center gap-2">
+              <span>🎯</span> Every CRASHCHAPTER Includes:
+            </h3>
+            <ul className="space-y-2 text-blue-50">
+              <li className="flex items-start gap-2">
+                <span className="text-orange-300 font-bold">✓</span>
+                <span>A relatable Marable™ that introduces concepts naturally</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange-300 font-bold">✓</span>
+                <span>Progressive sections that build understanding step-by-step</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange-300 font-bold">✓</span>
+                <span>A Teaching Receipt™ to validate your learning</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange-300 font-bold">✓</span>
+                <span>Progress tracking so you can pick up where you left off</span>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-
-      {/* CRASHCHAPTER Preview */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 py-8 rounded-lg">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
-          Introducing: CRASHCHAPTER
-        </h2>
-        <p className="text-gray-700 mb-6 text-center">
-          Our signature teaching format. A narrative-based explanation that builds complete understanding through connected concepts, structured across 11 sections.
-        </p>
-        <div className="grid sm:grid-cols-2 gap-4 text-sm">
-          <div className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>Sections 0-9: Core understanding (20-25 min)</span>
-          </div>
-          <div className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>Section 10: Optional deep dive</span>
-          </div>
-          <div className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>Progress checkpoints to pause & resume</span>
-          </div>
-          <div className="flex items-start">
-            <span className="text-blue-600 mr-2">✓</span>
-            <span>Concept first, terminology second</span>
-          </div>
-        </div>
-      </div>
+      </section>
 
       {/* Available Modules */}
-      <div id="modules" className="max-w-4xl mx-auto px-6 py-16">
+      <section id="modules" className="max-w-6xl mx-auto px-6 py-16">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          Available Now (MVP)
+          Available CRASHCHAPTERs
         </h2>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          <ModuleCard
+            title="Cellular Injury & Adaptation"
+            description="Understanding how cells respond to stress, injury, and changing environments"
+            slug="cellular-injury"
+            sections={11}
+            duration="under 90 mins"
+            color="blue"
+            chapterData={cellularInjuryChapter}
+          />
+          
+          <ModuleCard
+            title="Acid-Base & Fluid/Electrolyte Disorders"
+            description="Master the fundamentals of pH regulation and electrolyte balance"
+            slug="acid-base"
+            sections={11}
+            duration="under 90 mins"
+            color="orange"
+            chapterData={acidBaseChapter}
+          />
+        </div>
+      </section>
 
-        <div className="space-y-4">
-          {/* Cellular Injury Module */}
-          <div className="bg-white p-8 rounded-lg border-2 border-blue-200 hover:border-blue-400 transition-colors">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Cellular Injury & Adaptation
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  How cells respond to stress, adapt to challenges, and ultimately fail - explained in simple, connected concepts.
-                </p>
-              </div>
-              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
-                20-25 min
-              </span>
+      {/* How It Works */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How PupilMD Works</h2>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
+              1
             </div>
-
-            {/* Progress Bar */}
-            {cellularProgress.completed > 0 && (
-              <div className="mb-4">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-gray-600">
-                    {cellularProgress.completed}/{cellularProgress.total} sections completed
-                  </span>
-                  <span className="text-sm font-semibold text-blue-600">
-                    {cellularProgress.percentage}%
-                  </span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${cellularProgress.percentage}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
-            <Link
-              href="/module/cellular-injury"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              {cellularProgress.completed > 0 ? 'Continue Learning →' : 'Begin Module →'}
-            </Link>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Start with Story</h3>
+            <p className="text-gray-600">
+              Every concept begins with a Marable™—a relatable story from everyday life that mirrors the medical principle.
+            </p>
           </div>
-
-          {/* Acid-Base Module */}
-          <div className="bg-white p-8 rounded-lg border-2 border-green-200 hover:border-green-400 transition-colors">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Acid-Base & Fluid/Electrolyte Disorders
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Master the most challenging topic in pathophysiology—from swimming pool chemistry to clinical ABG interpretation.
-                </p>
-              </div>
-              <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-                25-30 min
-              </span>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
+              2
             </div>
-
-            {/* Progress Bar */}
-            {acidBaseProgress.completed > 0 && (
-              <div className="mb-4">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-gray-600">
-                    {acidBaseProgress.completed}/{acidBaseProgress.total} sections completed
-                  </span>
-                  <span className="text-sm font-semibold text-green-600">
-                    {acidBaseProgress.percentage}%
-                  </span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-green-600 h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${acidBaseProgress.percentage}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
-            <Link
-              href="/module/acid-base"
-              className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
-            >
-              {acidBaseProgress.completed > 0 ? 'Continue Learning →' : 'Begin Module →'}
-            </Link>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Build Understanding</h3>
+            <p className="text-gray-600">
+              Progress through sections that layer complexity naturally, moving from story to science seamlessly.
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-orange-500 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
+              3
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Validate Learning</h3>
+            <p className="text-gray-600">
+              Complete each CRASHCHAPTER with a Teaching Receipt™ that reinforces what you've mastered.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Learning Promise */}
-      <div className="mt-16 text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">
-          Our Promise
-        </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Complete a CRASHCHAPTER and you'll be able to understand the topic conceptually, apply the logic clinically, and explain it to someone else in simple terms.
-        </p>
-      </div>
+      {/* CTA Section */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="bg-gradient-to-r from-blue-600 to-orange-500 rounded-2xl shadow-2xl p-12 text-center text-white">
+          <h2 className="text-3xl font-bold mb-4">Ready to Learn Medicine Differently?</h2>
+          <p className="text-blue-50 text-lg mb-8 max-w-2xl mx-auto">
+            Join students who are discovering that medical education doesn't have to be about memorization.
+          </p>
+          <Link 
+            href="#modules"
+            className="inline-block px-8 py-4 bg-white text-blue-700 rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+          >
+            Start Your First CRASHCHAPTER →
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

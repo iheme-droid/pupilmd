@@ -1,81 +1,71 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Header from "./components/Header";
-import PWAInstaller from "./components/PWAInstaller";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import SplashScreen from './components/SplashScreen';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "PupilMD - Applying Medicine Simply",
-  description: "Master pathophysiology through Marable™-first learning. Understand medicine in 20-25 minutes with narrative-based explanations.",
-  keywords: ["medical education", "pathophysiology", "medical school", "USMLE", "step 1", "medical learning"],
-  authors: [{ name: "PupilMD" }],
-  creator: "PupilMD",
-  publisher: "PupilMD",
-  
-  // Open Graph (Facebook, LinkedIn)
-  openGraph: {
-    title: "PupilMD - Applying Medicine Simply",
-    description: "Master pathophysiology through Marable™-first learning. Understand medicine in 20-25 minutes.",
-    siteName: "PupilMD",
-    locale: "en_US",
-    type: "website",
-  },
-
-  // Twitter
-  twitter: {
-    card: "summary_large_image",
-    title: "PupilMD - Applying Medicine Simply",
-    description: "Master pathophysiology through Marable™-first learning.",
-  },
-
-  // Mobile App Capable
-  applicationName: "PupilMD",
+  title: 'PupilMD - Learning Medicine By First Understanding',
+  description: 'Have a grasp of medical concepts (in under 90 mins) with narrative-based explanations sponsored by Marable™',
+  manifest: '/manifest.json',
+  themeColor: '#2563eb',
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
-    title: "PupilMD",
+    statusBarStyle: 'default',
+    title: 'PupilMD',
   },
-  formatDetection: {
-    telephone: false,
+  applicationName: 'PupilMD',
+  openGraph: {
+    type: 'website',
+    siteName: 'PupilMD',
+    title: 'PupilMD - Learning Medicine By First Understanding',
+    description: 'Have a grasp of medical concepts (in under 90 mins) with narrative-based explanations sponsored by Marable™',
   },
-
-  // Manifest (for PWA)
-  manifest: "/manifest.json",
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PupilMD - Learning Medicine By First Understanding',
+    description: 'Have a grasp of medical concepts (in under 90 mins) with narrative-based explanations sponsored by Marable™',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
-        {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
-        
-        {/* Theme Color for Mobile Browsers */}
-        <meta name="theme-color" content="#2563eb" />
-        
-        {/* Apple Mobile Web App */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="PupilMD" />
-        
-        {/* PWA Manifest */}
-        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={inter.className}>
+        <SplashScreen />
         <Header />
-        {children}
-        <PWAInstaller />
-        <footer className="bg-gray-50 border-t border-gray-200 py-8 mt-16">
-          <div className="max-w-7xl mx-auto px-6 text-center text-sm text-gray-600">
-            <p>© 2025 PupilMD. Marable™ is a trademark of PupilMD.</p>
-          </div>
-        </footer>
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
