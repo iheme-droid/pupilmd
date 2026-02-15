@@ -2,6 +2,7 @@ interface TeachingReceiptProps {
   mastered: string[];
   selfCheckQuestions: string[];
   checkedQuestions: number[];
+  moduleSlug: string;
   onQuestionToggle: (index: number) => void;
 }
 
