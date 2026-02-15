@@ -136,6 +136,7 @@ export default function AcidBaseCrashChapter() {
           mastered={acidBaseChapter.teachingReceipt.mastered}
           selfCheckQuestions={acidBaseChapter.teachingReceipt.selfCheckQuestions}
           checkedQuestions={checkedQuestions}
+          moduleSlug="acid-base" 
           onQuestionToggle={handleQuestionToggle}
         />
       )}
