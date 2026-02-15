@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { cellularInjuryChapter } from '@/app/data/cellularInjury';
 import TeachingReceipt from '@/app/components/TeachingReceipt';
 
+export const dynamic = 'force-dynamic'
+
 export default function CellularInjuryCrashChapter() {
   const searchParams = useSearchParams();
   const router = useRouter();

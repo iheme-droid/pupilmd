@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { acidBaseChapter } from '@/app/data/acidBase';
 import TeachingReceipt from '@/app/components/TeachingReceipt';
 
+export const dynamic = 'force-dynamic'
+
 export default function AcidBaseCrashChapter() {
   const searchParams = useSearchParams();
   const router = useRouter();
