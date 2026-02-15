@@ -1,14 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { cellularInjuryChapter } from '@/app/data/cellularInjury';
 import TeachingReceipt from '@/app/components/TeachingReceipt';
 
-export const dynamic = 'force-dynamic'
-
-export default function CellularInjuryCrashChapter() {
+function CellularInjuryCrashChapterContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const sectionParam = searchParams.get('section');
@@ -78,7 +76,7 @@ export default function CellularInjuryCrashChapter() {
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-500"
+            className="bg-gradient-to-r from-blue-600 to-blue-700 h-2 rounded-full transition-all duration-500"
             style={{ width: `${(currentSectionId / 10) * 100}%` }}
           />
         </div>
@@ -138,7 +136,7 @@ export default function CellularInjuryCrashChapter() {
           mastered={cellularInjuryChapter.teachingReceipt.mastered}
           selfCheckQuestions={cellularInjuryChapter.teachingReceipt.selfCheckQuestions}
           checkedQuestions={checkedQuestions}
-          moduleSlug="cellular-injury" 
+          moduleSlug="cellular-injury"
           onQuestionToggle={handleQuestionToggle}
         />
       )}
@@ -172,12 +170,27 @@ export default function CellularInjuryCrashChapter() {
               ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
               : currentSection.isDeepDive
               ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-lg transform hover:-translate-y-0.5'
-              : 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg transform hover:-translate-y-0.5'
+              : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:shadow-lg transform hover:-translate-y-0.5'
           }`}
         >
           {currentSectionId === 9 ? 'Enter Deep Dive →' : 'Next →'}
         </button>
       </div>
     </div>
+  );
+}
+
+export default function CellularInjuryCrashChapter() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    }>
+      <CellularInjuryCrashChapterContent />
+    </Suspense>
   );
 }

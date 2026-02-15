@@ -1,14 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { acidBaseChapter } from '@/app/data/acidBase';
 import TeachingReceipt from '@/app/components/TeachingReceipt';
 
-export const dynamic = 'force-dynamic'
-
-export default function AcidBaseCrashChapter() {
+function AcidBaseCrashChapterContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const sectionParam = searchParams.get('section');
@@ -179,5 +177,20 @@ export default function AcidBaseCrashChapter() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function AcidBaseCrashChapter() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    }>
+      <AcidBaseCrashChapterContent />
+    </Suspense>
   );
 }
