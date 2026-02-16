@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 export default function SplashScreen() {
   const [show, setShow] = useState(false);
@@ -15,10 +14,10 @@ export default function SplashScreen() {
       setShow(true);
       sessionStorage.setItem('pupilmd_splash_shown', 'true');
       
-      // Hide splash after 2.5 seconds
+      // Hide splash after 5 seconds
       setTimeout(() => {
         setShow(false);
-      }, 2500);
+      }, 5000);
     }
   }, []);
 
@@ -27,12 +26,12 @@ export default function SplashScreen() {
   return (
     <div className="splash-screen">
       <div className="splash-logo">
-        <Image 
+        <img 
           src="/icon-512.png" 
           alt="PupilMD" 
           width={120} 
           height={120}
-          priority
+          style={{ width: '120px', height: '120px' }}
         />
       </div>
       <div className="splash-text">PupilMD</div>

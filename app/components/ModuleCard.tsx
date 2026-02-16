@@ -43,32 +43,34 @@ export default function ModuleCard({
 
   const colorClasses = {
     blue: {
-      gradient: 'from-blue-600 to-blue-700',
+      gradient: 'from-blue-600 via-cyan-500 to-purple-600',
       border: 'border-blue-200',
       text: 'text-blue-700',
-      bg: 'bg-blue-50',
-      hover: 'hover:border-blue-300',
-      progressBar: 'from-blue-600 to-blue-700',
-      badge: 'bg-blue-100 text-blue-700'
+      bg: 'bg-gradient-to-br from-blue-50 to-cyan-50',
+      hover: 'hover:border-blue-400',
+      progressBar: 'from-blue-600 to-cyan-500',
+      badge: 'bg-blue-100 text-blue-700',
+      shadow: 'hover:shadow-blue-200'
     },
     orange: {
-      gradient: 'from-orange-500 to-orange-600',
+      gradient: 'from-orange-500 via-pink-500 to-purple-600',
       border: 'border-orange-200',
       text: 'text-orange-700',
-      bg: 'bg-orange-50',
-      hover: 'hover:border-orange-300',
-      progressBar: 'from-orange-500 to-orange-600',
-      badge: 'bg-orange-100 text-orange-700'
+      bg: 'bg-gradient-to-br from-orange-50 to-pink-50',
+      hover: 'hover:border-orange-400',
+      progressBar: 'from-orange-500 to-pink-500',
+      badge: 'bg-orange-100 text-orange-700',
+      shadow: 'hover:shadow-orange-200'
     }
   };
 
   const colors = colorClasses[color];
 
   return (
-    <div className={`bg-white rounded-xl shadow-lg border-2 ${colors.border} ${colors.hover} transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 overflow-hidden`}>
+    <div className={`${colors.bg} rounded-xl shadow-lg border-2 ${colors.border} ${colors.hover} transition-all duration-300 hover:shadow-2xl ${colors.shadow} transform hover:-translate-y-1 overflow-hidden card-glow`}>
       <div className={`h-2 bg-gradient-to-r ${colors.gradient}`}></div>
       
-      <div className="p-6">
+      <div className="p-6 bg-white/70 backdrop-blur-sm">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${colors.badge}`}>

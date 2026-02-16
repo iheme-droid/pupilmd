@@ -4,16 +4,25 @@
 
 @layer utilities {
   .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 3s ease infinite;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
 
   @keyframes gradient {
-    0%, 100% {
+    0% {
       background-position: 0% 50%;
+    }
+    25% {
+      background-position: 50% 50%;
     }
     50% {
       background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
     }
   }
 
@@ -31,26 +40,89 @@
   }
 }
 
-/* Splash Screen Styles */
+/* Beautiful Gradient Background */
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    #fffcf5 0%,
+    #d8d5ca 15%,
+    #ffce81 30%,
+    #ff7a3c 45%,
+    #10d7e2 60%,
+    #6197ee 75%,
+    #9358f7 90%,
+    #fffcf5 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+}
+
+.gradient-bg-subtle {
+  background: linear-gradient(
+    to bottom right,
+    #fffcf5 0%,
+    #ffce81 20%,
+    #10d7e2 40%,
+    #6197ee 60%,
+    #9358f7 80%,
+    #d8d5ca 100%
+  );
+}
+
+/* Module specific gradients */
+.module-gradient-cellular {
+  background: linear-gradient(
+    135deg,
+    #fffcf5 0%,
+    #d8d5ca 20%,
+    #6197ee 50%,
+    #10d7e2 80%,
+    #fffcf5 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.module-gradient-acidbase {
+  background: linear-gradient(
+    135deg,
+    #fffcf5 0%,
+    #ffce81 20%,
+    #ff7a3c 50%,
+    #9358f7 80%,
+    #fffcf5 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+/* Splash Screen Styles - BLACK BACKGROUND */
 .splash-screen {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #f97316 100%);
+  background: #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  animation: fadeOut 0.5s ease-in-out 2s forwards;
+  animation: fadeOut 0.5s ease-in-out 4.5s forwards;
 }
 
 .splash-logo {
   width: 120px;
   height: 120px;
   animation: scaleIn 0.8s ease-out;
+  margin-bottom: 1rem;
+}
+
+.splash-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .splash-text {
@@ -117,40 +189,14 @@
   margin-bottom: 0.75rem;
 }
 
-/* PWA Install Prompt Styles */
-.pwa-install-prompt {
-  position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, #2563eb 0%, #f97316 100%);
-  color: white;
-  padding: 1rem 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  max-width: 90%;
-  animation: slideUp 0.3s ease-out;
+/* Card hover effects */
+.card-glow {
+  transition: all 0.3s ease;
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateX(-50%) translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Module Page Specific Styles */
-.module-gradient-blue {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
-}
-
-.module-gradient-orange {
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
+.card-glow:hover {
+  box-shadow: 0 20px 60px rgba(147, 88, 247, 0.15),
+              0 10px 30px rgba(97, 151, 238, 0.15);
 }
 
 /* Loading States */
@@ -167,4 +213,20 @@
   100% {
     background-position: -200% 0;
   }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Text selection */
+::selection {
+  background-color: #9358f7;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #9358f7;
+  color: white;
 }
