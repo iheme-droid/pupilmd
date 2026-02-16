@@ -24,18 +24,54 @@ export default function SplashScreen() {
   if (!show) return null;
 
   return (
-    <div className="splash-screen">
-      <div className="splash-logo">
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: '#000000',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 9999,
+      animation: 'fadeOut 0.5s ease-in-out 4.5s forwards'
+    }}>
+      <div style={{
+        width: '120px',
+        height: '120px',
+        marginBottom: '1rem',
+        animation: 'scaleIn 0.8s ease-out'
+      }}>
+        {/* Using direct img tag with absolute path */}
         <img 
           src="/icon-512.png" 
-          alt="PupilMD" 
-          width={120} 
-          height={120}
-          style={{ width: '120px', height: '120px' }}
+          alt="PupilMD Logo" 
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain'
+          }}
         />
       </div>
-      <div className="splash-text">PupilMD</div>
-      <div className="splash-tagline">Learning Medicine By First Understanding</div>
+      <div style={{
+        color: 'white',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        marginTop: '1rem',
+        animation: 'fadeIn 0.5s ease-in 0.5s both'
+      }}>
+        PupilMD
+      </div>
+      <div style={{
+        color: 'rgba(255, 255, 255, 0.9)',
+        fontSize: '0.875rem',
+        marginTop: '0.5rem',
+        animation: 'fadeIn 0.5s ease-in 1s both'
+      }}>
+        Learning Medicine By First Understanding
+      </div>
     </div>
   );
 }

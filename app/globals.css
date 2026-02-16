@@ -40,63 +40,32 @@
   }
 }
 
-/* Beautiful Gradient Background */
-.gradient-bg {
+/* Home Page Gradient - White to Blue */
+.gradient-bg-home {
   background: linear-gradient(
     135deg,
-    #fffcf5 0%,
-    #d8d5ca 15%,
-    #ffce81 30%,
-    #ff7a3c 45%,
-    #10d7e2 60%,
-    #6197ee 75%,
-    #9358f7 90%,
-    #fffcf5 100%
+    #ffffff 0%,
+    #e0f2fe 20%,
+    #6197ee 40%,
+    #3b82f6 60%,
+    #6197ee 80%,
+    #ffffff 100%
   );
   background-size: 400% 400%;
   animation: gradient 20s ease infinite;
 }
 
-.gradient-bg-subtle {
-  background: linear-gradient(
-    to bottom right,
-    #fffcf5 0%,
-    #ffce81 20%,
-    #10d7e2 40%,
-    #6197ee 60%,
-    #9358f7 80%,
-    #d8d5ca 100%
-  );
+/* Module Pages - Cream Solid (Sections 0-9) */
+.module-bg-cream {
+  background: #fffcf5;
 }
 
-/* Module specific gradients */
-.module-gradient-cellular {
-  background: linear-gradient(
-    135deg,
-    #fffcf5 0%,
-    #d8d5ca 20%,
-    #6197ee 50%,
-    #10d7e2 80%,
-    #fffcf5 100%
-  );
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+/* Deep Dive - Black Solid (Section 10) */
+.module-bg-black {
+  background: #000000;
 }
 
-.module-gradient-acidbase {
-  background: linear-gradient(
-    135deg,
-    #fffcf5 0%,
-    #ffce81 20%,
-    #ff7a3c 50%,
-    #9358f7 80%,
-    #fffcf5 100%
-  );
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-/* Splash Screen Styles - BLACK BACKGROUND */
+/* Splash Screen Styles */
 .splash-screen {
   position: fixed;
   top: 0;
@@ -195,8 +164,16 @@
 }
 
 .card-glow:hover {
-  box-shadow: 0 20px 60px rgba(147, 88, 247, 0.15),
-              0 10px 30px rgba(97, 151, 238, 0.15);
+  box-shadow: 0 20px 60px rgba(97, 151, 238, 0.2);
+}
+
+/* Section Navigation Sidebar */
+.section-nav-open {
+  transform: translateX(0);
+}
+
+.section-nav-closed {
+  transform: translateX(-100%);
 }
 
 /* Loading States */
@@ -222,11 +199,11 @@ html {
 
 /* Text selection */
 ::selection {
-  background-color: #9358f7;
+  background-color: #6197ee;
   color: white;
 }
 
 ::-moz-selection {
-  background-color: #9358f7;
+  background-color: #6197ee;
   color: white;
 }

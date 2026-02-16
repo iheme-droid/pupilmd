@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { acidBaseChapter } from '@/app/data/acidBase';
 import TeachingReceipt from '@/app/components/TeachingReceipt';
+import { MenuIcon, CloseIcon, CheckIcon } from '@/app/components/Icons';
 
 function AcidBaseCrashChapterContent() {
   const searchParams = useSearchParams();
@@ -14,6 +15,7 @@ function AcidBaseCrashChapterContent() {
   const currentSection = acidBaseChapter.sections.find(s => s.id === currentSectionId);
 
   const [checkedQuestions, setCheckedQuestions] = useState<number[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(`pupilmd_teaching_receipt_${acidBaseChapter.moduleSlug}`);
@@ -41,6 +43,7 @@ function AcidBaseCrashChapterContent() {
 
   const goToSection = (sectionId: number) => {
     router.push(`/module/acid-base/crashchapter?section=${sectionId}`);
+    setSidebarOpen(false);
   };
 
   if (!currentSection) {
@@ -56,125 +59,207 @@ function AcidBaseCrashChapterContent() {
 
   const isLastCoreSection = currentSectionId === 9;
   const showTeachingReceipt = isLastCoreSection;
+  const isDeepDive = currentSection.isDeepDive;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <div className="mb-6">
-        <Link href="/module/acid-base" className="text-green-600 hover:text-green-700 font-semibold">
-          ← Back to Module
-        </Link>
-      </div>
+    <div className={isDeepDive ? 'module-bg-black min-h-screen' : 'module-bg-cream min-h-screen'}>
+      {/* Section Navigation Sidebar */}
+      <div className={`fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ${sidebarOpen ? 'section-nav-open' : 'section-nav-closed'}`}>
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-xl font-bold text-gray-900">Jump to Section</h3>
+            <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg">
+              <CloseIcon className="w-6 h-6 text-gray-600" />
+            </button>
+          </div>
 
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-3xl font-bold text-gray-900">
-            {acidBaseChapter.chapterTitle}
-          </h1>
-          <span className="text-sm text-gray-600">
-            Section {currentSectionId} of 10
-          </span>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
-          <div
-            className="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full transition-all duration-500"
-            style={{ width: `${(currentSectionId / 10) * 100}%` }}
-          />
-        </div>
-      </div>
-
-      {currentSectionId === 0 && (
-        <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg mb-8">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">💡</span>
-            <div>
-              <h3 className="font-semibold text-green-900 mb-2">What's a Marable™?</h3>
-              <p className="text-green-800 text-sm">
-                A Marable™ (medical + parable) is an everyday story that mirrors complex medical concepts. 
-                We start here because your brain learns better through stories than abstract facts.
-              </p>
-            </div>
+          <div className="space-y-2 max-h-[calc(100vh-120px)] overflow-y-auto">
+            {acidBaseChapter.sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => goToSection(section.id)}
+                className={`w-full text-left p-3 rounded-lg transition-colors ${
+                  section.id === currentSectionId
+                    ? section.isDeepDive
+                      ? 'bg-black text-white'
+                      : 'bg-blue-600 text-white'
+                    : 'hover:bg-gray-100 text-gray-700'
+                } ${section.isDeepDive ? 'border-2 border-purple-300' : ''}`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold">Section {section.id}</span>
+                    {section.id <= currentSectionId && (
+                      <CheckIcon className="w-4 h-4 text-green-500" />
+                    )}
+                  </div>
+                  {section.isDeepDive && (
+                    <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded">Deep Dive</span>
+                  )}
+                </div>
+                <div className="text-sm mt-1 opacity-80">{section.title}</div>
+              </button>
+            ))}
           </div>
         </div>
+      </div>
+
+      {/* Overlay when sidebar is open */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => setSidebarOpen(false)}
+        />
       )}
 
-      <div className={`bg-white rounded-lg shadow-sm border ${
-        currentSection.isDeepDive ? 'border-purple-200' : 'border-gray-200'
-      } p-8 mb-8`}>
-        {currentSection.isDeepDive && (
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-            <div className="flex items-start gap-2">
-              <span className="text-purple-600 font-semibold text-sm">🔬 DEEP DIVE</span>
-              <p className="text-sm text-purple-800">
-                Optional advanced content. You've already mastered the core concepts!
-              </p>
+      {/* Main Content */}
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <div className="mb-6 flex items-center gap-4">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className={`p-2 rounded-lg transition-colors ${
+              isDeepDive 
+                ? 'bg-white text-black hover:bg-gray-200' 
+                : 'bg-white hover:bg-gray-100'
+            }`}
+          >
+            <MenuIcon className="w-6 h-6" />
+          </button>
+          <Link 
+            href="/module/acid-base" 
+            className={`font-semibold ${
+              isDeepDive ? 'text-white hover:text-gray-300' : 'text-gray-700 hover:text-gray-900'
+            }`}
+          >
+            ← Back to Module
+          </Link>
+        </div>
+
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h1 className={`text-3xl font-bold ${isDeepDive ? 'text-white' : 'text-gray-900'}`}>
+              {acidBaseChapter.chapterTitle}
+            </h1>
+            <span className={`text-sm ${isDeepDive ? 'text-gray-300' : 'text-gray-600'}`}>
+              Section {currentSectionId} of 10
+            </span>
+          </div>
+          <div className={`w-full ${isDeepDive ? 'bg-gray-800' : 'bg-gray-200'} rounded-full h-2`}>
+            <div
+              className={`h-2 rounded-full transition-all duration-500 ${
+                isDeepDive ? 'bg-purple-600' : 'bg-blue-600'
+              }`}
+              style={{ width: `${(currentSectionId / 10) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        {currentSectionId === 0 && !isDeepDive && (
+          <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-8">
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">💡</div>
+              <div>
+                <h3 className="font-semibold text-blue-900 mb-2">What's a Marable™?</h3>
+                <p className="text-blue-800 text-sm">
+                  A Marable™ (medical + parable) is an everyday story that mirrors complex medical concepts. 
+                  We start here because your brain learns better through stories than abstract facts.
+                </p>
+              </div>
             </div>
           </div>
         )}
 
-        <h2 className={`text-2xl font-bold mb-6 ${
-          currentSection.isDeepDive ? 'text-purple-900' : 'text-gray-900'
+        <div className={`rounded-lg shadow-sm border p-8 mb-8 ${
+          isDeepDive 
+            ? 'bg-gray-900 border-purple-500' 
+            : 'bg-white border-gray-200'
         }`}>
-          {currentSection.title}
-        </h2>
+          {currentSection.isDeepDive && (
+            <div className="bg-purple-900 border border-purple-700 rounded-lg p-4 mb-6">
+              <div className="flex items-start gap-2">
+                <span className="text-purple-300 font-semibold text-sm">🔬 DEEP DIVE</span>
+                <p className="text-sm text-purple-200">
+                  Optional advanced content. You've already mastered the core concepts!
+                </p>
+              </div>
+            </div>
+          )}
 
-        <div className="prose prose-custom max-w-none">
-          {currentSection.content.split('\n\n').map((paragraph, idx) => {
-            if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+          <h2 className={`text-2xl font-bold mb-6 ${
+            isDeepDive ? 'text-white' : 'text-gray-900'
+          }`}>
+            {currentSection.title}
+          </h2>
+
+          <div className="prose prose-custom max-w-none">
+            {currentSection.content.split('\n\n').map((paragraph, idx) => {
+              if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+                return (
+                  <h3 key={idx} className={`text-xl font-semibold mt-6 mb-3 ${
+                    isDeepDive ? 'text-gray-100' : 'text-gray-900'
+                  }`}>
+                    {paragraph.replace(/\*\*/g, '')}
+                  </h3>
+                );
+              }
               return (
-                <h3 key={idx} className="text-xl font-semibold text-gray-900 mt-6 mb-3">
-                  {paragraph.replace(/\*\*/g, '')}
-                </h3>
+                <p key={idx} className={`mb-4 leading-relaxed ${
+                  isDeepDive ? 'text-gray-200' : 'text-gray-700'
+                }`}>
+                  {paragraph}
+                </p>
               );
-            }
-            return <p key={idx} className="mb-4 leading-relaxed text-gray-700">{paragraph}</p>;
-          })}
+            })}
+          </div>
         </div>
-      </div>
 
-      {showTeachingReceipt && (
-        <TeachingReceipt
-          mastered={acidBaseChapter.teachingReceipt.mastered}
-          selfCheckQuestions={acidBaseChapter.teachingReceipt.selfCheckQuestions}
-          checkedQuestions={checkedQuestions}
-          moduleSlug="acid-base" 
-          onQuestionToggle={handleQuestionToggle}
-        />
-      )}
+        {showTeachingReceipt && (
+          <TeachingReceipt
+            mastered={acidBaseChapter.teachingReceipt.mastered}
+            selfCheckQuestions={acidBaseChapter.teachingReceipt.selfCheckQuestions}
+            checkedQuestions={checkedQuestions}
+            moduleSlug="acid-base" 
+            onQuestionToggle={handleQuestionToggle}
+          />
+        )}
 
-      {currentSectionId < 9 && (currentSectionId + 1) % 3 === 0 && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-          <p className="text-blue-900 font-medium">
-            ✓ Checkpoint: You've completed {currentSectionId + 1} sections. Nice work!
-          </p>
+        {currentSectionId < 9 && (currentSectionId + 1) % 3 === 0 && (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+            <p className="text-blue-900 font-medium">
+              ✓ Checkpoint: You've completed {currentSectionId + 1} sections. Nice work!
+            </p>
+          </div>
+        )}
+
+        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+          <button
+            onClick={() => currentSectionId > 0 && goToSection(currentSectionId - 1)}
+            disabled={currentSectionId === 0}
+            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+              currentSectionId === 0
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : isDeepDive
+                ? 'bg-gray-800 text-white hover:bg-gray-700'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            ← Previous
+          </button>
+
+          <button
+            onClick={() => currentSectionId < acidBaseChapter.sections.length - 1 && goToSection(currentSectionId + 1)}
+            disabled={currentSectionId === acidBaseChapter.sections.length - 1}
+            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+              currentSectionId === acidBaseChapter.sections.length - 1
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : isDeepDive
+                ? 'bg-purple-600 text-white hover:shadow-lg transform hover:-translate-y-0.5'
+                : 'bg-blue-600 text-white hover:shadow-lg transform hover:-translate-y-0.5'
+            }`}
+          >
+            {currentSectionId === 9 ? 'Enter Deep Dive →' : 'Next →'}
+          </button>
         </div>
-      )}
-
-      <div className="flex justify-between items-center pt-6 border-t border-gray-200">
-        <button
-          onClick={() => currentSectionId > 0 && goToSection(currentSectionId - 1)}
-          disabled={currentSectionId === 0}
-          className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-            currentSectionId === 0
-              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
-        >
-          ← Previous
-        </button>
-
-        <button
-          onClick={() => currentSectionId < acidBaseChapter.sections.length - 1 && goToSection(currentSectionId + 1)}
-          disabled={currentSectionId === acidBaseChapter.sections.length - 1}
-          className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-            currentSectionId === acidBaseChapter.sections.length - 1
-              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : currentSection.isDeepDive
-              ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-lg transform hover:-translate-y-0.5'
-              : 'bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:shadow-lg transform hover:-translate-y-0.5'
-          }`}
-        >
-          {currentSectionId === 9 ? 'Enter Deep Dive →' : 'Next →'}
-        </button>
       </div>
     </div>
   );
