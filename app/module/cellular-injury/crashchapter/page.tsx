@@ -61,9 +61,9 @@ function CellularInjuryCrashChapterContent() {
   const isDeepDive = currentSection.isDeepDive;
 
   return (
-    <div className={isDeepDive ? 'module-bg-cream-deep min-h-screen' : 'module-bg-cream min-h-screen'}>
+    <div className={isDeepDive ? 'min-h-screen' : 'module-bg-cream min-h-screen'} style={isDeepDive ? {backgroundColor: '#ffeed3'} : {}}>
       {/* Section Navigation Sidebar */}
-      <div className={`fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ${sidebarOpen ? 'section-nav-open' : 'section-nav-closed'}`}>
+      <div className={`fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-bold text-gray-900">Jump to Section</h3>
@@ -81,9 +81,7 @@ function CellularInjuryCrashChapterContent() {
                 onClick={() => goToSection(section.id)}
                 className={`w-full text-left p-3 rounded-lg transition-colors ${
                   section.id === currentSectionId
-                    ? section.isDeepDive
-                      ? 'bg-black text-white'
-                      : 'bg-blue-600 text-white'
+                    ? 'bg-blue-600 text-white'
                     : 'hover:bg-gray-100 text-gray-700'
                 } ${section.isDeepDive ? 'border-2 border-purple-300' : ''}`}
               >
@@ -105,7 +103,7 @@ function CellularInjuryCrashChapterContent() {
         </div>
       </div>
 
-      {/* Overlay when sidebar is open */}
+      {/* Overlay */}
       {sidebarOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-40"
@@ -116,14 +114,9 @@ function CellularInjuryCrashChapterContent() {
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
         <div className="mb-6 flex items-center gap-4">
-          {/* HAMBURGER MENU - MORE VISIBLE WITH LABEL */}
           <button
             onClick={() => setSidebarOpen(true)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-              isDeepDive 
-                ? 'bg-white text-black hover:bg-gray-200' 
-                : 'bg-blue-600 text-white hover:bg-blue-700'
-            }`}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -133,9 +126,7 @@ function CellularInjuryCrashChapterContent() {
           
           <Link 
             href="/module/cellular-injury" 
-            className={`font-semibold ${
-              isDeepDive ? 'text-white hover:text-white' : 'text-gray-700 hover:text-gray-900'
-            }`}
+            className="font-semibold text-gray-700 hover:text-gray-900"
           >
             ← Back to Module
           </Link>
@@ -143,18 +134,16 @@ function CellularInjuryCrashChapterContent() {
 
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h1 className={`text-3xl font-bold ${isDeepDive ? 'text-gray-900' : 'text-gray-900'}`}>
+            <h1 className="text-3xl font-bold text-gray-900">
               {cellularInjuryChapter.chapterTitle}
             </h1>
-            <span className={`text-sm ${isDeepDive ? 'text-gray-900' : 'text-gray-600'}`}>
+            <span className="text-sm text-gray-600">
               Section {currentSectionId} of 10
             </span>
           </div>
-          <div className={`w-full ${isDeepDive ? 'bg-purple-100' : 'bg-gray-200'} rounded-full h-2`}>
+          <div className="w-full bg-gray-200 rounded-full h-2">
             <div
-              className={`h-2 rounded-full transition-all duration-500 ${
-                isDeepDive ? 'bg-purple-700' : 'bg-blue-600'
-              }`}
+              className="h-2 rounded-full transition-all duration-500 bg-blue-600"
               style={{ width: `${(currentSectionId / 10) * 100}%` }}
             />
           </div>
@@ -175,18 +164,14 @@ function CellularInjuryCrashChapterContent() {
           </div>
         )}
 
-        <div className={`rounded-lg shadow-sm border p-8 mb-8 ${
-          isDeepDive 
-            ? 'bg-white border-gray-200' 
-            : 'bg-white border-gray-200'
-        }`}>
+        <div className="rounded-lg shadow-sm border bg-white border-gray-200 p-8 mb-8">
           {currentSection.isDeepDive && (
-            <div className="bg-purple-900 border border-purple-700 rounded-lg p-4 mb-6">
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
               <div className="flex items-start gap-2">
                 <span className="text-xl">🔬</span>
                 <div>
-                  <span className="text-purple-300 font-semibold text-sm">DEEP DIVE</span>
-                  <p className="text-sm text-purple-200 mt-1">
+                  <span className="text-purple-700 font-semibold text-sm">DEEP DIVE</span>
+                  <p className="text-sm text-purple-600 mt-1">
                     Optional advanced content. You've already mastered the core concepts!
                   </p>
                 </div>
@@ -194,27 +179,21 @@ function CellularInjuryCrashChapterContent() {
             </div>
           )}
 
-          <h2 className={`text-2xl font-bold mb-6 ${
-            isDeepDive ? 'text-gray-900' : 'text-gray-900'
-          }`}>
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">
             {currentSection.title}
           </h2>
 
-          <div className="prose prose-custom max-w-none">
+          <div className="prose max-w-none">
             {currentSection.content.split('\n\n').map((paragraph, idx) => {
               if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
                 return (
-                  <h3 key={idx} className={`text-xl font-semibold mt-6 mb-3 ${
-                    isDeepDive ? 'text-gray-900' : 'text-gray-900'
-                  }`}>
+                  <h3 key={idx} className="text-xl font-semibold mt-6 mb-3 text-gray-900">
                     {paragraph.replace(/\*\*/g, '')}
                   </h3>
                 );
               }
               return (
-                <p key={idx} className={`mb-4 leading-relaxed ${
-                  isDeepDive ? 'text-gray-900' : 'text-gray-700'
-                }`}>
+                <p key={idx} className="mb-4 leading-relaxed text-gray-700">
                   {paragraph}
                 </p>
               );
@@ -247,8 +226,6 @@ function CellularInjuryCrashChapterContent() {
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
               currentSectionId === 0
                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : isDeepDive
-                ? 'bg-gray-800 text-white hover:bg-gray-700'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -261,8 +238,6 @@ function CellularInjuryCrashChapterContent() {
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
               currentSectionId === cellularInjuryChapter.sections.length - 1
                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : isDeepDive
-                ? 'bg-purple-600 text-white hover:shadow-lg transform hover:-translate-y-0.5'
                 : 'bg-blue-600 text-white hover:shadow-lg transform hover:-translate-y-0.5'
             }`}
           >
