@@ -6,11 +6,11 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-5 h-5">
+            <div style={{ width: '20px', height: '20px', flexShrink: 0 }}>
               <img 
                 src="/logo.png" 
                 alt="PupilMD" 
-                className="w-full h-full object-contain"
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
               />
             </div>
             <span className="text-xl font-bold text-gray-900">
