@@ -6,7 +6,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8">
+            <div className="w-6 h-6">
               <img 
                 src="/logo.png" 
                 alt="PupilMD" 
