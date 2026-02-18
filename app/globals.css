@@ -40,15 +40,15 @@
   }
 }
 
-/* Home Page Gradient - White to Blue */
+/* Home Page Gradient - MORE WHITE, LESS BLUE */
 .gradient-bg-home {
   background: linear-gradient(
     135deg,
     #ffffff 0%,
-    #e0f2fe 20%,
-    #6197ee 40%,
-    #3b82f6 60%,
-    #6197ee 80%,
+    #ffffff 30%,
+    #f0f9ff 50%,
+    #e0f2fe 70%,
+    #6197ee 85%,
     #ffffff 100%
   );
   background-size: 400% 400%;
@@ -67,18 +67,18 @@
 
 /* Splash Screen Styles */
 .splash-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #000000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  animation: fadeOut 0.5s ease-in-out 4.5s forwards;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: #000000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 99999 !important;
+  animation: fadeOut 0.5s ease-in-out 4.5s forwards !important;
 }
 
 .splash-logo {

@@ -2,7 +2,6 @@ import Link from 'next/link';
 import ModuleCard from './components/ModuleCard';
 import { cellularInjuryChapter } from './data/cellularInjury';
 import { acidBaseChapter } from './data/acidBase';
-import { BookIcon, MicroscopeIcon, TargetIcon, CheckIcon, ClockIcon, DocumentIcon } from './components/Icons';
 
 export default function Home() {
   return (
@@ -40,7 +39,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-6 py-12">
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/50">
           <div className="flex items-center gap-3 mb-4">
-            <BookIcon className="w-8 h-8 text-blue-600" />
+            <span className="text-3xl">📖</span>
             <h2 className="text-3xl font-bold text-gray-900">
               Introducing: CRASHCHAPTER™
             </h2>
@@ -52,7 +51,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
               <div className="flex items-center gap-3 mb-3">
-                <BookIcon className="w-6 h-6 text-blue-600" />
+                <span className="text-2xl">📖</span>
                 <h3 className="font-semibold text-xl text-gray-900">
                   Sections 0-9: Core understanding
                 </h3>
@@ -64,7 +63,7 @@ export default function Home() {
             
             <div className="bg-purple-50 rounded-xl p-6 border border-purple-200">
               <div className="flex items-center gap-3 mb-3">
-                <MicroscopeIcon className="w-6 h-6 text-purple-600" />
+                <span className="text-2xl">🔬</span>
                 <h3 className="font-semibold text-xl text-gray-900">
                   Section 10: Deep Dive
                 </h3>
@@ -77,26 +76,26 @@ export default function Home() {
 
           <div className="mt-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
             <div className="flex items-center gap-3 mb-3">
-              <TargetIcon className="w-6 h-6 text-blue-600" />
+              <span className="text-2xl">🎯</span>
               <h3 className="font-semibold text-xl text-gray-900">
                 Every CRASHCHAPTER Includes:
               </h3>
             </div>
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-start gap-3">
-                <CheckIcon className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span className="text-blue-600 text-xl">✓</span>
                 <span>A relatable Marable™ that introduces concepts naturally</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckIcon className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span className="text-blue-600 text-xl">✓</span>
                 <span>Progressive sections that build understanding step-by-step</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckIcon className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span className="text-blue-600 text-xl">✓</span>
                 <span>A Teaching Receipt™ to validate your learning</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckIcon className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span className="text-blue-600 text-xl">✓</span>
                 <span>Progress tracking so you can pick up where you left off</span>
               </li>
             </ul>
@@ -139,9 +138,7 @@ export default function Home() {
         
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/50">
-            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <BookIcon className="w-8 h-8 text-white" />
-            </div>
+            <div className="text-5xl text-center mb-4">📚</div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">Start with Story</h3>
             <p className="text-gray-600 text-center">
               Every concept begins with a Marable™—a relatable story from everyday life that mirrors the medical principle.
@@ -149,9 +146,7 @@ export default function Home() {
           </div>
           
           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/50">
-            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <TargetIcon className="w-8 h-8 text-white" />
-            </div>
+            <div className="text-5xl text-center mb-4">🎯</div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">Build Understanding</h3>
             <p className="text-gray-600 text-center">
               Progress through sections that layer complexity naturally, moving from story to science seamlessly.
@@ -159,9 +154,7 @@ export default function Home() {
           </div>
           
           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/50">
-            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <DocumentIcon className="w-8 h-8 text-white" />
-            </div>
+            <div className="text-5xl text-center mb-4">✅</div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">Validate Learning</h3>
             <p className="text-gray-600 text-center">
               Complete each CRASHCHAPTER with a Teaching Receipt™ that reinforces what you've mastered.

@@ -5,9 +5,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { cellularInjuryChapter } from '@/app/data/cellularInjury';
 import TeachingReceipt from '@/app/components/TeachingReceipt';
-import { MenuIcon, CloseIcon, CheckIcon } from '@/app/components/Icons';
 
-function CellularInjuryCrashChapterContent() {
+function AcidBaseCrashChapterContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const sectionParam = searchParams.get('section');
@@ -69,7 +68,9 @@ function CellularInjuryCrashChapterContent() {
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-bold text-gray-900">Jump to Section</h3>
             <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg">
-              <CloseIcon className="w-6 h-6 text-gray-600" />
+              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
           </div>
 
@@ -90,7 +91,7 @@ function CellularInjuryCrashChapterContent() {
                   <div className="flex items-center gap-2">
                     <span className="font-semibold">Section {section.id}</span>
                     {section.id <= currentSectionId && (
-                      <CheckIcon className="w-4 h-4 text-green-500" />
+                      <span className="text-green-500">✓</span>
                     )}
                   </div>
                   {section.isDeepDive && (
@@ -115,16 +116,21 @@ function CellularInjuryCrashChapterContent() {
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
         <div className="mb-6 flex items-center gap-4">
+          {/* HAMBURGER MENU - MORE VISIBLE WITH LABEL */}
           <button
             onClick={() => setSidebarOpen(true)}
-            className={`p-2 rounded-lg transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
               isDeepDive 
                 ? 'bg-white text-black hover:bg-gray-200' 
-                : 'bg-white hover:bg-gray-100'
+                : 'bg-blue-600 text-white hover:bg-blue-700'
             }`}
           >
-            <MenuIcon className="w-6 h-6" />
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span>Sections</span>
           </button>
+          
           <Link 
             href="/module/cellular-injury" 
             className={`font-semibold ${
@@ -177,10 +183,13 @@ function CellularInjuryCrashChapterContent() {
           {currentSection.isDeepDive && (
             <div className="bg-purple-900 border border-purple-700 rounded-lg p-4 mb-6">
               <div className="flex items-start gap-2">
-                <span className="text-purple-300 font-semibold text-sm">🔬 DEEP DIVE</span>
-                <p className="text-sm text-purple-200">
-                  Optional advanced content. You've already mastered the core concepts!
-                </p>
+                <span className="text-xl">🔬</span>
+                <div>
+                  <span className="text-purple-300 font-semibold text-sm">DEEP DIVE</span>
+                  <p className="text-sm text-purple-200 mt-1">
+                    Optional advanced content. You've already mastered the core concepts!
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -196,7 +205,7 @@ function CellularInjuryCrashChapterContent() {
               if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
                 return (
                   <h3 key={idx} className={`text-xl font-semibold mt-6 mb-3 ${
-                    isDeepDive ? 'text-gray-100' : 'text-gray-900'
+                    isDeepDive ? 'text-white' : 'text-gray-900'
                   }`}>
                     {paragraph.replace(/\*\*/g, '')}
                   </h3>
@@ -204,7 +213,7 @@ function CellularInjuryCrashChapterContent() {
               }
               return (
                 <p key={idx} className={`mb-4 leading-relaxed ${
-                  isDeepDive ? 'text-gray-200' : 'text-gray-700'
+                  isDeepDive ? 'text-white' : 'text-gray-700'
                 }`}>
                   {paragraph}
                 </p>
@@ -218,7 +227,7 @@ function CellularInjuryCrashChapterContent() {
             mastered={cellularInjuryChapter.teachingReceipt.mastered}
             selfCheckQuestions={cellularInjuryChapter.teachingReceipt.selfCheckQuestions}
             checkedQuestions={checkedQuestions}
-            moduleSlug="cellular-injury"
+            moduleSlug="cellular-injury" 
             onQuestionToggle={handleQuestionToggle}
           />
         )}
@@ -265,7 +274,7 @@ function CellularInjuryCrashChapterContent() {
   );
 }
 
-export default function CellularInjuryCrashChapter() {
+export default function AcidBaseCrashChapter() {
   return (
     <Suspense fallback={
       <div className="max-w-4xl mx-auto px-6 py-12">
@@ -275,7 +284,7 @@ export default function CellularInjuryCrashChapter() {
         </div>
       </div>
     }>
-      <CellularInjuryCrashChapterContent />
+      <AcidBaseCrashChapterContent />
     </Suspense>
   );
 }
