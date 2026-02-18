@@ -60,8 +60,16 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="PupilMD" />
+        <style dangerouslySetInnerHTML={{__html: `
+          body.splash-active {
+            overflow: hidden !important;
+            position: fixed !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+        `}} />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} id="root-body">
         <SplashScreen />
         <Header />
         <main>{children}</main>

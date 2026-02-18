@@ -206,7 +206,7 @@ function AcidBaseCrashChapterContent() {
                 return (
                   <h3 key={idx} className={`text-xl font-semibold mt-6 mb-3 ${
                     isDeepDive ? 'text-white' : 'text-gray-900'
-                  }`}>
+                  }`} style={isDeepDive ? { color: '#ffffff' } : {}}>
                     {paragraph.replace(/\*\*/g, '')}
                   </h3>
                 );
@@ -214,7 +214,7 @@ function AcidBaseCrashChapterContent() {
               return (
                 <p key={idx} className={`mb-4 leading-relaxed ${
                   isDeepDive ? 'text-white' : 'text-gray-700'
-                }`}>
+                }`} style={isDeepDive ? { color: '#ffffff !important' } : {}}>
                   {paragraph}
                 </p>
               );
