@@ -61,7 +61,7 @@ function AcidBaseCrashChapterContent() {
   const isDeepDive = currentSection.isDeepDive;
 
   return (
-    <div className={isDeepDive ? 'module-bg-black min-h-screen' : 'module-bg-cream min-h-screen'}>
+    <div className={isDeepDive ? 'module-bg-cream-deep min-h-screen' : 'module-bg-cream min-h-screen'}>
       {/* Section Navigation Sidebar */}
       <div className={`fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ${sidebarOpen ? 'section-nav-open' : 'section-nav-closed'}`}>
         <div className="p-6">
@@ -143,17 +143,17 @@ function AcidBaseCrashChapterContent() {
 
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h1 className={`text-3xl font-bold ${isDeepDive ? 'text-white' : 'text-gray-900'}`}>
+            <h1 className={`text-3xl font-bold ${isDeepDive ? 'text-gray-900' : 'text-gray-900'}`}>
               {acidBaseChapter.chapterTitle}
             </h1>
-            <span className={`text-sm ${isDeepDive ? 'text-white' : 'text-gray-600'}`}>
+            <span className={`text-sm ${isDeepDive ? 'text-gray-900' : 'text-gray-600'}`}>
               Section {currentSectionId} of 10
             </span>
           </div>
-          <div className={`w-full ${isDeepDive ? 'bg-gray-800' : 'bg-gray-200'} rounded-full h-2`}>
+          <div className={`w-full ${isDeepDive ? 'bg-purple-100' : 'bg-gray-200'} rounded-full h-2`}>
             <div
               className={`h-2 rounded-full transition-all duration-500 ${
-                isDeepDive ? 'bg-purple-600' : 'bg-blue-600'
+                isDeepDive ? 'bg-purple-700' : 'bg-blue-600'
               }`}
               style={{ width: `${(currentSectionId / 10) * 100}%` }}
             />
@@ -177,7 +177,7 @@ function AcidBaseCrashChapterContent() {
 
         <div className={`rounded-lg shadow-sm border p-8 mb-8 ${
           isDeepDive 
-            ? 'bg-gray-900 border-purple-500' 
+            ? 'bg-white border-gray-200' 
             : 'bg-white border-gray-200'
         }`}>
           {currentSection.isDeepDive && (
@@ -195,7 +195,7 @@ function AcidBaseCrashChapterContent() {
           )}
 
           <h2 className={`text-2xl font-bold mb-6 ${
-            isDeepDive ? 'text-white' : 'text-gray-900'
+            isDeepDive ? 'text-gray-900' : 'text-gray-900'
           }`}>
             {currentSection.title}
           </h2>
@@ -205,16 +205,16 @@ function AcidBaseCrashChapterContent() {
               if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
                 return (
                   <h3 key={idx} className={`text-xl font-semibold mt-6 mb-3 ${
-                    isDeepDive ? 'text-white' : 'text-gray-900'
-                  }`} style={isDeepDive ? { color: '#ffffff' } : {}}>
+                    isDeepDive ? 'text-gray-900' : 'text-gray-900'
+                  }`} style={}>
                     {paragraph.replace(/\*\*/g, '')}
                   </h3>
                 );
               }
               return (
                 <p key={idx} className={`mb-4 leading-relaxed ${
-                  isDeepDive ? 'text-white' : 'text-gray-700'
-                }`} style={isDeepDive ? { color: '#ffffff !important' } : {}}>
+                  isDeepDive ? 'text-gray-900' : 'text-gray-700'
+                }`}>
                   {paragraph}
                 </p>
               );

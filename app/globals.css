@@ -60,7 +60,12 @@
   background: #fffcf5;
 }
 
-/* Deep Dive - Black Solid (Section 10) */
+/* Deep Dive - Cream Solid (Section 10) */
+.module-bg-cream-deep {
+  background: #ffeed3;
+}
+
+/* Deep Dive - Black Solid (Section 10) - OLD */
 .module-bg-black {
   background: #000000;
 }

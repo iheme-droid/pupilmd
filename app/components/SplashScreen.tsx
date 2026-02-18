@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 
 export default function SplashScreen() {
-  const [show, setShow] = useState(false);
+  // Start with true to show splash immediately
+  const [show, setShow] = useState(true);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
@@ -12,16 +14,20 @@ export default function SplashScreen() {
     const hasSeenSplash = sessionStorage.getItem('pupilmd_splash_shown');
 
     if (isStandalone && !hasSeenSplash) {
-      setShow(true);
+      setShouldRender(true);
       sessionStorage.setItem('pupilmd_splash_shown', 'true');
       
       setTimeout(() => {
         setShow(false);
+        setTimeout(() => setShouldRender(false), 500);
       }, 5000);
+    } else {
+      setShow(false);
+      setShouldRender(false);
     }
   }, []);
 
-  if (!show) return null;
+  if (!shouldRender) return null;
 
   return (
     <div style={{
@@ -38,14 +44,17 @@ export default function SplashScreen() {
       alignItems: 'center',
       justifyContent: 'center',
       zIndex: 999999,
-      animation: 'fadeOut 0.5s ease-in-out 4.5s forwards',
-      pointerEvents: 'auto'
+      opacity: show ? 1 : 0,
+      transition: 'opacity 0.5s ease-in-out',
+      pointerEvents: show ? 'auto' : 'none'
     }}>
       <div style={{
         width: '160px',
         height: '160px',
         marginBottom: '2rem',
-        animation: 'scaleIn 0.8s ease-out'
+        transform: show ? 'scale(1)' : 'scale(0.5)',
+        opacity: show ? 1 : 0,
+        transition: 'all 0.8s ease-out'
       }}>
         <img 
           src="/logo.png" 
@@ -63,7 +72,9 @@ export default function SplashScreen() {
         fontSize: '2rem',
         fontWeight: 'bold',
         marginTop: '1rem',
-        animation: 'fadeIn 0.5s ease-in 0.5s both',
+        opacity: show ? 1 : 0,
+        transform: show ? 'translateY(0)' : 'translateY(10px)',
+        transition: 'all 0.5s ease-in 0.5s',
         letterSpacing: '0.05em'
       }}>
         PupilMD
@@ -72,7 +83,9 @@ export default function SplashScreen() {
         color: '#ffffff',
         fontSize: '0.95rem',
         marginTop: '0.75rem',
-        animation: 'fadeIn 0.5s ease-in 1s both',
+        opacity: show ? 1 : 0,
+        transform: show ? 'translateY(0)' : 'translateY(10px)',
+        transition: 'all 0.5s ease-in 1s',
         textAlign: 'center',
         maxWidth: '90%'
       }}>
