@@ -149,21 +149,6 @@ function AcidBaseCrashChapterContent() {
           </div>
         </div>
 
-        {currentSectionId === 0 && !isDeepDive && (
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-8">
-            <div className="flex items-start gap-3">
-              <div className="text-2xl">💡</div>
-              <div>
-                <h3 className="font-semibold text-blue-900 mb-2">What's a Marable™?</h3>
-                <p className="text-blue-800 text-sm">
-                  A Marable™ (medical + parable) is an everyday story that mirrors complex medical concepts. 
-                  We start here because your brain learns better through stories than abstract facts.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
         <div className="rounded-lg shadow-sm border bg-white border-gray-200 p-8 mb-8">
           {currentSection.isDeepDive && (
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">

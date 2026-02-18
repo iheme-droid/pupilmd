@@ -12,11 +12,19 @@ export default function SplashScreen() {
     const hasSeenSplash = sessionStorage.getItem('pupilmd_splash_shown');
 
     if (isStandalone && !hasSeenSplash) {
+      // Hide body content immediately
+      if (document.body) {
+        document.body.style.overflow = 'hidden';
+      }
+      
       setShouldShow(true);
       sessionStorage.setItem('pupilmd_splash_shown', 'true');
       
       setTimeout(() => {
         setShouldShow(false);
+        if (document.body) {
+          document.body.style.overflow = '';
+        }
       }, 5000);
     }
   }, []);
@@ -26,11 +34,39 @@ export default function SplashScreen() {
   return (
     <>
       <style dangerouslySetInnerHTML={{__html: `
-        #__next, body > div:not(.splash-overlay) {
-          display: none !important;
+        body > *:not(.splash-container) {
+          visibility: hidden !important;
+        }
+        @keyframes splashScaleIn {
+          0% {
+            transform: scale(0.5);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        @keyframes splashFadeIn {
+          0% {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes splashFadeOut {
+          0% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
         }
       `}} />
-      <div className="splash-overlay" style={{
+      <div className="splash-container" style={{
         position: 'fixed',
         top: 0,
         left: 0,
@@ -43,12 +79,14 @@ export default function SplashScreen() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 999999
+        zIndex: 999999,
+        animation: 'splashFadeOut 0.5s ease-in-out 4.5s forwards'
       }}>
         <div style={{
           width: '160px',
           height: '160px',
-          marginBottom: '2rem'
+          marginBottom: '2rem',
+          animation: 'splashScaleIn 0.8s ease-out'
         }}>
           <img 
             src="/logo.png" 
@@ -66,7 +104,8 @@ export default function SplashScreen() {
           fontSize: '2rem',
           fontWeight: 'bold',
           marginTop: '1rem',
-          letterSpacing: '0.05em'
+          letterSpacing: '0.05em',
+          animation: 'splashFadeIn 0.5s ease-in 0.5s both'
         }}>
           PupilMD
         </div>
@@ -75,7 +114,8 @@ export default function SplashScreen() {
           fontSize: '0.95rem',
           marginTop: '0.75rem',
           textAlign: 'center',
-          maxWidth: '90%'
+          maxWidth: '90%',
+          animation: 'splashFadeIn 0.5s ease-in 1s both'
         }}>
           Learning Medicine By First Understanding
         </div>
