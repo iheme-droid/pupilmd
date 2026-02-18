@@ -134,7 +134,7 @@ function AcidBaseCrashChapterContent() {
           <Link 
             href="/module/acid-base" 
             className={`font-semibold ${
-              isDeepDive ? 'text-white hover:text-gray-300' : 'text-gray-700 hover:text-gray-900'
+              isDeepDive ? 'text-white hover:text-white' : 'text-gray-700 hover:text-gray-900'
             }`}
           >
             ← Back to Module
@@ -146,7 +146,7 @@ function AcidBaseCrashChapterContent() {
             <h1 className={`text-3xl font-bold ${isDeepDive ? 'text-white' : 'text-gray-900'}`}>
               {acidBaseChapter.chapterTitle}
             </h1>
-            <span className={`text-sm ${isDeepDive ? 'text-gray-300' : 'text-gray-600'}`}>
+            <span className={`text-sm ${isDeepDive ? 'text-white' : 'text-gray-600'}`}>
               Section {currentSectionId} of 10
             </span>
           </div>
