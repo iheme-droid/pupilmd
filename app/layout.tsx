@@ -1,17 +1,30 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Sora, DM_Sans } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SplashScreen from './components/SplashScreen';
+import PageTransition from './components/PageTransition';
 
-const inter = Inter({ subsets: ['latin'] });
+const sora = Sora({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-sora',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'PupilMD - Learning Medicine By First Understanding',
   description: 'Have a grasp of medical concepts (in under 90 mins) with narrative-based explanations sponsored by Marable™',
   manifest: '/manifest.json',
-  themeColor: '#2563eb',
+  themeColor: '#0A84FF',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -53,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sora.variable} ${dmSans.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -69,10 +82,15 @@ export default function RootLayout({
           }
         `}} />
       </head>
-      <body className={inter.className} id="root-body">
+      <body
+        id="root-body"
+        style={{ fontFamily: 'var(--font-dm-sans), -apple-system, sans-serif' }}
+      >
         <SplashScreen />
         <Header />
-        <main>{children}</main>
+        <main>
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

@@ -12,221 +12,368 @@ function CellularInjuryCrashChapterContent() {
   const sectionParam = searchParams.get('section');
   const currentSectionId = sectionParam ? parseInt(sectionParam) : 0;
   const currentSection = cellularInjuryChapter.sections.find(s => s.id === currentSectionId);
+  const totalSections = cellularInjuryChapter.sections.length;
 
   const [checkedQuestions, setCheckedQuestions] = useState<number[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(`pupilmd_teaching_receipt_${cellularInjuryChapter.moduleSlug}`);
-    if (saved) {
-      setCheckedQuestions(JSON.parse(saved));
-    }
+    if (saved) setCheckedQuestions(JSON.parse(saved));
   }, []);
 
   useEffect(() => {
-    const progress = {
+    localStorage.setItem(`pupilmd_progress_${cellularInjuryChapter.moduleSlug}`, JSON.stringify({
       currentSection: currentSectionId,
-      lastUpdated: new Date().toISOString()
-    };
-    localStorage.setItem(`pupilmd_progress_${cellularInjuryChapter.moduleSlug}`, JSON.stringify(progress));
+      lastUpdated: new Date().toISOString(),
+    }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentSectionId]);
 
   const handleQuestionToggle = (index: number) => {
     const newChecked = checkedQuestions.includes(index)
       ? checkedQuestions.filter(i => i !== index)
       : [...checkedQuestions, index];
-    
     setCheckedQuestions(newChecked);
     localStorage.setItem(`pupilmd_teaching_receipt_${cellularInjuryChapter.moduleSlug}`, JSON.stringify(newChecked));
   };
 
-  const goToSection = (sectionId: number) => {
-    router.push(`/module/cellular-injury/crashchapter?section=${sectionId}`);
+  const goToSection = (id: number) => {
+    router.push(`/module/cellular-injury/crashchapter?section=${id}`);
     setSidebarOpen(false);
   };
 
   if (!currentSection) {
     return (
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <p className="text-red-600">Section not found.</p>
-        <Link href="/module/cellular-injury" className="text-blue-600 hover:underline">
-          Back to module
-        </Link>
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 24px' }}>
+        <p style={{ color: '#FF2D55' }}>Section not found.</p>
+        <Link href="/module/cellular-injury" style={{ color: '#0A84FF' }}>Back to module</Link>
       </div>
     );
   }
 
-  const isLastCoreSection = currentSectionId === 9;
-  const showTeachingReceipt = isLastCoreSection;
   const isDeepDive = currentSection.isDeepDive;
+  const showTeachingReceipt = currentSectionId === 9;
+  const progressPct = Math.round((currentSectionId / (totalSections - 1)) * 100);
+
+const parseContent = (content: string) => {
+  // Merge "**Grasp Tonic 🧃**\n\n<text>" into a single block
+  const merged = content.replace(/\*\*Grasp Tonic 🧃\*\*\n\n/g, '**Grasp Tonic 🧃** ');
+
+  return merged.split('\n\n').map((block, idx) => {
+
+    // ── Grasp Tonic ────────────────────────────────────────────
+    if (block.startsWith('**Grasp Tonic 🧃**')) {
+      const text = block.replace('**Grasp Tonic 🧃**', '').trim();
+      return (
+        <div key={idx} style={{
+          margin: '32px 0',
+          background: 'linear-gradient(135deg, #0A1F2E 0%, #0D2B1F 100%)',
+          borderRadius: '16px',
+          padding: '22px 26px',
+          border: '1px solid rgba(52,199,89,0.25)',
+          boxShadow: '0 4px 24px rgba(52,199,89,0.1)',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+            <span style={{ fontSize: '1.2rem' }}>🧃</span>
+            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#34C759' }}>
+              Grasp Tonic
+            </span>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(52,199,89,0.2)' }} />
+          </div>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.78)', margin: 0, fontStyle: 'italic' }}>
+            {text}
+          </p>
+        </div>
+      );
+    }
+
+    // ── Bold section header ────────────────────────────────────
+    if (block.startsWith('**') && block.endsWith('**')) {
+      return (
+        <h3 key={idx} style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1.05rem', color: '#0D0F14', margin: '28px 0 10px', letterSpacing: '-0.01em' }}>
+          {block.replace(/\*\*/g, '')}
+        </h3>
+      );
+    }
+
+    // ── Regular paragraph with inline bold ────────────────────
+    const parts = block.split(/(\*\*[^*]+\*\*)/g);
+    return (
+      <p key={idx} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '1rem', lineHeight: 1.85, color: '#3A3F4B', marginBottom: '18px' }}>
+        {parts.map((part, i) =>
+          part.startsWith('**') && part.endsWith('**')
+            ? <strong key={i} style={{ fontWeight: 700, color: '#0D0F14' }}>{part.replace(/\*\*/g, '')}</strong>
+            : part
+        )}
+      </p>
+    );
+  });
+};
 
   return (
-    <div className={isDeepDive ? 'min-h-screen' : 'module-bg-cream min-h-screen'} style={isDeepDive ? {backgroundColor: '#ffeed3'} : {}}>
-      {/* Section Navigation Sidebar */}
-      <div className={`fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xl font-bold text-gray-900">Jump to Section</h3>
-            <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg">
-              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+    <div style={{ background: isDeepDive ? '#FFF8EE' : '#F7F8FA', minHeight: '100vh' }}>
 
-          <div className="space-y-2 max-h-[calc(100vh-120px)] overflow-y-auto">
-            {cellularInjuryChapter.sections.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => goToSection(section.id)}
-                className={`w-full text-left p-3 rounded-lg transition-colors ${
-                  section.id === currentSectionId
-                    ? 'bg-blue-600 text-white'
-                    : 'hover:bg-gray-100 text-gray-700'
-                } ${section.isDeepDive ? 'border-2 border-purple-300' : ''}`}
+      {/* ── Sidebar ───────────────────────────────────────────── */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, height: '100%', width: '300px',
+        background: '#fff', boxShadow: '4px 0 32px rgba(0,0,0,0.12)',
+        zIndex: 50, transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1)',
+        display: 'flex', flexDirection: 'column' as const,
+      }}>
+        <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h3 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.95rem', color: '#0D0F14', margin: 0 }}>Sections</h3>
+          <button onClick={() => setSidebarOpen(false)} style={{ background: '#F7F8FA', border: 'none', borderRadius: '8px', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="16" height="16" fill="none" stroke="#7A818F" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '12px' }}>
+          {cellularInjuryChapter.sections.map(section => {
+            const isActive = section.id === currentSectionId;
+            const isDone = section.id < currentSectionId;
+            return (
+              <button key={section.id} onClick={() => goToSection(section.id)} style={{
+                width: '100%', textAlign: 'left' as const, padding: '10px 12px',
+                borderRadius: '10px', border: 'none', cursor: 'pointer', marginBottom: '4px',
+                background: isActive ? '#0A84FF' : 'transparent',
+                transition: 'all 0.18s ease',
+              }}
+                onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.background = '#F7F8FA'; }}
+                onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold">Section {section.id}</span>
-                    {section.id <= currentSectionId && (
-                      <span className="text-green-500">✓</span>
-                    )}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{
+                    width: '22px', height: '22px', borderRadius: '6px', flexShrink: 0,
+                    background: isActive ? 'rgba(255,255,255,0.2)' : isDone ? 'rgba(52,199,89,0.12)' : section.isDeepDive ? 'rgba(255,149,0,0.1)' : 'rgba(0,0,0,0.06)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '0.6rem', fontWeight: 800,
+                    color: isActive ? '#fff' : isDone ? '#34C759' : section.isDeepDive ? '#FF9500' : '#7A818F',
+                    fontFamily: "'Sora', sans-serif",
+                  }}>
+                    {isDone ? '✓' : section.id}
                   </div>
-                  {section.isDeepDive && (
-                    <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded">Deep Dive</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: isActive ? 700 : 500, fontSize: '0.78rem', color: isActive ? '#fff' : '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' as const }}>{section.title}</p>
+                  </div>
+                  {section.isDeepDive && !isActive && (
+                    <span style={{ fontSize: '0.55rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' as const, color: '#FF9500', background: 'rgba(255,149,0,0.1)', padding: '1px 5px', borderRadius: '99px', flexShrink: 0 }}>Dive</span>
                   )}
                 </div>
-                <div className="text-sm mt-1 opacity-80">{section.title}</div>
               </button>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
 
       {/* Overlay */}
       {sidebarOpen && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40"
-          onClick={() => setSidebarOpen(false)}
-        />
+        <div onClick={() => setSidebarOpen(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 40, backdropFilter: 'blur(4px)' }} />
       )}
 
-      {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="mb-6 flex items-center gap-4">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      {/* ── Sticky Top Bar ────────────────────────────────────── */}
+      <div style={{
+        position: 'sticky', top: 0, zIndex: 30,
+        background: 'rgba(255,255,255,0.92)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(0,0,0,0.07)',
+      }}>
+        {/* Progress bar */}
+        <div style={{ height: '3px', background: '#ECEEF2' }}>
+          <div style={{
+            height: '100%',
+            width: `${progressPct}%`,
+            background: isDeepDive ? 'linear-gradient(90deg, #FF9500, #FF6B35)' : 'linear-gradient(90deg, #0A84FF, #5856D6)',
+            transition: 'width 0.5s ease',
+          }} />
+        </div>
+
+        <div style={{ maxWidth: '760px', margin: '0 auto', padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button onClick={() => setSidebarOpen(true)} style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            padding: '7px 14px', background: '#F7F8FA', border: '1px solid rgba(0,0,0,0.08)',
+            borderRadius: '8px', cursor: 'pointer', flexShrink: 0,
+          }}>
+            <svg width="15" height="15" fill="none" stroke="#3A3F4B" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <span>Sections</span>
+            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.75rem', color: '#3A3F4B' }}>Sections</span>
           </button>
-          
-          <Link 
-            href="/module/cellular-injury" 
-            className="font-semibold text-gray-700 hover:text-gray-900"
-          >
-            ← Back to Module
-          </Link>
-        </div>
 
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold text-gray-900">
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.78rem', color: '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' as const }}>
               {cellularInjuryChapter.chapterTitle}
-            </h1>
-            <span className="text-sm text-gray-600">
-              Section {currentSectionId} of 10
-            </span>
+            </p>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="h-2 rounded-full transition-all duration-500 bg-blue-600"
-              style={{ width: `${(currentSectionId / 10) * 100}%` }}
-            />
-          </div>
-        </div>
 
-        <div className="rounded-lg shadow-sm border bg-white border-gray-200 p-8 mb-8">
-          {currentSection.isDeepDive && (
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-              <div className="flex items-start gap-2">
-                <span className="text-xl">🔬</span>
-                <div>
-                  <span className="text-purple-700 font-semibold text-sm">DEEP DIVE</span>
-                  <p className="text-sm text-purple-600 mt-1">
-                    Optional advanced content. You've already mastered the core concepts!
-                  </p>
-                </div>
-              </div>
+          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.72rem', color: '#7A818F', flexShrink: 0 }}>
+            {currentSectionId + 1} / {totalSections}
+          </span>
+        </div>
+      </div>
+
+      {/* ── Main Content ──────────────────────────────────────── */}
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '40px 24px 80px' }}>
+
+        {/* Section header */}
+        <div style={{ marginBottom: '32px' }}>
+          {isDeepDive && (
+  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', marginBottom: '14px' }}>
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '5px 12px', background: 'rgba(255,149,0,0.1)', border: '1px solid rgba(255,149,0,0.25)', borderRadius: '99px' }}>
+      <span style={{ fontSize: '0.8rem' }}>🔬</span>
+      <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: '#FF9500' }}>Deep Dive · Optional</span>
+    </div>
+    <Link href="/library" style={{
+      display: 'inline-flex', alignItems: 'center', gap: '6px',
+      padding: '7px 14px', background: '#0D0F14', borderRadius: '99px',
+      fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.75rem',
+      color: 'rgba(255,255,255,0.7)', textDecoration: 'none',
+      border: '1px solid rgba(255,255,255,0.08)',
+      transition: 'all 0.2s ease',
+    }}>
+      <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back to Library
+    </Link>
+  </div>
+)}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+            <div style={{
+              width: '36px', height: '36px', borderRadius: '10px', flexShrink: 0,
+              background: isDeepDive ? 'rgba(255,149,0,0.1)' : 'rgba(10,132,255,0.08)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.85rem',
+              color: isDeepDive ? '#FF9500' : '#0A84FF',
+            }}>
+              {currentSectionId}
             </div>
-          )}
-
-          <h2 className="text-2xl font-bold mb-6 text-gray-900">
-            {currentSection.title}
-          </h2>
-
-          <div className="prose max-w-none">
-            {currentSection.content.split('\n\n').map((paragraph, idx) => {
-              if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-                return (
-                  <h3 key={idx} className="text-xl font-semibold mt-6 mb-3 text-gray-900">
-                    {paragraph.replace(/\*\*/g, '')}
-                  </h3>
-                );
-              }
-              return (
-                <p key={idx} className="mb-4 leading-relaxed text-gray-700">
-                  {paragraph}
-                </p>
-              );
-            })}
+            <h1 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 'clamp(1.3rem, 3vw, 1.75rem)', letterSpacing: '-0.03em', color: '#0D0F14', margin: 0, lineHeight: 1.2 }}>
+              {currentSection.title}
+            </h1>
           </div>
         </div>
 
+        {/* Content card */}
+        <div style={{
+          background: '#fff',
+          borderRadius: '20px',
+          border: `1px solid ${isDeepDive ? 'rgba(255,149,0,0.15)' : 'rgba(0,0,0,0.07)'}`,
+          boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+          padding: 'clamp(24px, 4vw, 40px)',
+          marginBottom: '28px',
+        }}>
+          {parseContent(currentSection.content)}
+        </div>
+
+        {/* Teaching Receipt */}
         {showTeachingReceipt && (
           <TeachingReceipt
             mastered={cellularInjuryChapter.teachingReceipt.mastered}
             selfCheckQuestions={cellularInjuryChapter.teachingReceipt.selfCheckQuestions}
             checkedQuestions={checkedQuestions}
-            moduleSlug="cellular-injury" 
+            moduleSlug="cellular-injury"
             onQuestionToggle={handleQuestionToggle}
           />
         )}
 
-        {currentSectionId < 9 && (currentSectionId + 1) % 3 === 0 && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-            <p className="text-blue-900 font-medium">
-              ✓ Checkpoint: You've completed {currentSectionId + 1} sections. Nice work!
+        {/* Checkpoint */}
+        {!isDeepDive && currentSectionId > 0 && currentSectionId % 3 === 0 && currentSectionId !== 9 && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px 20px', background: 'rgba(52,199,89,0.06)', border: '1px solid rgba(52,199,89,0.2)', borderRadius: '12px', marginBottom: '28px' }}>
+            <span style={{ fontSize: '1.2rem' }}>🎯</span>
+            <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.85rem', color: '#2D9B57', margin: 0 }}>
+              Checkpoint — {currentSectionId} sections complete. You're making great progress!
             </p>
           </div>
         )}
 
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+{/* Back links */}
+<div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' as const }}>
+  <Link href="/library" style={{
+    display: 'inline-flex', alignItems: 'center', gap: '6px',
+    padding: '8px 16px', background: '#fff',
+    border: '1px solid rgba(0,0,0,0.1)', borderRadius: '99px',
+    fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.78rem',
+    color: '#3A3F4B', textDecoration: 'none', transition: 'all 0.2s ease',
+  }}>
+    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+    Back to Library
+  </Link>
+
+  <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{
+    display: 'inline-flex', alignItems: 'center', gap: '6px',
+    padding: '8px 16px', background: '#fff',
+    border: '1px solid rgba(0,0,0,0.1)', borderRadius: '99px',
+    fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.78rem',
+    color: '#3A3F4B', cursor: 'pointer', transition: 'all 0.2s ease',
+  }}>
+    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" />
+    </svg>
+    Back to Top
+  </button>
+</div>
+
+        {/* Navigation */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', paddingTop: '24px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
           <button
             onClick={() => currentSectionId > 0 && goToSection(currentSectionId - 1)}
             disabled={currentSectionId === 0}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-              currentSectionId === 0
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '7px',
+              padding: '12px 20px',
+              background: currentSectionId === 0 ? '#F7F8FA' : '#fff',
+              border: `1px solid ${currentSectionId === 0 ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0.12)'}`,
+              borderRadius: '11px', cursor: currentSectionId === 0 ? 'not-allowed' : 'pointer',
+              fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.85rem',
+              color: currentSectionId === 0 ? '#C4C9D4' : '#3A3F4B',
+              transition: 'all 0.2s ease',
+            }}
           >
-            ← Previous
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+            </svg>
+            Previous
           </button>
 
+          {/* Section dots */}
+          <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' as const, justifyContent: 'center', flex: 1 }}>
+            {cellularInjuryChapter.sections.map(s => (
+              <button key={s.id} onClick={() => goToSection(s.id)} style={{
+                width: s.id === currentSectionId ? '20px' : '7px',
+                height: '7px', borderRadius: '99px', border: 'none', cursor: 'pointer',
+                background: s.id === currentSectionId
+                  ? (isDeepDive ? '#FF9500' : '#0A84FF')
+                  : s.id < currentSectionId ? '#34C759' : '#ECEEF2',
+                transition: 'all 0.25s ease',
+                padding: 0,
+              }} />
+            ))}
+          </div>
+
           <button
-            onClick={() => currentSectionId < cellularInjuryChapter.sections.length - 1 && goToSection(currentSectionId + 1)}
-            disabled={currentSectionId === cellularInjuryChapter.sections.length - 1}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-              currentSectionId === cellularInjuryChapter.sections.length - 1
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 text-white hover:shadow-lg transform hover:-translate-y-0.5'
-            }`}
+            onClick={() => currentSectionId < totalSections - 1 && goToSection(currentSectionId + 1)}
+            disabled={currentSectionId === totalSections - 1}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '7px',
+              padding: '12px 20px',
+              background: currentSectionId === totalSections - 1 ? '#F7F8FA' : '#0A84FF',
+              border: 'none', borderRadius: '11px',
+              cursor: currentSectionId === totalSections - 1 ? 'not-allowed' : 'pointer',
+              fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.85rem',
+              color: currentSectionId === totalSections - 1 ? '#C4C9D4' : '#fff',
+              boxShadow: currentSectionId === totalSections - 1 ? 'none' : '0 4px 16px rgba(10,132,255,0.3)',
+              transition: 'all 0.2s ease',
+            }}
           >
-            {currentSectionId === 9 ? 'Enter Deep Dive →' : 'Next →'}
+            {currentSectionId === 9 ? 'Enter Deep Dive' : 'Next'}
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </button>
         </div>
       </div>
@@ -237,11 +384,9 @@ function CellularInjuryCrashChapterContent() {
 export default function CellularInjuryCrashChapter() {
   return (
     <Suspense fallback={
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-        </div>
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 24px' }}>
+        <div style={{ height: '32px', background: '#ECEEF2', borderRadius: '8px', width: '60%', marginBottom: '16px' }} />
+        <div style={{ height: '16px', background: '#ECEEF2', borderRadius: '8px', width: '40%' }} />
       </div>
     }>
       <CellularInjuryCrashChapterContent />
