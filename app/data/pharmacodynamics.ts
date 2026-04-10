@@ -1,4 +1,3 @@
-
 export const pharmacodynamicsChapter = {
   moduleSlug: 'pharmacodynamics',
   chapterTitle: 'Pharmacodynamics — How Drugs Act on the Body',

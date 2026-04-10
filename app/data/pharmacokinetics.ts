@@ -1,4 +1,3 @@
-
 export const pharmacokineticsChapter = {
   moduleSlug: 'pharmacokinetics',
   chapterTitle: 'Pharmacokinetics — Absorption, Distribution, Metabolism & Excretion',
