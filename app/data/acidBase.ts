@@ -1,5 +1,3 @@
-import { acidBaseReceipt } from './teachingReceipts';
-
 export interface Section {
   id: number;
   title: string;
