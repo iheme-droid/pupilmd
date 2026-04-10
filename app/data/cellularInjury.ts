@@ -1,4 +1,3 @@
-// Cellular Injury & Adaptation CRASHCHAPTER Data
 // No external imports - completely self-contained
 
 export interface SelfCheckQuestion {

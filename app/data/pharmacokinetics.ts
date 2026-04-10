@@ -1,4 +1,3 @@
-import { pharmacokineticsReceipt } from './teachingReceipts'; 
 
 export const pharmacokineticsChapter = {
   moduleSlug: 'pharmacokinetics',
