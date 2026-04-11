@@ -577,7 +577,7 @@ function CourseCard({ course, color }: { course: any; color: string }) {
       <div style={{ padding: '14px 16px', borderBottom: '1px solid rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div style={{ width: '34px', height: '34px', borderRadius: '9px', background: `${color}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', flexShrink: 0 }}>{course.icon}</div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.88rem', color: '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' as const }}>{course.title}</p>
+          <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.88rem', color: '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'normal' as const }}>{course.title}</p>
           <p style={{ fontSize: '0.7rem', color: '#B0B6C1', margin: 0, fontWeight: 500 }}>{available > 0 ? `${available} available` : `${course.modules.length} modules · Coming soon`}</p>
         </div>
       </div>
@@ -629,9 +629,9 @@ const [open, setOpen] = useState(false);
       </button>
 <div style={{
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(272px, 1fr))',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(272px, 100%), 1fr))',
   gap: '10px',
-  padding: open ? '0 20px 20px' : '0 20px',
+  padding: open ? '0 20px 20px' : '0 20px', overflowX: 'hidden',
   paddingTop: open ? '16px' : '0',
   borderTop: open ? '1px solid rgba(0,0,0,0.05)' : 'none',
   maxHeight: open ? '2000px' : '0',
