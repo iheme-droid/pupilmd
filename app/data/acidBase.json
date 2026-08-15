@@ -1,0 +1,527 @@
+{
+  "chapterTitle": "Acid-Base & Fluid/Electrolyte Disorders",
+  "moduleSlug": "acid-base",
+  "sections": [
+    {
+      "id": 0,
+      "title": "The Marable™ — The Swimming Pool",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Imagine you manage a large community swimming pool. Your job is simple but non-negotiable: the water pH must stay between 7.35 and 7.45 at all times. Too acidic and the swimmers' eyes burn, the equipment corrodes. Too alkaline and scale builds up, bacteria thrive. The margins are narrow. The consequences of failure are real."
+        },
+        {
+          "type": "text",
+          "content": "Every day, the pool faces challenges. Swimmers bring in acidic sweat and carbon dioxide. Rain dilutes the chemicals. Chemicals degrade. Yet somehow the pool stays balanced — because you have three systems working around the clock."
+        },
+        {
+          "type": "text",
+          "content": "**System One: The Chemical Buffer (immediate — seconds)**\nDissolved in the water at all times are chemical buffers — substances that immediately neutralise any acid or base that enters. This system is always on, always fast. But it has a limit — the buffers get used up."
+        },
+        {
+          "type": "text",
+          "content": "**System Two: The Ventilation System (fast — minutes)**\nIf acid levels start rising despite the buffers, a ventilation pump kicks in — bubbling through the water, driving off acidic gas. The more acidic the water, the harder the pump works. This system responds within minutes. But it cannot generate new buffers — it only adjusts dissolved gas."
+        },
+        {
+          "type": "text",
+          "content": "**System Three: The Filtration and Regeneration System (slow — hours to days)**\nDeep in the pump room is a sophisticated filtration system. Given enough time, it can regenerate depleted buffers, selectively remove excess acid or base, and fine-tune the water chemistry. It is slow — hours to days. But it is powerful."
+        },
+        {
+          "type": "text",
+          "content": "The key insight: **all three systems work together, compensating for each other's limitations**. A pool whose ventilation system has broken down leans heavily on its buffers and filtration. When the filtration system fails completely, the chemistry eventually spirals out of control."
+        },
+        {
+          "type": "text",
+          "content": "Your body is this pool. Your blood pH must stay within the same narrow window — 7.35 to 7.45. You have the same three systems:\n\n* **Chemical buffers** (bicarbonate, haemoglobin, phosphate) — seconds\n* **Lungs** — minutes\n* **Kidneys** — hours to days\n\nUnderstanding acid-base disorders is understanding what happens when one or more of these systems fails — and how the others try to compensate."
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Introduction — Acids, Bases & the Body pH System",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Acid-base physiology sits at the intersection of chemistry and clinical medicine. Before we can understand disorders, we need a firm grasp of the underlying chemistry."
+        },
+        {
+          "type": "text",
+          "content": "**What is an acid? What is a base?**\n\nBy the Bronsted-Lowry definition:\n* An **acid** is a proton donor — it donates $H^+$ ions\n* A **base** is a proton acceptor — it accepts $H^+$ ions"
+        },
+        {
+          "type": "text",
+          "content": "The logarithmic metric for hydrogen concentration is framed as:\n\n$$\\text{pH} = -\\log_{10}[H^+]$$\n\nNormal blood pH runs between **7.35–7.45** (slightly alkaline)."
+        },
+        {
+          "type": "text",
+          "content": "At pH 7.4, the absolute concentration $[H^+] = 40\\text{ nmol/L}$. This seems trivially small — but this concentration is incredibly tightly regulated. A change from 40 to 80 nmol/L represents a fall in pH from 7.4 to 7.1 — already clinically severe acidaemia.\n\n**pH < 6.8 or > 7.8 is generally incompatible with life.**"
+        },
+        {
+          "type": "text",
+          "content": "**The body's acid production — the daily challenge**\n\nCells constantly produce acid through normal metabolism:\n\n* **Volatile acid — $\\text{CO}_2$:** Aerobic metabolism produces approximately **15,000 mmol of $\\text{CO}_2$ per day**.\n$$\\text{CO}_2 + \\text{H}_2\\text{O} \\rightleftharpoons \\text{H}_2\\text{CO}_3 \\rightleftharpoons \\text{H}^+ + \\text{HCO}_3^-$$\nThis is continuously blown off by the lungs. Any change in ventilation immediately changes $\\text{CO}_2$ in blood and therefore pH.\n\n* **Fixed (non-volatile) acids:** Approximately **50–100 mEq of non-volatile acid per day** from protein catabolism, phospholipid metabolism, and ketone body formation. These must be excreted by the kidneys."
+        },
+        {
+          "type": "text",
+          "content": "The balance is mathematically mapped via the **Henderson-Hasselbalch equation**:\n\n$$\\text{pH} = 6.1 + \\log\\left(\\frac{[\\text{HCO}_3^-]}{0.03 \\times \\text{PaCO}_2}\\right)$$\n\nThis tells us: pH depends on the **ratio** of $\\text{HCO}_3^-$ to $\\text{CO}_2$. Normal ratio = 20:1. As long as this ratio is maintained, pH stays at 7.4."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "pH and $H^+$ concentration move in opposite directions — which trips up many students. The higher the $H^+$ concentration, the lower the pH. Think of it like altitude — the higher the number, the more alkaline you are. If acid pours in ($H^+$ rises), you fall to a lower altitude (lower pH). The body's entire acid-base regulatory apparatus is designed to maintain altitude — to keep pH at 7.4 despite the constant rain of acid that normal metabolism produces every day."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "The Buffer Systems — First Line of Defence",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Buffers are the body's first — and fastest — response to pH change. They do not eliminate acid or base from the body, but they immediately minimise pH changes by chemically binding or releasing $H^+$."
+        },
+        {
+          "type": "text",
+          "content": "**The bicarbonate buffer system (primary extracellular buffer)**\n\n$$\\text{HCO}_3^- + \\text{H}^+ \\rightleftharpoons \\text{H}_2\\text{CO}_3 \\rightleftharpoons \\text{H}_2\\text{O} + \\text{CO}_2$$\n\n* When acid is added: $H^+$ is absorbed by $\\text{HCO}_3^-$, forming $\\text{CO}_2$ which is exhaled.\n* When base is added: $\\text{CO}_2$ is retained, dissociates to provide $H^+$.\n\nThe bicarbonate system is the most important clinical buffer because its two components ($\\text{CO}_2$ and $\\text{HCO}_3^-$) are independently regulated by lungs and kidneys respectively, and both can be measured clinically on an ABG."
+        },
+        {
+          "type": "text",
+          "content": "**Haemoglobin — the dominant intracellular blood buffer**\n\nHaemoglobin is an excellent buffer, particularly for $\\text{CO}_2$ transport. Deoxygenated Hb accepts $H^+$ better than oxygenated Hb (the Haldane effect). In anaemia, haemoglobin buffering capacity is reduced."
+        },
+        {
+          "type": "text",
+          "content": "**Phosphate buffer system**\n\n$$\\text{H}_2\\text{PO}_4^- \\rightleftharpoons \\text{H}^+ + \\text{HPO}_4^{2-}$$\n\nWith a $\\text{pKa} = 6.8$, it is close to physiological pH, making it an efficient buffer. It is highly important in renal tubules as a titratable acid."
+        },
+        {
+          "type": "text",
+          "content": "**The ammonia buffer system (renal)**\n\nThe kidney generates ammonia ($\\text{NH}_3$) from glutamine:\n\n$$\\text{NH}_3 + \\text{H}^+ \\rightleftharpoons \\text{NH}_4^+ \\quad \\text{(ammonium, excreted in urine)}$$\n\nThis is the kidney's most important mechanism for generating new bicarbonate. In chronic acidosis, renal ammonia production can increase 10-fold."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Buffers are like shock absorbers on a car. When you drive over a bump (acid load), the shock absorbers compress ($H^+$ absorbed by $\\text{HCO}_3^-$, Hb, phosphate) — the car (pH) barely moves. But shock absorbers have a limit — compress them far enough and you feel every bump. In the body, once buffers are depleted ($\\text{HCO}_3^-$ falls from 24 to say 5 mEq/L), each additional $H^+$ causes a much larger pH change. This is why patients with severe metabolic acidosis become haemodynamically unstable so quickly when their condition deteriorates further — there are almost no shock absorbers left."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "The Lungs — Respiratory Regulation of pH",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "The lungs are the rapid responders of pH regulation. Through adjustments in respiratory rate and depth, they alter alveolar ventilation and therefore $\\text{PaCO}_2$, achieving meaningful pH correction within minutes.\n\nNormal $\\text{PaCO}_2$: **35–45 mmHg** (40 mmHg ideal)"
+        },
+        {
+          "type": "text",
+          "content": "**How the lungs respond to acidaemia:**\n\nWhen pH falls, peripheral and central chemoreceptors stimulate the respiratory centre $\\rightarrow$ increased respiratory rate and tidal volume (hyperventilation) $\\rightarrow$ more $\\text{CO}_2$ exhaled $\\rightarrow$ $\\text{PaCO}_2$ falls $\\rightarrow$ pH rises.\n\nThe maximum hyperventilatory response can lower $\\text{PaCO}_2$ to approximately **10–12 mmHg**."
+        },
+        {
+          "type": "text",
+          "content": "**Kussmaul breathing:** In severe metabolic acidosis (especially DKA), patients develop deep, rapid, regular breathing — a classic clinical sign of metabolic acidaemia stimulating the respiratory centre."
+        },
+        {
+          "type": "text",
+          "content": "**How the lungs respond to alkalaemia:**\n\nWhen pH rises $\\rightarrow$ respiratory centre drive reduced $\\rightarrow$ rate and depth decrease (hypoventilation) $\\rightarrow$ $\\text{CO}_2$ retained $\\rightarrow$ pH falls. However, respiratory compensation for metabolic alkalosis is limited — $\\text{PaCO}_2$ can usually only rise to approximately **50–55 mmHg** before hypoxia overrides hypoventilation."
+        },
+        {
+          "type": "text",
+          "content": "**Primary respiratory disorders:**\n\n* **Respiratory acidosis (hypoventilation $\\rightarrow$ high $\\text{PaCO}_2$):** Driven by central drive depression (opioids, benzodiazepines, brainstem lesions, obesity hypoventilation), neuromuscular disease (myasthenia gravis, Guillain-Barré), airway obstruction (COPD exacerbation, severe asthma), or severe parenchymal disease (ARDS, severe pneumonia).\n* **Respiratory alkalosis (hyperventilation $\\rightarrow$ low $\\text{PaCO}_2$):** Driven by anxiety and panic attacks (most common), pain, fever, pregnancy, hypoxaemia (hypoxia stimulates hyperventilation), liver failure (ammonia stimulates brainstem), salicylate toxicity (early), or CNS disease."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "The lungs are like a pressure release valve on a boiler. When pressure ($H^+$/$\\text{CO}_2$) builds up, the valve opens wider — more $\\text{CO}_2$ escapes — pressure falls. When pressure is too low, the valve narrows — $\\text{CO}_2$ accumulates — pressure rises. The valve can open and close within seconds to minutes, making the lungs the fastest pH regulator with meaningful capacity. But the valve has limits — it can only release so much gas (minimum $\\text{PaCO}_2 \\sim 10\\text{ mmHg}$) or retain so much gas (maximum $\\sim 55\\text{ mmHg}$ before hypoxia overrides)."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "The Kidneys — Metabolic Regulation of pH",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "The kidneys are the slow but powerful regulators of acid-base balance. Unlike the lungs (which only adjust $\\text{CO}_2$), the kidneys can generate new bicarbonate, excrete acid, and fine-tune plasma $\\text{HCO}_3^-$ concentration with extraordinary precision."
+        },
+        {
+          "type": "text",
+          "content": "**The three renal mechanisms:**\n\n1. **$\\text{HCO}_3^-$ reabsorption (proximal tubule — 85%):** $H^+$ secreted into lumen by NHE3 ($\\text{Na}^+/\\text{H}^+$ exchanger) $\\rightarrow$ combines with filtered $\\text{HCO}_3^-$ $\\rightarrow$ $\\text{CO}_2$ $\\rightarrow$ enters tubular cell $\\rightarrow$ regenerated as $\\text{HCO}_3^-$ $\\rightarrow$ exits to blood.\n2. **Titratable acid excretion (distal tubule):** $H^+$ combines with urinary phosphate ($\\text{HPO}_4^{2-} + \\text{H}^+ \\rightarrow \\text{H}_2\\text{PO}_4^-$) $\\rightarrow$ excreted as titratable acid.\n3. **Ammoniagenesis — the most powerful mechanism:** Proximal tubular cells metabolise glutamine $\\rightarrow$ $\\text{NH}_4^+ + \\text{HCO}_3^-$. $\\text{NH}_4^+$ is excreted in urine (taking $H^+$ with it) while $\\text{HCO}_3^-$ is returned to blood. This is the only way the kidney generates *new* bicarbonate."
+        },
+        {
+          "type": "text",
+          "content": "**Primary metabolic disorders — Metabolic acidosis ($\\downarrow \\text{HCO}_3^-$):**\n\nAnion Gap is mathematically determined by tracking major unmeasured anions via:\n\n$$\\text{AG} = [\\text{Na}^+] - ([\\text{Cl}^-] + [\\text{HCO}_3^-])$$ \n\nNormal range: **8–12 mEq/L**"
+        },
+        {
+          "type": "text",
+          "content": "**High Anion Gap Metabolic Acidosis (MUDPILES):**\n* **M**ethanol $\\rightarrow$ formic acid\n* **U**raemia\n* **D**iabetic ketoacidosis\n* **P**ropylene glycol\n* **I**soniazid / Iron\n* **L**actic acidosis\n* **E**thylene glycol\n* **S**alicylates\n\n**Normal Anion Gap (USED CARP):**\n* **D**iarrhoea (most common globally — loses $\\text{HCO}_3^-$ in stool)\n* **R**enal tubular acidosis\n* **S**aline infusion\n* **A**drenal insufficiency (and others)"
+        },
+        {
+          "type": "text",
+          "content": "**Metabolic alkalosis ($\\uparrow \\text{HCO}_3^-$):**\nDivided by urine $\\text{Cl}^-$:\n* **Chloride-responsive** (urine $\\text{Cl}^- < 25$): Vomiting, NG suction, diuretics. **Treat with saline + KCl.**\n* **Chloride-resistant** (urine $\\text{Cl}^- > 40$): Hyperaldosteronism, Cushing's. **Treat underlying cause.**"
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "The kidneys are the master accountants of acid-base. The lungs handle the daily cash flow ($\\text{CO}_2$ blown off rapidly), but the kidneys manage the long-term balance sheet. Every day, the body generates $\\sim 50\\text{--}100\\text{ mEq}$ of fixed acid. The kidneys must excrete exactly this amount in urine to keep the balance neutral. They do this through titratable acid excretion (spending what was filtered) and ammoniagenesis (creating new currency — new $\\text{HCO}_3^-$). When the kidneys fail, the body runs an ever-increasing acid debt that no amount of faster breathing can fully repay."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Normal ABG Values & The Systematic Approach",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "The arterial blood gas (ABG) is the clinical test that directly measures acid-base status. Mastering its systematic interpretation is one of the most practically valuable skills in clinical medicine."
+        },
+        {
+          "type": "text",
+          "content": "**Normal ABG values:**\n\n* pH: 7.40 (range 7.35–7.45)\n* $\\text{PaCO}_2$: 40 mmHg (range 35–45 mmHg)\n* $\\text{HCO}_3^-$: 24 mEq/L (range 22–26 mEq/L)\n* $\\text{PaO}_2$: 95 mmHg (range 80–100 mmHg)\n* Base excess: 0 (range -2 to +2 mEq/L)"
+        },
+        {
+          "type": "text",
+          "content": "**The 5-step systematic approach:**\n\n* **Step 1: Is the pH normal, acidaemic, or alkalaemic?**\n  pH < 7.35 $\\rightarrow$ acidaemia; pH > 7.45 $\\rightarrow$ alkalaemia\n* **Step 2: Identify the primary disorder**\n  If pH down: $\\text{PaCO}_2$ up $\\rightarrow$ Respiratory acidosis; $\\text{HCO}_3^-$ down $\\rightarrow$ Metabolic acidosis\n  If pH up: $\\text{PaCO}_2$ down $\\rightarrow$ Respiratory alkalosis; $\\text{HCO}_3^-$ up $\\rightarrow$ Metabolic alkalosis"
+        },
+        {
+          "type": "text",
+          "content": "**Step 3: Check for appropriate compensation**\n\n* **Respiratory acidosis:**\n  * Acute: $\\text{HCO}_3^-$ increases by 1 per 10 mmHg rise in $\\text{PaCO}_2$\n  * Chronic: $\\text{HCO}_3^-$ increases by 3.5 per 10 mmHg rise in $\\text{PaCO}_2$\n* **Respiratory alkalosis:**\n  * Acute: $\\text{HCO}_3^-$ decreases by 2 per 10 mmHg fall in $\\text{PaCO}_2$\n  * Chronic: $\\text{HCO}_3^-$ decreases by 5 per 10 mmHg fall in $\\text{PaCO}_2$\n* **Metabolic acidosis (Winters' formula):**\n  $$\\text{Expected PaCO}_2 = (1.5 \\times [\\text{HCO}_3^-]) + 8 \\pm 2$$\n* **Metabolic alkalosis:**\n  $\\text{PaCO}_2$ rises 0.7 mmHg per 1 mEq/L rise in $\\text{HCO}_3^-$"
+        },
+        {
+          "type": "text",
+          "content": "**Step 4: If metabolic acidosis — calculate anion gap**\n$$\\text{AG} = [\\text{Na}^+] - ([\\text{Cl}^-] + [\\text{HCO}_3^-])$\n\n**Step 5: If high AG — calculate delta-delta ratio:**\n$$\\Delta\\text{-}\\Delta = \\frac{\\text{AG} - 12}{24 - [\\text{HCO}_3^-]}$$\n\n* 1–2: Pure high AG metabolic acidosis\n* < 1: Concurrent normal AG metabolic acidosis\n* > 2: Concurrent metabolic alkalosis"
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Interpreting an ABG systematically is like solving a detective mystery. The pH tells you the crime (acidaemia or alkalaemia). The $\\text{CO}_2$ and $\\text{HCO}_3^-$ are your two main suspects — one is the culprit, the other is trying to compensate. The anion gap tells you the motive in metabolic acidosis. The delta-delta is your final check — is there a hidden accomplice? Follow this method every time, without shortcuts, and you will rarely be wrong."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Metabolic Acidosis — Causes, Consequences & Management",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Metabolic acidosis is defined by a primary fall in plasma $\\text{HCO}_3^-$ with a compensatory fall in $\\text{PaCO}_2$."
+        },
+        {
+          "type": "text",
+          "content": "**Diabetic Ketoacidosis (DKA):**\nInsulin deficiency $\\rightarrow$ uncontrolled lipolysis $\\rightarrow$ hepatic ketogenesis $\\rightarrow$ acetoacetate and $\\beta$-hydroxybutyrate (both ketoacids) accumulate, consuming $\\text{HCO}_3^-$."
+        },
+        {
+          "type": "text",
+          "content": "**Critical management pearls:**\n\n* Give insulin ONLY after $K^+$ is $\\ge 3.3\\text{ mEq/L}$ (insulin drives $K^+$ into cells — if $K^+$ is already low, giving insulin can cause fatal hypokalaemia).\n* Do NOT give bicarbonate routinely in DKA (worsens hypokalaemia, no outcome benefit unless pH < 6.9).\n* Replace $K^+$ aggressively — total body $K^+$ is depleted even if initial serum $K^+$ appears normal or high.\n* Add dextrose when glucose < 200 mg/dL (to allow continued insulin infusion to clear ketones)."
+        },
+        {
+          "type": "text",
+          "content": "**Lactic Acidosis:**\nMost common cause of high AG metabolic acidosis in hospitalised patients.\n\n* **Type A (tissue hypoxia):** Septic shock, cardiogenic shock, CO poisoning, mesenteric ischaemia.\n* **Type B (no tissue hypoxia):** Metformin accumulation (especially in renal failure), thiamine deficiency, liver failure, malignancy.\n\nManagement: Treat the underlying cause. Do NOT give bicarbonate for lactic acidosis."
+        },
+        {
+          "type": "text",
+          "content": "**Clinical consequences of metabolic acidosis:**\n* **Cardiovascular:** Reduced cardiac contractility, vasodilatation, arrhythmias.\n* **Respiratory:** Kussmaul breathing.\n* **Electrolytes:** Hyperkalaemia ($K^+$ shifts out of cells as $H^+$ shifts in to maintain cellular neutrality).\n* **Metabolic:** Insulin resistance, increased protein catabolism."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Metabolic acidosis from different causes is like a bucket with a hole in different places. DKA creates a hole by pouring acid in from the top (ketoacids fill the bucket faster than bicarbonate can be topped up). Diarrhoea creates a hole in the side — bicarbonate pours straight out. RTA creates a hole in the bottom — the kidney fails to regenerate the bicarbonate that is continuously consumed. Each hole needs a different plug. Giving bicarbonate to patch a DKA hole does not stop the acid pouring in — you must stop ketone production with insulin."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Metabolic Alkalosis — Causes, Consequences & Management",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Metabolic alkalosis is defined by a primary rise in plasma $\\text{HCO}_3^-$ with a compensatory rise in $\\text{PaCO}_2$."
+        },
+        {
+          "type": "text",
+          "content": "**The two requirements for metabolic alkalosis:**\n\n1. **Generation:** Loss of $H^+$ (gastric acid loss, renal $H^+$ excretion) OR gain of $\\text{HCO}_3^-$.\n2. **Maintenance:** The kidney must fail to excrete the excess $\\text{HCO}_3^-$. For alkalosis to persist, there must be volume depletion, hypochloraemia, hypokalaemia, or hyperaldosteronism."
+        },
+        {
+          "type": "text",
+          "content": "**Key Etiologies:**\n\n* **Vomiting and nasogastric suction:** Loss of $\\text{HCl}$ generates alkalosis. Volume depletion triggers RAAS activation $\\rightarrow$ $\\text{Na}^+$ and $\\text{HCO}_3^-$ are retained. $K^+$ loss maintains the process.\n* *Paradoxical aciduria:* Despite systemic alkalosis, urine is acidic because hypokalaemia causes intracellular acidosis in tubular cells, causing $H^+$ to be excreted instead.\n* **Diuretics (loop and thiazide):** Volume depletion $\\rightarrow$ RAAS $\\rightarrow$ aldosterone $\\rightarrow$ $K^+$/$H^+$ excretion $\\rightarrow$ $\\text{HCO}_3^-$ retained.\n* **Primary hyperaldosteronism (Conn's syndrome):** Adrenal adenoma $\\rightarrow$ autonomous aldosterone $\\rightarrow$ $\\text{Na}^+$ retention + $H^+$ and $K^+$ excretion $\\rightarrow$ metabolic alkalosis + hypokalaemia + hypertension. Urine $\\text{Cl}^- > 40$ (saline-resistant)."
+        },
+        {
+          "type": "text",
+          "content": "**Consequences & Management:**\n\n* **Consequences:** Hypokalaemia ($K^+$ moves intracellularly), decreased ionised calcium (increased albumin binding due to lost protons $\\rightarrow$ tetany, carpopedal spasm), and cardiac arrhythmias.\n* **Management:**\n  * *Chloride-responsive* (urine $\\text{Cl}^- < 25$): IV normal saline + KCl (must correct both volume and $K^+$ depletion).\n  * *Chloride-resistant* (urine $\\text{Cl}^- > 40$): Treat underlying cause; spironolactone for hyperaldosteronism."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Metabolic alkalosis is like a city water supply that has become too alkaline because all the acid-cleaning chemicals (HCl from gastric acid) have been flushed down the drain (vomiting). The filtration system (kidney) would normally excrete the excess base quickly, but the city is also running low on water (volume depletion) — so the filtration system switches to conservation mode and holds onto everything, including the excess base. And because the potassium pipes are leaking (hypokalaemia), the filtration system keeps thinking there is an acid problem and actively excretes more H+, making the alkalosis worse. You cannot fix the alkalosis without simultaneously fixing the volume and the potassium."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Fluid Physiology — Compartments & Movement",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Fluid management is inseparable from acid-base and electrolyte management. Understanding how fluid is distributed in the body is foundational to understanding oedema, dehydration, shock, and IV fluid selection."
+        },
+        {
+          "type": "text",
+          "content": "**Body fluid compartments:** Total body water (TBW) $\\approx$ **60% of body weight** in lean adults. For a 70 kg man, TBW $\\approx 42\\text{ litres}$.\n\n* **Intracellular fluid (ICF):** 40% of body weight ($\\sim 28\\text{ litres}$). Rich in $K^+$, $\\text{Mg}^{2+}$, and phosphate.\n* **Extracellular fluid (ECF):** 20% of body weight ($\\sim 14\\text{ litres}$).\n  * *Interstitial fluid:* $\\sim 11\\text{ litres}$ (between cells).\n  * *Intravascular (plasma):* $\\sim 3\\text{ litres}$."
+        },
+        {
+          "type": "text",
+          "content": "Fluid exchange kinetics across capillary beds are governed by **Starling forces**:\n\n$$\\text{Net Filtration Pressure} = K_f [(P_c - P_i) - (\\pi_c - \\pi_i)]$$\n\n* $P_c$ = capillary hydrostatic pressure (pushes fluid OUT into interstitium)\n* $P_i$ = interstitial hydrostatic pressure (pushes fluid BACK)\n* $\\pi_c$ = plasma oncotic pressure (pulls fluid INTO capillary — primarily driven by albumin)\n* $\\pi_i$ = interstitial oncotic pressure (pulls fluid OUT)"
+        },
+        {
+          "type": "text",
+          "content": "**Oedema formation — when Starling forces are disrupted:**\n\n* **$\\uparrow$ Capillary hydrostatic pressure ($P_c$):** Heart failure, venous obstruction, portal hypertension.\n* **$\\downarrow$ Plasma oncotic pressure ($\\pi_c$):** Nephrotic syndrome, cirrhosis, malnutrition.\n* **$\\uparrow$ Capillary permeability:** Inflammation, burns, ARDS, sepsis.\n* **Lymphatic obstruction:** Filariasis (elephantiasis)."
+        },
+        {
+          "type": "text",
+          "content": "**Sodium as the primary determinant of ECF volume:**\nTotal body sodium primarily determines ECF volume. Plasma $[\\text{Na}^+]$ primarily reflects water balance (not sodium balance). Hyponatraemia means relative water excess; hypernatraemia means relative water deficit."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Body fluid distribution is like a city's water infrastructure. The intravascular space is the mains pipe — under pressure. The interstitial space is like the ground — absorbing what seeps out. Albumin in the plasma is like the surface tension of the pipe walls — it keeps water in the pipe. When you lose albumin (nephrotic syndrome, liver failure), the pipe walls lose their tension, water floods the ground (oedema), and the tanks in each building run dry (cells dehydrated despite global oedema). This is why hypoalbuminaemic oedema is so hard to treat with fluid restriction alone."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Sodium Disorders — Hyponatraemia & Hypernatraemia",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Sodium disorders are among the most common electrolyte abnormalities in hospitalised patients. They require careful clinical assessment — particularly since rapid correction can cause catastrophic neurological damage."
+        },
+        {
+          "type": "text",
+          "content": "**Hyponatraemia — $[\\text{Na}^+] < 135\\text{ mEq/L}$**\n\n* **Step 1: Check plasma osmolality**\n  * *Hyperosmolar hyponatraemia:* Hyperglycaemia (glucose draws water out of cells, diluting $\\text{Na}^+$). Add 1.6 mEq/L to measured $\\text{Na}^+$ for every 100 mg/dL glucose above 100 mg/dL baseline.\n  * *Hypoosmolar hyponatraemia:* True hyponatraemia. Proceed to volume status assessment.\n* **Step 2: Assess volume status**\n  * *Hypvolaemic:* Both $\\text{Na}^+$ and water lost, but $\\text{Na}^+$ loss dominates. Urine $\\text{Na}^+ < 20\\text{ mEq/L} \\rightarrow$ extrarenal loss; Urine $\\text{Na}^+ > 20\\text{ mEq/L} \\rightarrow$ renal loss (diuretics, Addison's).\n  * *Euvolaemic:* **SIADH** is most common. Causes: CNS disease, pulmonary disease, drugs (SSRIs, carbamazepine, MDMA), post-operative stress.\n  * *Hypervolaemic:* Dilutional states. Heart failure, cirrhosis, nephrotic syndrome."
+        },
+        {
+          "type": "text",
+          "content": "**SIADH diagnosis:** Hypoosmolar hyponatraemia + urine osmolality > 100 mOsm/kg + urine $\\text{Na}^+ > 20\\text{ mEq/L}$ + clinical euvolaemia.\n\nTreatment: Fluid restriction (first line), tolvaptan ($\\text{V}_2$ receptor antagonist)."
+        },
+        {
+          "type": "text",
+          "content": "**Correction rate safety limits (Critical):**\n\n* **Chronic hyponatraemia (>48 hours):** Correct no faster than **6–8 mEq/L per day** (maximum 10–12 mEq/L in 24h). Rapid correction causes **osmotic demyelination syndrome (ODS)**, leading to locked-in syndrome, quadriplegia, or death.\n* **Acute symptomatic (<48 hours with seizures):** Rapid 1–2 mEq/L/hour titration using 3% NaCl hypertonic saline until severe neuro symptoms resolve."
+        },
+        {
+          "type": "text",
+          "content": "**Hypernatraemia — $[\\text{Na}^+] > 145\\text{ mEq/L}$**\n\nAlways indicates a relative water deficit. Only develops in individuals who cannot access or communicate a need for water (infants, elderly, unconscious patients).\n\n* **Main causes:** Diabetes insipidus (Central = ADH deficiency, treat with DDAVP; Nephrogenic = renal ADH resistance, lithium is most common drug cause), osmotic diuresis (DKA), and insensible losses.\n* **Correction:** Replace free water deficit. Correct no faster than **10–12 mEq/L per day** in chronic states to avoid cerebral oedema."
+        },
+        {
+          "type": "text",
+          "content": "Free water deficit calculation is modeled as:\n\n$$\\text{Deficit} = 0.6 \\times \\text{Weight (kg)} \\times \\left(\\frac{[\\text{Na}^+]}{140} - 1\\right)$$"
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Sodium disorders are like a swimming pool losing the balance between chlorine (sodium) and water. Hyponatraemia is the pool that has been diluted — too much water, not enough chlorine concentration. But the treatment depends entirely on WHY the dilution happened. The same pool chemistry (Na+ 125) has completely different fixes depending on the cause. And correcting too fast in a chronic pool — dumping concentrated chlorine in — can cause the pool's chemistry to swing dangerously in the other direction (osmotic demyelination)."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Potassium, Calcium & Magnesium Disorders",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Disorders of potassium, calcium, and magnesium are intimately linked with acid-base disturbances and are major causes of cardiac and neuromuscular complications.\n\nNormal serum $K^+$: **3.5–5.0 mEq/L**"
+        },
+        {
+          "type": "text",
+          "content": "**The pH-$K^+$ structural relationship:**\n\n* Acidaemia $\\rightarrow$ hyperkalaemia: $H^+$ shifts INTO cells $\\rightarrow$ $K^+$ shifts OUT to maintain electroneutrality.\n* Alkalaemia $\\rightarrow$ hypokalaemia: $K^+$ shifts INTO cells $\\rightarrow$ $H^+$ shifts OUT.\n\nRule of thumb: For every 0.1 unit deviation in pH, serum $K^+$ shifts by approximately **0.6 mEq/L** in the opposite direction."
+        },
+        {
+          "type": "text",
+          "content": "**Hyperkalaemia ($K^+ > 5.5\\text{ mEq/L}$):**\n\nECG changes progress linearly: Peaked T waves $\\rightarrow$ prolonged PR interval $\\rightarrow$ widened QRS complex $\\rightarrow$ loss of P waves $\\rightarrow$ sine wave architecture $\\rightarrow$ VF/asystole.\n\nEmergency management (The 5 C's Framework):\n1. **Calcium gluconate:** Membrane stabilisation (protects myocardium for 30-60 min, does NOT lower serum $K^+$).\n2. **Cell shift:** Insulin 10 units IV + 50 mL 50% Dextrose; albuterol nebulisers; bicarbonate if severely acidotic.\n3. **Cation exchange resins:** Patiromer or sodium zirconium cyclosilicate to bind $K^+$ in the gut.\n4. **Creatinine/renal optimization:** Furosemide diuresis if renal function allows.\n5. **Continuous renal replacement:** Urgent haemodialysis for refractory cases."
+        },
+        {
+          "type": "text",
+          "content": "**Hypokalaemia ($K^+ < 3.5\\text{ mEq/L}$):**\n* **ECG changes:** Flattened T waves, prominent U waves, QTc prolongation.\n* **Causes:** Diuretics, vomiting, diarrhoea, hyperaldosteronism, metabolic alkalosis.\n* **Treatment:** Oral or IV $\\text{KCl}$. **Crucial pearl:** Always check and replace magnesium first — hypomagnesaemia causes refractory hypokalaemia due to uninhibited renal excretion via ROMK channels."
+        },
+        {
+          "type": "text",
+          "content": "**Calcium ($\\text{Ca}^{2+}$):** Normal total serum calcium is 2.1–2.6 mmol/L.\n\nCorrect for albumin changes using:\n$$\\text{Corrected Ca}^{2+} = \\text{Measured Total Ca}^{2+} + 0.02 \\times (40 - \\text{Albumin g/L})$$\n\n* **Hypercalcaemia:** Symptoms include \"bones, stones, groans, thrones, psychic moans\". 80-90% of cases are caused by primary hyperparathyroidism or malignancy. Manage with IV normal saline, biphosphonates (zoledronic acid), and calcitonin.\n* **Hypocalcaemia:** Characterised by neuromuscular excitability. Check for *Trousseau's sign* (carpopedal spasm on BP cuff inflation) and *Chvostek's sign* (facial twitching on facial nerve percussion)."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Potassium, calcium, and magnesium are like three interlocking cogs in a machine. When one fails, the others malfunction too. Hypomagnesaemia silently drains both potassium (by impairing renal reabsorption) and calcium (by impairing PTH release). You can replace potassium all day but it keeps leaking out because the magnesium cog is broken. This is why experienced clinicians always check magnesium first when facing refractory hypokalaemia — and replace it before anything else."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Renal Tubular Acidosis & Special Syndromes",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Renal tubular acidosis (RTA) represents syndromes where renal acid-excretion or bicarbonate-reabsorption pathways are selectively broken — causing a normal anion gap metabolic acidosis."
+        },
+        {
+          "type": "text",
+          "content": "To differentiate RTA from gastrointestinal loss, use the **Urine Anion Gap**:\n\n$$\\text{Urine AG} = [\\text{Urine Na}^+] + [\\text{Urine K}^+] - [\\text{Urine Cl}^-]$$\n\n* **Negative Urine AG:** Reflects appropriate renal excretion of $\\text{NH}_4^+$ alongside $\\text{Cl}^-$, pointing to GI $\\text{HCO}_3^-$ loss (e.g., diarrhoea). The kidneys work correctly.\n* **Positive Urine AG:** Indicates impaired renal excretion of $\\text{NH}_4^+$, confirming an RTA defect."
+        },
+        {
+          "type": "text",
+          "content": "**Type 1 — Distal RTA:**\n* *Defect:* Apical $\\text{H}^+\\text{-ATPase}$ pumps in intercalated cells fail to secrete $H^+$.\n* *Urine pH:* **> 5.5** (Inability to acidify urine under any systemic acid load).\n* *Serum Potassium:* **Low** ($K^+$ is wasted to conserve charges instead of $H^+$).\n* *Complications:* Nephrocalcinosis and calcium phosphate nephrolithiasis.\n* *Causes:* Sjögren's syndrome, amphotericin B, lithium toxicity.\n\n**Type 2 — Proximal RTA:**\n* *Defect:* Proximal convoluted tubule cells fail to reabsorb filtered $\\text{HCO}_3^-$.\n* *Urine pH:* Variable (drops below 5.5 once systemic $\\text{HCO}_3^-$ drops low enough).\n* *Serum Potassium:* Low.\n* *Associations:* Often a core component of **Fanconi syndrome** (concomitant wasting of glucose, amino acids, and phosphate causing rickets/osteomalacia).\n* *Causes:* Multiple myeloma, Wilson's disease, tenofovir."
+        },
+        {
+          "type": "text",
+          "content": "**Type 4 — Hyperreninaemic/Hypoaldosterone RTA:**\n* *Defect:* Aldosterone deficiency or target tissue resistance.\n* *Serum Potassium:* **HIGH** — this hyperkalaemia is the key clinical differentiator from Types 1 and 2.\n* *Urine pH:* < 5.5 (intact distal acidification capability).\n* *Causes:* Diabetic nephropathy (most common via hyporeninaemic hypoaldosteronism), Addison's disease, ACE inhibitors, NSAIDs."
+        },
+        {
+          "type": "text",
+          "content": "**SIADH vs Cerebral Salt Wasting (CSW):** Differentiating these in neuro-critical care is vital since treatments are diametric opposites:\n\n* **SIADH:** Euvolaemic state $\\rightarrow$ Manage with **fluid restriction** and $\\text{V}_2$ inhibitors.\n* **Cerebral Salt Wasting:** Hypovolaemic state driven by primary renal sodium wasting $\\rightarrow$ Manage with **aggressive IV normal saline** and fludrocortisone.\n\n*Mismanagement hazard:* Restricting fluids in CSW induces profound hypovolaemia and risks critical cerebral vasospasm."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Renal tubular acidosis is like a postal sorting office with specific delivery departments broken. In Type 1 RTA, the final delivery department (distal tubule) cannot post H+ letters — so they pile up in the blood and the kidney cannot acidify the urine. In Type 2, the sorting office accepts letters (HCO3-) at the front desk but keeps sending them back — highly inefficient. In Type 4, the department manager (aldosterone) is absent — nothing gets sorted properly, both H+ and K+ pile up. Each broken department has a different fix — you cannot apply the same repair to all three."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "IV Fluid Therapy & Clinical Decision-Making",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Intravenous fluid therapy is one of the most commonly performed medical interventions — and one of the most commonly done poorly. Understanding fluid composition and matching them to the patient's specific deficits prevents iatrogenic harm."
+        },
+        {
+          "type": "text",
+          "content": "**Common IV Fluid Profiling Matrix:**\n\n| Fluid Type | $\\text{Na}^+$ (mEq/L) | $\\text{Cl}^-$ (mEq/L) | $\\text{HCO}_3^-$ Equiv (mEq/L) | Clinical Context |\n| :--- | :---: | :---: | :---: | :--- |\n| **0.9% NaCl** (Normal Saline) | 154 | 154 | 0 | Unphysiological hyperchloraemic fluid |\n| **Hartmann's / Ringer's Lactate** | 130 | 109 | 28 (Lactate) | Balanced physiological crystalloid |\n| **5% Dextrose in Water** (D5W) | 0 | 0 | 0 | Pure isotonic free water distribution |\n| **0.45% NaCl** (Half-Normal) | 77 | 77 | 0 | Hypotonic maintenance option |\n| **3% NaCl** (Hypertonic Saline) | 513 | 513 | 0 | Emergency neuro-osmotic correction |"
+        },
+        {
+          "type": "text",
+          "content": "**Normal Saline Hazards:** Large-volume resuscitation using 0.9% NaCl introduces massive chloride loads. This causes a **hyperchloraemic metabolic acidosis** by diluting extracellular bicarbonate and dropping the strong ion difference. Avoid this whenever possible.\n\n**Balanced Crystalloids:** Hartmann's matches serum biochemistry closely. The added lactate is metabolised by the liver into bicarbonate ions. Massive multicentre trials (SMART and SALT-ED, 2018) confirmed superior renal outtakes and fewer acute kidney injuries when prioritizing balanced crystalloids over normal saline."
+        },
+        {
+          "type": "text",
+          "content": "**Fluid Selection by Clinical Scenario Matrix:**\n\n* **Hypovolaemic Shock:** Rapid 250–500 mL fluid boluses using Hartmann's (preferred) or 0.9% NaCl.\n* **Gastric Loss (Vomiting with Metabolic Alkalosis):** 0.9% NaCl + KCl. Hartmann's is strictly contraindicated here as the lactate content fuels the baseline alkalosis.\n* **Diabetic Ketoacidosis:** 0.9% NaCl initially for volume optimization, transitioning rapidly to balanced solutions. Dextrose must be added once serum glucose drops below 200 mg/dL.\n* **Symptomatic Hyponatraemia:** 3% Hypertonic Saline administered carefully to raise serum $\\text{Na}^+$ by 1–2 mEq/L/hour until severe clinical signs resolve."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Choosing an IV fluid is like choosing which chemical to add to a swimming pool. Adding normal saline to a patient with vomiting-induced metabolic alkalosis is like adding a slightly acidic solution to an already too-alkaline pool — you are partly correcting the problem (replacing Cl- and volume) without contributing alkalinity. Adding Hartmann's to a patient with hyperchloraemic acidosis is like adding a buffered, balanced solution that restores chemistry without overcorrecting. And adding free water (D5W) to a hypernatraemic patient is like diluting the concentrated pool with pure water — exactly what is needed, but done too fast and the walls crack (cerebral oedema)."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Teaching Receipt™ — Acid-Base & Fluid/Electrolyte Disorders",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "You have completed the core sections of Acid-Base and Fluid/Electrolyte Disorders. This topic underpins clinical management across every specialty."
+        },
+        {
+          "type": "text",
+          "content": "**The Three-System Framework:** Acid-base regulation depends on three systems — buffers (seconds), lungs (minutes), kidneys (hours to days). Every disorder involves disruption of one or more of these systems, with compensatory responses from the others. Compensation is never complete — it restores pH toward but never to normal."
+        },
+        {
+          "type": "text",
+          "content": "**The Master Equation:** $\\text{pH} = 6.1 + \\log\\left(\\frac{[\\text{HCO}_3^-]}{0.03 \\times \\text{PaCO}_2}\\right)$. pH depends on the ratio of $\\text{HCO}_3^-$ to $\\text{CO}_2$. The lungs regulate $\\text{CO}_2$; the kidneys regulate $\\text{HCO}_3^-$."
+        },
+        {
+          "type": "text",
+          "content": "**The Systematic ABG Approach:** Five steps: (1) Acidaemia or alkalaemia? (2) Respiratory or metabolic primary disorder? (3) Appropriate compensation? (4) Anion gap if metabolic acidosis? (5) Delta-delta if high AG?"
+        },
+        {
+          "type": "text",
+          "content": "**The Four Primary Disorders:** Respiratory acidosis (hypoventilation $\\rightarrow$ high $\\text{CO}_2$), respiratory alkalosis (hyperventilation $\\rightarrow$ low $\\text{CO}_2$), metabolic acidosis (low $\\text{HCO}_3^-$), metabolic alkalosis (high $\\text{HCO}_3^-$). Know the common causes and first-line management of each."
+        },
+        {
+          "type": "text",
+          "content": "**The Anion Gap:** Normal 8–12. High AG = MUDPILES. Normal AG = USED CARP."
+        },
+        {
+          "type": "text",
+          "content": "**Fluid Compartments:** TBW = 60% of weight. Two-thirds is ICF. One-third is ECF — split between interstitial and intravascular. Starling forces govern plasma-to-interstitium movement. Sodium determines ECF volume and osmolality."
+        },
+        {
+          "type": "text",
+          "content": "**Electrolyte Interactions:** Hyperkalaemia and acidosis coexist. Hypokalaemia and alkalosis coexist. Cannot correct alkalosis without fixing $K^+$. Cannot fix $K^+$ without fixing $\\text{Mg}^{2+}$."
+        },
+        {
+          "type": "text",
+          "content": "**RTA:** Type 1 (distal) — urine pH > 5.5, hypokalaemia, nephrocalcinosis. Type 2 (proximal) — variable urine pH, Fanconi syndrome. Type 4 — hyperchloraemic acidosis + hyperkalaemia, often from hypoaldosteronism in diabetes."
+        },
+        {
+          "type": "text",
+          "content": "**Sodium Safety:** Chronic hyponatraemia: correct < 10 mEq/L per day (risk: ODS). Chronic hypernatraemia: correct < 10–12 mEq/L per day (risk: cerebral oedema).\n\nYou are now ready for the Deep Dive."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Deep Dive — Advanced Acid-Base & Renal Physiology",
+      "isDeepDive": true,
+      "steps": [
+        {
+          "type": "text",
+          "content": "This Deep Dive explores the quantitative framework of acid-base physiology, the Stewart approach, and advanced clinical scenarios."
+        },
+        {
+          "type": "text",
+          "content": "**The Stewart Physico-chemical Approach:**\nPeter Stewart (1981) proposed that pH is dictated by three independent variables:\n\n1. **$\\text{PaCO}_2$:** The respiratory component.\n2. **Strong Ion Difference (SID):** Computed via:\n$$\\text{SID} = ([\\text{Na}^+] + [\\text{K}^+] + [\\text{Ca}^{2+}] + [\\text{Mg}^{2+}]) - ([\\text{Cl}^-] + [\\text{Lactate}^-])$$\nSimplified down to $\\text{SID} \\approx [\\text{Na}^+] - [\\text{Cl}^-]$ (Normal $\\approx 40\\text{--}44\\text{ mEq/L}$). An increase in SID prompts alkalosis; a drop fuels acidosis.\n3. **Total Non-Volatile Weak Acids ($A_{tot}$):** Dominated by albumin and phosphate. $\\uparrow A_{tot} \\rightarrow$ acidosis; $\\downarrow A_{tot} \\rightarrow$ alkalosis. This details why **hypoalbuminaemia causes a metabolic alkalosis**, masked on basic panels."
+        },
+        {
+          "type": "text",
+          "content": "To compensate for dysalbuminaemia in standard calculators, deploy the **Albumin-Corrected Anion Gap** formula:\n\n$$\\text{AG}_{corrected} = \\text{Measured AG} + 2.5 \\times (4.0 - \\text{Albumin [g/dL]})$$"
+        },
+        {
+          "type": "text",
+          "content": "**Base Excess (BE):** Represents the mEq/L of strong acid or base needed to titrate 1 litre of whole blood back to pH 7.40 at a $\\text{PaCO}_2$ of 40 mmHg. Normal is -2 to +2 mEq/L. A negative base excess signifies a base deficit (metabolic acidosis). It is vital for evaluating trauma survival vectors."
+        },
+        {
+          "type": "text",
+          "content": "**Triple Acid-Base Disorders:** Three concurrent primary pathologies can exist simultaneously. For example, an advanced cirrhotic patient can present with chronic respiratory alkalosis (portal toxin neuro-stimulation), metabolic alkalosis (loop diuretic overuse), and lactic acidosis (sepsis/spontaneous bacterial peritonitis). Blood gas numbers can skew near normal, but tracking the elevated Anion Gap unmasks the life-threatening metabolic insult."
+        },
+        {
+          "type": "text",
+          "content": "**Molecular Biology of Renal Acid Transport Channels:**\n\n* **Proximal Convoluted Tubule:** Cellular brush borders leverage the apical NHE3 transporter to secrete $H^+$ out in exchange for lumen sodium. Luminal Carbonic Anhydrase IV degrades filtered bicarbonate to gas forms to allow cellular entry, where cytosolic Carbonic Anhydrase II reforms $\\text{HCO}_3^-$, exiting basolaterally through electrogenic NBCe1 symporters. Angiotensin II acts as a powerful activator of NHE3 during volume restriction.\n* **Outer Medullary Collecting Duct:** Apical $H^+\\text{-ATPase}$ pumps in Type A Intercalated Cells actively transport protons directly into the urine against steep gradients, while basolateral AE1 exchangers shift regenerated bicarbonate back to blood."
+        },
+        {
+          "type": "text",
+          "content": "**Renal Replacement Therapy Criteria (The AEIOU Mandate):**\n\n* **A**cidosis: Refractory metabolic acidaemia with pH < 7.1.\n* **E**lectrolytes: Severe hyperkalaemia displaying kinetic ECG changes.\n* **I**ntoxication: Dialysable toxin exposures (salicylates, toxic alcohols, lithium).\n* **O**verload: Intractable fluid volume status completely resistant to heavy loop diuretics.\n* **U**raemia: Clinical signs of uraemia (pericardial friction rub, encephalopathy)."
+        },
+        {
+          "type": "text",
+          "content": "**Advanced Toxicological Mechanics — Salicylate Poisoning:**\n\n* Early phase shows primary respiratory alkalosis due to direct brainstem respiratory center stimulation.\n* Mid phase introduces an uncoupled mitochondrial oxidative phosphorylation state creating a parallel high-gap metabolic acidosis.\n* *Therapeutic Strategy:* Deliver a systemic sodium bicarbonate infusion to drive urine alkalinisation back to a targeted pH range of 7.5–8.0. This strategy traps ionized salicylate molecules ($A^-$) within the tubular lumina, rendering them completely incapable of passive lipid reabsorption back across nephron membranes.\n* *Hazard:* Avoid intubating these patients unless respiratory failure is absolute; dropping their massive hyperventilatory compensation can cause fatal drops in systemic pH."
+        }
+      ]
+    }
+  ],
+  "teachingReceipt": {
+    "mastered": [
+      "The three-system framework of acid-base regulation — buffers (seconds), lungs (minutes), kidneys (hours to days) — and the limitations of each",
+      "The bicarbonate buffer system and Henderson-Hasselbalch equation, and how pH depends on the HCO3- to CO2 ratio",
+      "The systematic 5-step ABG interpretation approach, including compensation formulas for all four primary disorders",
+      "The anion gap — calculation, normal range, MUDPILES (high AG) vs USED CARP (normal AG) causes",
+      "The delta-delta ratio and its use in detecting mixed disorders",
+      "The pathophysiology, clinical features, and management of metabolic acidosis — DKA, lactic acidosis, and toxic alcohols",
+      "The pathophysiology and management of metabolic alkalosis — chloride-responsive vs chloride-resistant distinction",
+      "The Starling forces governing capillary fluid movement and the mechanisms of oedema",
+      "Sodium disorders — hyponatraemia and hypernatraemia — with correct rates of correction to avoid ODS and cerebral oedema",
+      "Potassium, calcium, and magnesium disorders — ECG findings, interactions with pH, and emergency management",
+      "The three types of renal tubular acidosis — distinguishing features, causes, and treatments",
+      "IV fluid composition and selection in common clinical scenarios"
+    ]
+  },
+  "selfCheckQuestions": [
+    "A patient presents with pH 7.18, PaCO2 22, HCO3- 8, Na 138, Cl 98, lactate 12 mmol/L. Work through all 5 steps of ABG interpretation and state the diagnosis.",
+    "Explain why you should not give bicarbonate in lactic acidosis from septic shock.",
+    "A COPD patient has chronic respiratory acidosis with PaCO2 65 and HCO3- 38. You ventilate them to PaCO2 40. What happens to their pH? Why is this dangerous?",
+    "A patient has vomiting for 5 days. Bloods show K 2.8, Cl 78, HCO3- 42, pH 7.56. What is the primary disorder? What maintains it? What is your treatment?",
+    "An elderly woman is found confused with Na+ 118 mEq/L. She is euvolaemic. What is the most likely diagnosis? How fast can you correct the sodium and why?",
+    "Explain the paradoxical aciduria that occurs in vomiting with metabolic alkalosis.",
+    "A patient with CKD and diabetes has K 6.2, Cl 112, HCO3- 16, pH 7.28. What type of RTA is this and what is the clue in the K+?",
+    "Why can you not correct hypokalaemia without first replacing magnesium?",
+    "Compare the management of hyponatraemia in SIADH vs cerebral salt wasting — why do they require opposite treatments?",
+    "What is the osmotic demyelination syndrome and how do you prevent it?"
+  ]
+}

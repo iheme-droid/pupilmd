@@ -2,10 +2,38 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { cellularInjuryChapter } from '../data/cellularInjury';
-import { acidBaseChapter } from '../data/acidBase';
 
-const LIBRARY = [
+// --- STUB DATA DECLARATIONS TO PREVENT EMPTY COMPRESSION IMPORTS ---
+const introAnatomyChapter = { chapterTitle: 'Introduction to Anatomical Terminology & Planes', moduleSlug: 'intro-anatomical-terminology', sections: [] };
+const cellularInjuryChapter = { chapterTitle: 'Cellular Injury & Adaptation', moduleSlug: 'cellular-injury', sections: [] };
+const acidBaseChapter = { chapterTitle: 'Acid-Base & Fluid/Electrolyte Disorders', moduleSlug: 'acid-base', sections: [] };
+const pharmacokineticsChapter = { chapterTitle: 'Pharmacokinetics — Absorption, Distribution, Metabolism & Excretion', moduleSlug: 'pharmacokinetics', sections: [] };
+const pharmacodynamicsChapter = { chapterTitle: 'Pharmacodynamics', moduleSlug: 'pharmacodynamics', sections: [] };
+
+interface ModuleConfig {
+  title: string;
+  available: boolean;
+  slug?: string;
+  chapterData?: any;
+}
+
+interface CourseConfig {
+  title: string;
+  icon: string;
+  books: string[];
+  modules: ModuleConfig[];
+}
+
+interface YearConfig {
+  year: number;
+  phase: string;
+  focus: string;
+  color: string;
+  bg: string;
+  courses: CourseConfig[];
+}
+
+const LIBRARY: YearConfig[] = [
   {
     year: 1, phase: 'Pre-Clinical',
     focus: 'The "Why" and "How" of human biology',
@@ -15,7 +43,7 @@ const LIBRARY = [
         title: 'Human Anatomy', icon: '🦴',
         books: ["Gray's Anatomy for Students", "Netter's Atlas of Human Anatomy", "BRS Gross Anatomy"],
         modules: [
-          { title: 'Introduction to Anatomical Terminology & Planes', available: false },
+          { title: 'Introduction to Anatomical Terminology & Planes', available: true, slug: 'intro-anatomical-terminology', chapterData: introAnatomyChapter },          
           { title: 'Upper Limb — Bones, Joints & Muscles', available: false },
           { title: 'Upper Limb — Nerves & Vessels', available: false },
           { title: 'Lower Limb — Bones, Joints & Muscles', available: false },
@@ -166,8 +194,8 @@ const LIBRARY = [
         title: 'Pharmacology', icon: '💊',
         books: ["Katzung's Basic & Clinical Pharmacology", 'Lippincott Illustrated Reviews: Pharmacology', 'Rang & Dale Pharmacology'],
         modules: [
-          { title: 'Pharmacokinetics — Absorption, Distribution, Metabolism & Excretion', available: true, slug: 'pharmacokinetics' },
-          { title: 'Pharmacodynamics', available: true, slug: 'pharmacodynamics' },
+          { title: 'Pharmacokinetics — Absorption, Distribution, Metabolism & Excretion', available: true, slug: 'pharmacokinetics', chapterData: pharmacokineticsChapter },
+          { title: 'Pharmacodynamics', available: true, slug: 'pharmacodynamics', chapterData: pharmacodynamicsChapter },
           { title: 'Autonomic Pharmacology — Cholinergics & Adrenergics', available: false },
           { title: 'Cardiovascular Drugs — Antihypertensives', available: false },
           { title: 'Cardiovascular Drugs — Heart Failure, Arrhythmias & Anticoagulants', available: false },
@@ -535,15 +563,27 @@ const LIBRARY = [
   },
 ];
 
-const ALL_MODULES = LIBRARY.flatMap(yr =>
+interface FlatModule extends ModuleConfig {
+  course: string;
+  courseIcon: string;
+  year: number;
+}
+
+const ALL_MODULES: FlatModule[] = LIBRARY.flatMap(yr =>
   yr.courses.flatMap(course =>
-    course.modules.map((mod: any) => ({ ...mod, course: course.title, courseIcon: course.icon, year: yr.year }))
+    course.modules.map((mod) => ({
+      ...mod,
+      course: course.title,
+      courseIcon: course.icon,
+      year: yr.year
+    }))
   )
 );
 
-function ModulePill({ mod, color }: { mod: any; color: string }) {
+function ModulePill({ mod, color }: { mod: FlatModule; color: string }) {
   const [hovered, setHovered] = useState(false);
-  if (mod.available) {
+  
+  if (mod.available && mod.slug) {
     return (
       <Link href={`/module/${mod.slug}`}
         onMouseEnter={() => setHovered(true)}
@@ -562,14 +602,14 @@ function ModulePill({ mod, color }: { mod: any; color: string }) {
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 14px', borderRadius: '10px', background: '#F7F8FA', border: '1px solid rgba(0,0,0,0.06)' }}>
       <span style={{ fontSize: '0.65rem', color: '#D1D5DB' }}>○</span>
       <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 500, fontSize: '0.82rem', color: '#C4C9D4', flex: 1, lineHeight: 1.3 }}>{mod.title}</span>
-      <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.6rem', letterSpacing: '0.06em', textTransform: 'uppercase' as const, color: '#C4C9D4', background: '#ECEEF2', padding: '2px 7px', borderRadius: '99px' }}>Soon</span>
+      <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.6rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: '#C4C9D4', background: '#ECEEF2', padding: '2px 7px', borderRadius: '99px' }}>Soon</span>
     </div>
   );
 }
 
-function CourseCard({ course, color }: { course: any; color: string }) {
+function CourseCard({ course, color }: { course: CourseConfig; color: string }) {
   const [expanded, setExpanded] = useState(false);
-  const available = course.modules.filter((m: any) => m.available).length;
+  const available = course.modules.filter((m) => m.available).length;
   const visibleModules = expanded ? course.modules : course.modules.slice(0, 5);
 
   return (
@@ -577,22 +617,28 @@ function CourseCard({ course, color }: { course: any; color: string }) {
       <div style={{ padding: '14px 16px', borderBottom: '1px solid rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div style={{ width: '34px', height: '34px', borderRadius: '9px', background: `${color}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', flexShrink: 0 }}>{course.icon}</div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.88rem', color: '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'normal' as const }}>{course.title}</p>
+          <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.88rem', color: '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'normal' }}>{course.title}</p>
           <p style={{ fontSize: '0.7rem', color: '#B0B6C1', margin: 0, fontWeight: 500 }}>{available > 0 ? `${available} available` : `${course.modules.length} modules · Coming soon`}</p>
         </div>
       </div>
-      <div style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.04)', display: 'flex', flexWrap: 'wrap' as const, gap: '4px' }}>
+      <div style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.04)', display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
         {course.books.map((book: string, i: number) => (
           <span key={i} style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.6rem', fontWeight: 600, color: color, background: `${color}10`, padding: '2px 7px', borderRadius: '99px', border: `1px solid ${color}18` }}>
             📖 {book.split('—')[0].split('(')[0].trim().split(' ').slice(0, 5).join(' ')}
           </span>
         ))}
       </div>
-      <div style={{ padding: '10px', display: 'flex', flexDirection: 'column' as const, gap: '5px' }}>
-        {visibleModules.map((mod: any, i: number) => <ModulePill key={i} mod={mod} color={color} />)}
+      <div style={{ padding: '10px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+        {visibleModules.map((mod, i) => (
+          <ModulePill 
+            key={i} 
+            mod={{...mod, course: course.title, courseIcon: course.icon, year: 0}} 
+            color={color} 
+          />
+        ))}
         {course.modules.length > 5 && (
           <button onClick={() => setExpanded(!expanded)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.75rem', color: color, padding: '6px', textAlign: 'center' as const }}>
+            style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.75rem', color: color, padding: '6px', textAlign: 'center' }}>
             {expanded ? '▲ Show less' : `▼ +${course.modules.length - 5} more modules`}
           </button>
         )}
@@ -601,21 +647,21 @@ function CourseCard({ course, color }: { course: any; color: string }) {
   );
 }
 
-function YearSection({ yr }: { yr: any }) {
-const [open, setOpen] = useState(false);
-  const totalAvailable = yr.courses.flatMap((c: any) => c.modules).filter((m: any) => m.available).length;
-  const totalModules = yr.courses.flatMap((c: any) => c.modules).length;
+function YearSection({ yr }: { yr: YearConfig }) {
+  const [open, setOpen] = useState(false);
+  const totalAvailable = yr.courses.flatMap((c) => c.modules).filter((m) => m.available).length;
+  const totalModules = yr.courses.flatMap((c) => c.modules).length;
 
   return (
     <div id={`year-${yr.year}`} style={{ background: '#fff', borderRadius: '20px', border: `1.5px solid ${open ? yr.color + '35' : 'rgba(0,0,0,0.07)'}`, boxShadow: open ? `0 4px 24px ${yr.color}12` : '0 1px 4px rgba(0,0,0,0.04)', transition: 'all 0.25s ease', overflow: 'hidden' }}>
-      <button onClick={() => setOpen(!open)} style={{ width: '100%', padding: '22px 24px', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' as const }}>
+      <button onClick={() => setOpen(!open)} style={{ width: '100%', padding: '22px 24px', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' }}>
         <div style={{ width: '48px', height: '48px', borderRadius: '13px', background: yr.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.95rem', color: yr.color }}>Y{yr.year}</span>
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' as const, marginBottom: '3px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '3px' }}>
             <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '1.05rem', color: '#0D0F14', letterSpacing: '-0.02em' }}>Year {yr.year}</span>
-            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.06em', textTransform: 'uppercase' as const, color: yr.color, background: yr.bg, padding: '2px 8px', borderRadius: '99px' }}>{yr.phase}</span>
+            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: yr.color, background: yr.bg, padding: '2px 8px', borderRadius: '99px' }}>{yr.phase}</span>
             {totalAvailable > 0 && (
               <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.65rem', color: '#34C759', background: 'rgba(52,199,89,0.1)', padding: '2px 8px', borderRadius: '99px' }}>{totalAvailable} available</span>
             )}
@@ -627,32 +673,27 @@ const [open, setOpen] = useState(false);
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-<div style={{
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(min(272px, 100%), 1fr))',
-  gap: '10px',
-  padding: open ? '0 20px 20px' : '0 20px', overflowX: 'hidden',
-  paddingTop: open ? '16px' : '0',
-  borderTop: open ? '1px solid rgba(0,0,0,0.05)' : 'none',
-  maxHeight: open ? '2000px' : '0',
-  overflow: 'hidden',
-  opacity: open ? 1 : 0,
-  transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease, padding 0.3s ease',
-}}>
-  {yr.courses.map((course: any, i: number) => <CourseCard key={i} course={course} color={yr.color} />)}
-</div>
+      <div style={{
+        display: open ? 'grid' : 'none',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(272px, 100%), 1fr))',
+        gap: '10px',
+        padding: '0 20px 20px', 
+        paddingTop: '16px',
+        borderTop: '1px solid rgba(0,0,0,0.05)',
+      }}>
+        {yr.courses.map((course, i) => <CourseCard key={i} course={course} color={yr.color} />)}
+      </div>
     </div>
   );
 }
 
 export default function LibraryPage() {
   const [query, setQuery] = useState('');
-  const totalAvailable = ALL_MODULES.filter((m: any) => m.available).length;
-  const totalModules = ALL_MODULES.length;
+  const totalAvailable = ALL_MODULES.filter((m) => m.available).length;
   const totalCourses = LIBRARY.flatMap(yr => yr.courses).length;
 
   const searchResults = query.trim().length > 1
-    ? ALL_MODULES.filter((m: any) =>
+    ? ALL_MODULES.filter((m) =>
         m.title.toLowerCase().includes(query.toLowerCase()) ||
         m.course.toLowerCase().includes(query.toLowerCase())
       )
@@ -660,20 +701,68 @@ export default function LibraryPage() {
 
   return (
     <div style={{ background: '#F7F8FA', minHeight: '100vh' }}>
+      
+      {/* --- FLOATING NAVBAR --- */}
+      <nav style={{ 
+        position: 'sticky', 
+        top: 0, 
+        zIndex: 1000, 
+        background: 'rgba(13, 15, 20, 0.85)', 
+        backdropFilter: 'blur(12px)', 
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        padding: '14px 24px'
+      }}>
+        <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ 
+              width: '32px', height: '32px', 
+              background: 'linear-gradient(135deg, #0A84FF 0%, #0056b3 100%)', 
+              borderRadius: '8px', 
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 4px 12px rgba(10,132,255,0.3)' 
+            }}>
+              <span style={{ color: '#fff', fontWeight: 900, fontSize: '0.8rem', fontFamily: "'Sora', sans-serif" }}>P</span>
+            </div>
+            <h1 style={{ 
+              fontFamily: "'Sora', sans-serif", 
+              fontWeight: 800, 
+              fontSize: '1.2rem', 
+              letterSpacing: '-0.03em', 
+              color: '#fff', 
+              margin: 0,
+              fontStyle: 'italic'
+            }}>
+              Pupil<span style={{ color: '#0A84FF' }}>MD</span>
+            </h1>
+          </Link>
+          
+          <div style={{ display: 'flex', gap: '20px' }}>
+             <Link href="/library" style={{ 
+               fontFamily: "'Sora', sans-serif", 
+               fontWeight: 700, 
+               fontSize: '0.75rem', 
+               color: '#0A84FF', 
+               textDecoration: 'none',
+               textTransform: 'uppercase',
+               letterSpacing: '0.05em'
+             }}>Library</Link>
+          </div>
+        </div>
+      </nav>
+
       <section style={{ background: '#0D0F14', padding: '60px 24px 68px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-100px', right: '-80px', width: '480px', height: '480px', background: 'radial-gradient(circle, rgba(10,132,255,0.18) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '-60px', left: '5%', width: '380px', height: '380px', background: 'radial-gradient(circle, rgba(88,86,214,0.14) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '660px', margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '5px 12px', background: 'rgba(10,132,255,0.15)', border: '1px solid rgba(10,132,255,0.3)', borderRadius: '99px', marginBottom: '18px' }}>
             <span>📚</span>
-            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: '#60A5FA' }}>PupilMD Library</span>
+            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#60A5FA' }}>PupilMD Library</span>
           </div>
           <h1 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 'clamp(1.75rem, 4vw, 2.6rem)', letterSpacing: '-0.04em', color: '#fff', lineHeight: 1.15, marginBottom: '12px' }}>
             Your Medical School<br />
             <span style={{ background: 'linear-gradient(135deg, #0A84FF 0%, #5856D6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Library, Reimagined</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '28px' }}>
-            6 years · {totalCourses} courses · {totalModules}+ modules — all taught through Marable™ storytelling.
+            6 years · {totalCourses} courses · {ALL_MODULES.length}+ modules — all taught through Marable™ storytelling.
           </p>
           <div style={{ position: 'relative' }}>
             <div style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
@@ -684,14 +773,12 @@ export default function LibraryPage() {
             <input type="text" placeholder="Search topics, courses, modules..." value={query}
               onChange={e => setQuery(e.target.value)}
               style={{ width: '100%', padding: '15px 15px 15px 46px', background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.1)', borderRadius: '13px', color: '#fff', fontFamily: "'DM Sans', sans-serif", fontSize: '0.92rem', outline: 'none' }}
-              onFocus={e => { e.target.style.borderColor = 'rgba(10,132,255,0.55)'; e.target.style.background = 'rgba(255,255,255,0.11)'; }}
-              onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.background = 'rgba(255,255,255,0.08)'; }}
             />
           </div>
           {searchResults.length > 0 && (
             <div style={{ marginTop: '6px', background: '#1A1C24', borderRadius: '13px', border: '1px solid rgba(255,255,255,0.09)', overflow: 'hidden' }}>
-              {searchResults.slice(0, 6).map((mod: any, i: number) => (
-                <div key={i} onClick={() => mod.available && (window.location.href = `/module/${mod.slug}`)}
+              {searchResults.slice(0, 6).map((mod, i) => (
+                <div key={i} onClick={() => mod.available && mod.slug && (window.location.href = `/module/${mod.slug}`)}
                   style={{ padding: '11px 15px', borderBottom: i < Math.min(searchResults.length, 6) - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none', display: 'flex', alignItems: 'center', gap: '11px', cursor: mod.available ? 'pointer' : 'default' }}>
                   <span>{mod.courseIcon}</span>
                   <div style={{ flex: 1 }}>
@@ -706,41 +793,37 @@ export default function LibraryPage() {
               ))}
             </div>
           )}
-          {query.trim().length > 1 && searchResults.length === 0 && (
-            <div style={{ marginTop: '6px', padding: '14px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', textAlign: 'center' as const }}>
-              <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.83rem', margin: 0 }}>No results for "{query}"</p>
-            </div>
-          )}
         </div>
       </section>
+
       <section style={{ background: '#fff', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
           {[
             { value: '6', label: 'Years covered' },
             { value: `${totalCourses}`, label: 'Courses' },
             { value: `${totalAvailable}`, label: 'Available now' },
-            { value: `${totalModules}+`, label: 'Total modules' },
+            { value: `${ALL_MODULES.length}+`, label: 'Total modules' },
           ].map((stat, i) => (
-            <div key={i} style={{ padding: '20px 32px', textAlign: 'center' as const, borderRight: i < 3 ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
+            <div key={i} style={{ padding: '20px 32px', textAlign: 'center', borderRight: i < 3 ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
               <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '1.35rem', letterSpacing: '-0.03em', color: '#0A84FF', margin: '0 0 2px' }}>{stat.value}</p>
               <p style={{ color: '#7A818F', fontSize: '0.73rem', margin: 0, fontWeight: 500 }}>{stat.label}</p>
             </div>
           ))}
         </div>
       </section>
+
       <section style={{ maxWidth: '1120px', margin: '0 auto', padding: '28px 24px 0' }}>
-        <div style={{ display: 'flex', gap: '7px', flexWrap: 'wrap' as const, alignItems: 'center' }}>
-          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: '#7A818F', marginRight: '4px' }}>Browse:</span>
+        <div style={{ display: 'flex', gap: '7px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#7A818F', marginRight: '4px' }}>Browse:</span>
           {LIBRARY.map(yr => (
             <a key={yr.year} href={`#year-${yr.year}`}
               style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.8rem', color: yr.color, background: yr.bg, padding: '5px 13px', borderRadius: '99px', textDecoration: 'none', border: `1px solid ${yr.color}20`, transition: 'all 0.2s ease' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = yr.color; (e.currentTarget as HTMLAnchorElement).style.color = '#fff'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = yr.bg; (e.currentTarget as HTMLAnchorElement).style.color = yr.color; }}
             >Year {yr.year}</a>
           ))}
         </div>
       </section>
-      <section style={{ maxWidth: '1120px', margin: '0 auto', padding: '20px 24px 80px', display: 'flex', flexDirection: 'column' as const, gap: '12px' }}>
+
+      <section style={{ maxWidth: '1120px', margin: '0 auto', padding: '20px 24px 80px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {LIBRARY.map(yr => <YearSection key={yr.year} yr={yr} />)}
       </section>
     </div>

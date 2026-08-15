@@ -1,0 +1,499 @@
+{
+  "chapterTitle": "Cellular Injury & Adaptation",
+  "moduleSlug": "cellular-injury",
+  "sections": [
+    {
+      "id": 0,
+      "title": "The Marable™ — The City Under Siege",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Imagine a prosperous city — let's call it Cellville. Cellville has everything a city needs. It has power stations that run day and night, generating the energy that keeps every street light on and every factory running. It has a city hall where the master blueprints for every building are stored, carefully guarded. It has a waste management service that collects rubbish every morning before anyone wakes up. It has a water supply system that regulates pressure, ensuring every pipe gets what it needs. And it has a police force maintaining order — keeping the right substances in the right places and the wrong ones out."
+        },
+        {
+          "type": "text",
+          "content": "Life in Cellville is good. Every department does its job. Energy is generated, waste is cleared, blueprints are followed, and order is maintained. But then — the city faces stress."
+        },
+        {
+          "type": "text",
+          "content": "One day, the main water supply is cut off. Within minutes, the power stations start struggling. The police force can no longer maintain pressure — things that should stay outside start getting in. Sodium floods the streets. Calcium, normally held at the gates, surges through. The factories swell with water they cannot use. City hall starts to flood."
+        },
+        {
+          "type": "text",
+          "content": "If someone restores the water supply quickly enough — within minutes — the city recovers. Streets drain. Power comes back. Order is restored. This is **reversible injury**."
+        },
+        {
+          "type": "text",
+          "content": "But if the water stays off too long, something shifts. The power stations take catastrophic damage. The city hall catches fire. The police dissolve completely. At this point, no amount of water restoration saves the city. It collapses — messily, loudly, triggering every alarm in the region. This is **irreversible injury and necrosis**."
+        },
+        {
+          "type": "text",
+          "content": "Yet sometimes — when damage is detected early, when the city itself decides the situation is beyond repair — Cellville demolishes one condemned building carefully, quietly, without disturbing the neighbours. It seals off the structure, dismantles it piece by piece, and recycles the materials. The neighbouring buildings continue functioning normally, completely undisturbed. This is **apoptosis** — programmed, orderly, silent cell death."
+        },
+        {
+          "type": "text",
+          "content": "This is the story of cellular injury. Your cells are cities under various sieges. How they respond — whether they adapt, survive, or die, and how they die — determines whether you develop disease, whether organs fail, and whether tissues heal or scar. Understanding this story is the foundation of all pathology."
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Introduction — The Language of Cellular Pathology",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Cellular pathology is the study of what goes wrong inside cells — the earliest, most fundamental level at which disease begins. Before a tissue fails, before an organ shows dysfunction, before a patient feels a symptom, something has gone wrong at the cellular level."
+        },
+        {
+          "type": "text",
+          "content": "**What is cellular injury?**\n\nCellular injury occurs when a cell is subjected to a stress or stimulus that exceeds its adaptive capacity. The cell can no longer maintain its normal physiological state — homeostasis — and begins to malfunction."
+        },
+        {
+          "type": "text",
+          "content": "Injury exists on a spectrum:\n\n* **Mild stress** $\\rightarrow$ adaptation (the cell changes to cope)\n* **Moderate, prolonged, or severe stress** $\\rightarrow$ reversible injury (the cell struggles but can recover)\n* **Overwhelming or sustained injury** $\\rightarrow$ irreversible injury and cell death"
+        },
+        {
+          "type": "text",
+          "content": "**The sources of cellular injury:**\n\n* **Hypoxia:** Insufficient oxygen delivery. Caused by ischaemia (reduced blood flow), anaemia (insufficient haemoglobin), carbon monoxide poisoning (haemoglobin blocked), or respiratory failure.\n* **Physical agents:** Mechanical trauma, extreme heat (burns), extreme cold (frostbite), radiation (UV, X-rays, gamma rays), and electrical injury.\n* **Chemical agents and drugs:** Toxins (carbon tetrachloride, cyanide), medications in toxic doses (paracetamol, aminoglycosides), heavy metals (lead, mercury, arsenic), and substances of abuse.\n* **Infectious agents:** Bacteria, viruses, fungi, parasites, prions.\n* **Immunological injury:** Autoimmune disease, transplant rejection, hypersensitivity reactions.\n* **Genetic defects:** Enzyme deficiencies (lysosomal storage diseases), structural protein mutations (Marfan syndrome, sickle cell disease).\n* **Nutritional imbalances:** Protein-calorie malnutrition, specific vitamin deficiencies, excess nutrition (obesity)."
+        },
+        {
+          "type": "text",
+          "content": "**The fundamental principle:**\nAll cellular injury, regardless of cause, involves damage to one or more of four critical targets:\n\n1. **Mitochondria** — energy production (ATP depletion)\n2. **Cell membranes** — structural integrity and barrier function\n3. **DNA** — genetic instructions and cell cycle control\n4. **Proteins** — structural and enzymatic function"
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Think of a car. It can break down in many ways — flat tyre, engine failure, electrical fault, fuel leak. But regardless of what causes the breakdown, the car stops working. And whether the driver can get it repaired depends on how long it has been broken down and how severe the damage is. A flat tyre fixed quickly — no permanent damage. An engine that seizes after running without oil for an hour — likely irreparable. The same principle governs cellular injury: severity, duration, and the specific system damaged all determine whether recovery is possible."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Normal Cellular Homeostasis",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Before we can understand injury, we must understand what normal cellular function looks like. Disease is a deviation from normal — you cannot recognise deviation without first knowing the baseline."
+        },
+        {
+          "type": "text",
+          "content": "**Energy production — the mitochondrial engine**\n\nThe cell's primary energy currency is **ATP** (adenosine triphosphate). ATP is produced in mitochondria through oxidative phosphorylation — a process that requires oxygen and generates approximately 36 ATP per molecule of glucose."
+        },
+        {
+          "type": "text",
+          "content": "ATP powers several crucial active systems:\n\n* The **$\\text{Na}^+/\\text{K}^+\\text{-ATPase}$ pump:** Keeps sodium OUT of the cell and potassium IN (critical for membrane potential, nerve conduction, and preventing cellular swelling).\n* The **$\\text{Ca}^{2+}\\text{-ATPase}$ pump:** Keeps calcium concentration inside the cell 10,000 times lower than outside.\n* **Protein synthesis** on ribosomes.\n* **Active transport** of nutrients and waste products.\n* **Cell division** and DNA replication."
+        },
+        {
+          "type": "text",
+          "content": "**The membrane barrier:** The plasma membrane is a phospholipid bilayer studded with proteins. It is selectively permeable — it decides what crosses and what doesn't. Maintaining membrane integrity is essential. When it fails, the cell cannot separate its contents from the extracellular environment."
+        },
+        {
+          "type": "text",
+          "content": "**DNA integrity and gene expression:** Cells have elaborate DNA surveillance and repair mechanisms. When damage exceeds repair capacity, p53 (the \"guardian of the genome\") halts the cell cycle to allow repair, or triggers apoptosis if damage is irreparable."
+        },
+        {
+          "type": "text",
+          "content": "**Calcium regulation:** Cytoplasmic $\\text{Ca}^{2+}$ is kept tightly bound or sequestered at approximately 100 nM — roughly 10,000 times lower than extracellular fluid levels. When calcium rises inappropriately, it activates destructive intracellular enzymes: phospholipases, proteases, endonucleases, and triggers mitochondrial permeability transition."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Think of normal cellular homeostasis like a well-maintained house. The electricity is running (ATP), the plumbing works (ion pumps), the locks are on the doors (membrane integrity), the filing system is organised (DNA), and the rubbish is taken out regularly (protein turnover). When the house is maintained, it is a comfortable, functioning home. Disease begins when one of these systems starts to fail — and the longer the failure goes unaddressed, the more other systems are compromised."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Cellular Adaptations — Hypertrophy & Hyperplasia",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "When cells face increased demand or stress, they do not immediately die. They adapt. Cellular adaptation is a reversible change in the size, number, phenotype, or activity of cells in response to altered conditions."
+        },
+        {
+          "type": "text",
+          "content": "**Hypertrophy — bigger cells**\n\nHypertrophy is an increase in the **size** of cells. It occurs in tissues where cells have limited capacity to divide (post-mitotic cells), such as cardiac myocytes, skeletal muscle, and neurons."
+        },
+        {
+          "type": "text",
+          "content": "* **Physiological hypertrophy:** Skeletal muscle hypertrophy with resistance exercise, uterine muscular hypertrophy during normal pregnancy, and cardiac remodeling in endurance athletes (\"athlete's heart\").\n* **Pathological hypertrophy:** Left ventricular hypertrophy (LVH) in systemic hypertension. The left ventricle faces increased afterload $\\rightarrow$ myocytes hypertrophy to generate more force. Similarly, right ventricular hypertrophy (RVH) develops in response to pulmonary hypertension."
+        },
+        {
+          "type": "text",
+          "content": "The critical distinction: physiological hypertrophy is adaptive and reversible. Pathological hypertrophy, if the stimulus continues indefinitely, can ultimately cross a structural threshold into heart failure."
+        },
+        {
+          "type": "text",
+          "content": "**Hyperplasia — more cells**\n\nHyperplasia is an increase in the **number** of cells in a tissue. It occurs in tissues where cells retain the ability to enter the cell cycle and divide."
+        },
+        {
+          "type": "text",
+          "content": "* **Physiological hyperplasia:** Hormonal hyperplasia (endometrial thickening under normal cyclic oestrogen stimulation), compensatory hyperplasia (liver regeneration following partial hepatectomy), and bone marrow erythroid hyperplasia at high altitudes driven by EPO elevation.\n* **Pathological hyperplasia:** Benign prostatic hyperplasia (BPH) where DHT stimulates stromal and glandular cellular proliferation leading to urinary tract obstruction, and endometrial hyperplasia driven by un-opposed oestrogen, which significantly carries an increased risk of progression to endometrial carcinoma."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Imagine a small restaurant that suddenly gets many more customers. They can respond in two ways: train their existing staff to work faster and harder (hypertrophy — same number, more output per unit), or hire more staff (hyperplasia — more units). Tissues that cannot divide (like the heart) can only train existing staff. Tissues that can divide hire more. Both responses help cope with demand — but if the restaurant stays overwhelmed indefinitely, eventually even the most efficient staff burns out."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Cellular Adaptations — Atrophy, Metaplasia & Dysplasia",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "**Atrophy — shrinking cells**\n\nAtrophy is a decrease in cell size due to reduced protein synthesis and increased ubiquitin-proteasome mediated protein degradation."
+        },
+        {
+          "type": "text",
+          "content": "* **Physiological atrophy:** Uterine involution after childbirth or age-associated senile brain atrophy.\n* **Pathological atrophy:** \n  * *Disuse atrophy:* A limb immobilised in a cast loses muscle mass rapidly.\n  * *Denervation atrophy:* Loss of lower motor neuron supply causes profound skeletal muscle wasting (e.g., poliomyelitis, ALS).\n  * *Loss of endocrine stimulation:* Post-menopausal endometrial atrophy due to loss of oestrogen.\n  * *Reduced blood supply:* Chronic renal artery stenosis leading to unilateral kidney atrophy.\n  * *Pressure atrophy:* Structural compression of adjacent normal tissues by an expanding benign tumor."
+        },
+        {
+          "type": "text",
+          "content": "**Metaplasia — changing cell type**\n\nMetaplasia is the reversible replacement of one mature, differentiated cell type (epithelial or mesenchymal) by another cell type better suited to handle a distinct chronic stressor."
+        },
+        {
+          "type": "text",
+          "content": "Classic clinical examples of metaplasia include:\n\n* **Squamous metaplasia of respiratory tract:** Chronic cigarette smoking insults pseudostratified ciliated columnar epithelium $\\rightarrow$ replaced by stratified squamous epithelium. It is fully reversible if smoking stops.\n* **Barrett's oesophagus (Glandular metaplasia):** Chronic gastric acid reflux insults squamous lining $\\rightarrow$ replaced by intestinal-type columnar epithelium with goblet cells. Carries a 30-40x increased risk for development of oesophageal adenocarcinoma."
+        },
+        {
+          "type": "text",
+          "content": "**Dysplasia — disordered growth**\n\nDysplasia represents disordered cellular proliferation with loss of normal architectural organization, cellular pleomorphism, and hyperchromatic nuclei. It is a strictly precancerous change.\n\nThe progression spectrum is modeled as follows:\n\n$$\\text{Normal Tissue} \\longrightarrow \\text{Metaplasia} \\longrightarrow \\text{Dysplasia} \\longrightarrow \\text{Carcinoma in situ} \\longrightarrow \\text{Invasive Carcinoma}$$"
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Metaplasia is like a business changing its product line to suit market conditions. A restaurant that cannot survive in its current neighbourhood converts to a café — still regulated, still operating within normal rules, just using a different model better suited to the environment. But if pressures continue and the management becomes increasingly chaotic and rule-breaking (dysplasia), there is real risk of the business becoming something completely unregulated and destructive — cancer."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Reversible Injury — The Cell in Distress",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "When cellular stress exceeds the capacity of adaptive responses, the cell enters a state of injury. Initially, this injury is reversible — if the stressor is removed, the cell recovers completely."
+        },
+        {
+          "type": "text",
+          "content": "**The central event: ATP depletion**\n\nMost forms of reversible injury converge on a sudden halt in mitochondrial ATP production. Without ATP, three critical cellular cascades fail rapidly:"
+        },
+        {
+          "type": "text",
+          "content": "1. **$\\text{Na}^+/\\text{K}^+\\text{-ATPase}$ pump failure:** Sodium accumulates inside the cytoplasm while potassium leaks out. Water follows sodium osmotically into the cell. This yields **cellular swelling** (hydropic change) — the earliest and most common morphological change in cellular injury.\n2. **Switch to anaerobic glycolysis:** The cell tries to generate energy blindly, depleting glycogen stores and producing massive amounts of lactic acid. Intracellular pH falls dramatically. This acidic environment directly clumps nuclear chromatin and inactivates sensitive metabolic enzymes.\n3. **Calcium pump degradation:** Cell membrane $\\text{Ca}^{2+}\\text{-ATPase}$ pumps fail, allowing initial calcium influx into the cytoplasm. While this starts activating destructive enzymes, it remains reversible at early stages."
+        },
+        {
+          "type": "text",
+          "content": "**Morphological features of reversible injury:**\n* **Cellular swelling:** Distended cells, pale and granular cytoplasm.\n* **Fatty change (steatosis):** Seen prominently in metabolic organs (liver, heart). Clear lipid vacuoles accumulate in cytoplasm due to inability to metabolise lipoproteins.\n* **Chromatin clumping:** Triggered by intracellular acidosis.\n* **Membrane blebbing:** Detachment of cytoskeleton yields irregular membrane protrusions."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "A reversibly injured cell is like a person with severe jet lag. Their body's normal rhythms are disrupted — sleep is disordered, concentration is impaired, digestion is sluggish. They function poorly. But given time and rest, all of this resolves completely. There is no permanent damage — just temporary disruption of normal homeostasis. The critical question in cellular injury is always: have we crossed from jet lag into permanent damage?"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Irreversible Injury — The Point of No Return",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Irreversible injury marks the transition from a cell that can recover to one that cannot. Three definitive hallmarks under electron microscopy signify that a cell has passed the point of no return:"
+        },
+        {
+          "type": "text",
+          "content": "1. **Severe mitochondrial damage:** Loss of internal cristae structures and the development of large, amorphous calcium-phosphate deposits within the mitochondrial matrix (**flocculent densities**). Complete loss of oxidative phosphorylation capacity.\n2. **Plasma membrane disruption:** The selective phospholipid barrier ruptures completely. Intracellular contents, structural proteins, and enzymes leak out into the extracellular space. This leakage forms the absolute biochemical basis for diagnostic serum clinical biomarkers."
+        },
+        {
+          "type": "text",
+          "content": "3. **Nuclear structural dissolution:**\n  * **Pyknosis:** Nuclear shrinkage and intense basophilic condensation.\n  * **Karyorrhexis:** The pyknotic nucleus fragments into small pieces.\n  * **Karyolysis:** Complete enzymatic degradation of DNA by endonucleases, causing the nucleus to fade away entirely."
+        },
+        {
+          "type": "text",
+          "content": "**Diagnostic Serum Biomarkers:**\n* **Troponin I and T:** Signifies cardiac myocyte necrosis (Myocardial Infarction).\n* **AST and ALT:** Signifies hepatocyte necrosis (Acute Hepatitis / Liver Injury).\n* **Amylase and Lipase:** Signifies pancreatic acinar cell necrosis (Acute Pancreatitis).\n* **Creatine Kinase (CK-MM) / Myoglobin:** Signifies skeletal muscle necrosis (Rhabdomyolysis)."
+        },
+        {
+          "type": "text",
+          "content": "**The Ischaemia Vulnerability Timeline:**\n* **Neurons:** Pass into irreversible necrosis within **3–5 minutes** of absolute oxygen deprivation.\n* **Cardiac Myocytes:** Survive up to **20–40 minutes** before cellular death begins.\n* **Hepatocytes:** Can withstand ischaemia for **1–2 hours**.\n* **Skeletal Muscle:** Highly resistant, surviving up to several hours before undergoing necrosis."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "The point of no return in cellular injury is like an avalanche. Before it begins, snow accumulates on a slope — potentially dangerous but stable. But past a critical threshold, the entire slope moves, and no force can stop it. Similarly, once calcium floods the mitochondria, once membrane phospholipases are fully activated, once nuclear DNA is fragmented — no intervention reverses these cascades. This is why treatment windows in heart attacks and strokes are measured in minutes to hours, not days."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Necrosis — Patterns and Consequences",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Necrosis is the disorganised, uncontrolled death of cells or tissues resulting from overwhelming injury. It is always pathological. Its defining feature is cell membrane rupture with release of cellular contents, triggering an inflammatory response."
+        },
+        {
+          "type": "text",
+          "content": "**The six patterns of tissue necrosis:**\n\n1. **Coagulative necrosis:** The most common pattern. Occurs in all solid visceral organs following ischaemic infarction (except the brain). Acid denaturation of proteins blocks proteolysis; thus, the outward architectural framework of the tissue is preserved as a \"ghostly\" outline, but fine cellular detail is lost. *Example:* Myocardial infarction.\n2. **Liquefactive necrosis:** Seen characteristically in **brain tissue infarctions** and in bacterial/fungal **abscesses**. Proteolytic enzymes from neutrophils rapidly digest the dead tissue, liquefying it into a fluid mass. *Example:* Ischaemic stroke yielding a fluid-filled cystic cavity."
+        },
+        {
+          "type": "text",
+          "content": "3. **Caseous necrosis:** Specific and pathognomonic for **Tuberculosis (Mycobacterium tuberculosis)**. Granulomatous inflammation surrounds a friable, yellowish, cheese-like focal core of dead tissue. Under microscopy, it presents as a structureless, granular, eosinophilic debris core.\n4. **Fat necrosis:**\n  * *Enzymatic:* Seen in acute pancreatitis. Activated pancreatic lipases escape and break down local omental fat into free fatty acids, which bind calcium to form chalky white soap deposits via **saponification**.\n  * *Traumatic:* Occurs in high-adipose tissues like the breast following mechanical trauma; can present as a firm mass mimicking a carcinoma.\n5. **Gangrenous necrosis:** A clinical term used for limbs.\n  * *Dry gangrene:* Ischaemic coagulative necrosis of an extremity without infection.\n  * *Wet gangrene:* Ischaemia complicated by a superimposed bacterial liquefactive infection.\n  * *Gas gangrene:* Specifically caused by Clostridium perfringens invasion yielding crepitus gas production.\n6. **Fibrinoid necrosis:** Specific to immune-mediated vascular injury and malignant hypertension. Plasma proteins and fibrin leak into injured vessel walls, displaying a bright pink, homogenous appearance on H&E stains."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "The different patterns of necrosis are like different ways buildings collapse after a disaster. Coagulative necrosis is like a building whose facade stays standing after an earthquake — the outline remains but the interior is destroyed. Liquefactive necrosis is like a building dissolved by a flood — everything becomes liquid mush. Caseous necrosis is like a building reduced to soft rubble — unrecognisable but solid. Each pattern tells you something specific about what happened and where."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Apoptosis — Programmed Cell Death",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Apoptosis is programmed cell death — an active, energy-dependent (requires ATP), genetically controlled process by which individual cells eliminate themselves cleanly without triggering an inflammatory response."
+        },
+        {
+          "type": "text",
+          "content": "**Physiological & Pathological Settings:**\n* *Physiological:* Embryonic morphogenesis (removal of interdigital web spaces), negative selection of self-reactive T-cells during thymic education, and hormone-dependent tissue breakdown (endometrial shedding).\n* *Pathological:* Elimination of cells with severe, irreparable DNA damage (orchestrated by the p53 tumor suppressor) or viral-infected cells eliminated by cytotoxic T-lymphocytes."
+        },
+        {
+          "type": "text",
+          "content": "**Morphological features of apoptosis:**\n* **Cell shrinkage:** The cell condenses and cytoplasm becomes intensely eosinophilic.\n* **Chromatin condensation:** Nuclear material aggregates peripherally along the nuclear envelope.\n* **Apoptotic body formation:** The cell buds into membrane-bound fragments containing intact organelles.\n* **Phagocytosis:** Macrophages rapidly clear apoptotic bodies. Because the cell membrane never breaks open to dump enzymes, **inflammation is completely absent**."
+        },
+        {
+          "type": "text",
+          "content": "**The two molecular activation cascades:**\n\n* **Intrinsic (Mitochondrial) Pathway:** Triggered by internal cellular stress or DNA damage. Sensors activate pro-apoptotic proteins **BAX and BAK**, which form structural pores in the outer mitochondrial membrane. Anti-apoptotic regulators **BCL-2 and BCL-XL** normally block this. Once BAX/BAK activate, **cytochrome c** leaks into the cytosol, binding Apaf-1 to form the **apoptosome**. This structure activates initiator **caspase-9**.\n* **Extrinsic (Death Receptor) Pathway:** Triggered by external ligands. FasL or TNF bind to transmembrane death receptors (Fas/TNFR). This recruits adapter proteins to assemble the DISC complex, which directly cleaves and activates initiator **caspase-8**."
+        },
+        {
+          "type": "text",
+          "content": "Both pathways converge directly on the final executioner cascade:\n\n$$\\left. \\begin{array}{l} \\text{Intrinsic (Caspase-9)} \\\\ \\text{Extrinsic (Caspase-8)} \\end{array} \\right\\} \\longrightarrow \\text{Executioner Caspase-3} \\longrightarrow \\text{Cell Cleavage \\& Demolition}$$"
+        },
+        {
+          "type": "text",
+          "content": "**Apoptosis vs Necrosis Comparative Matrix:**\n\n| Structural Feature | Apoptosis | Necrosis |\n| :--- | :--- | :--- |\n| **Cell Size** | Condensed and shrunken | Swollen and enlarged |\n| **Membrane Integrity** | Kept intact until phagocytosis | Completely ruptured and broken |\n| **Inflammation** | Absolutely absent | Prominent and destructive |\n| **Energy Demand** | Active process requiring ATP | Passive process; fails due to ATP loss |\n| **Scope** | Single isolated cells | Large clusters of adjacent tissue |"
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "The difference between apoptosis and necrosis is like the difference between a controlled demolition and a building fire. In a controlled demolition, the building implodes neatly, debris stays contained, neighbouring buildings are unaffected. In a building fire, the fire spreads unpredictably, toxic smoke affects the neighbourhood, firefighters arrive (inflammation). Apoptosis is the controlled demolition. Necrosis is the building fire."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Free Radicals and Oxidative Stress",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Free radical-mediated injury is a vital mechanism of cellular damage, underpinning ischaemia-reperfusion injury, ionizing radiation exposure, chemical toxicities, and aging cascades."
+        },
+        {
+          "type": "text",
+          "content": "A **free radical** is an chemical species containing a highly unstable unpaired electron in its outer orbital. This state drives them to aggressively capture electrons from neighboring molecules, propagating a destructive chain reaction."
+        },
+        {
+          "type": "text",
+          "content": "**Primary Reactive Oxygen Species (ROS):**\n\n* **Superoxide ($O_2^{\\bullet-}$):** Formed naturally by leaky mitochondrial transport chains or via cellular NADPH oxidase enzymes.\n* **Hydrogen Peroxide ($H_2O_2$):** Less reactive on its own, but can easily pass across intracellular membranes and convert into deadlier radicals.\n* **Hydroxyl Radical ($OH^{\\bullet}$):** The most reactive and destructive species. It directly drives lipid peroxidation of cell membranes, breaks DNA strands, and cross-links vital cellular proteins."
+        },
+        {
+          "type": "text",
+          "content": "**Ischaemia-Reperfusion Injury:** This is a vital clinical paradox. When blood flow is suddenly restored to an ischaemic tissue (such as opening a blocked coronary artery during a myocardial infarction), the reintroduction of oxygen to damaged, dysfunctional mitochondria sparks a massive, sudden burst of superoxide radicals. This **oxidative burst** induces additional structural death, widening the final area of tissue necrosis."
+        },
+        {
+          "type": "text",
+          "content": "**Antioxidant Neutralization Machinery:**\n\n$$\\text{Superoxide } (O_2^{\\bullet-}) \\xrightarrow{\\text{SOD}} H_2O_2 \\xrightarrow{\\text{Catalase}} H_2O + O_2$$\n\n* **Superoxide Dismutase (SOD):** Converts superoxide radicals to $H_2O_2$.\n* **Catalase:** Located in peroxisomes; reduces $H_2O_2$ into harmless water and oxygen.\n* **Glutathione Peroxidase:** Utilizes reduced glutathione (GSH) to clear intracellular peroxides.\n* **Vitamins E and C:** Exogenous dietary free-radical scavengers."
+        },
+        {
+          "type": "text",
+          "content": "*Clinical Correlation — Paracetamol Overdose:* When toxic amounts of paracetamol overwhelm normal liver pathways, the drug is metabolized into the highly reactive intermediate **NAPQI**. NAPQI completely depletes intracellular hepatic reduced glutathione (GSH) reserves. Lacking glutathione defenses, unchecked free radical lipid peroxidation destroys hepatocytes, inducing fulminant hepatic necrosis."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Free radicals are like sparks in a fireworks factory. One spark ignites one firework — that firework produces sparks that ignite others — a chain reaction that is almost impossible to stop once started. The antioxidant systems in your cells are like fire extinguishers stationed throughout the factory. As long as sparks are generated slowly, the extinguishers handle them. But in ischaemia-reperfusion — when oxygen suddenly returns to oxygen-starved mitochondria — it is like throwing a lit match into the entire factory at once. The extinguishers are overwhelmed."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Intracellular Accumulations",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "When metabolic enzymes are defective, transport pathways break down, or disposal machinery is overwhelmed, abnormal substances accumulate within cells. These intracellular accumulations serve as morphological hallmarks of disease states."
+        },
+        {
+          "type": "text",
+          "content": "**1. Lipids — Steatosis (Fatty Change):** Abnormal accumulations of triglycerides within parenchymal cells. Seen most commonly in the liver since it is the central organ for lipid processing. Driven by cellular disruptions from chronic alcohol intake (alcoholic liver disease), insulin resistance (NAFLD/NASH), obesity, or toxin exposure."
+        },
+        {
+          "type": "text",
+          "content": "**2. Proteins:**\n* **Mallory-Denk Bodies:** Eosinophilic cytoplasmic inclusions composed of aggregated damaged cytokeratin intermediate filaments inside hepatocytes. Classically seen in alcoholic hepatitis.\n* **$\\alpha_1$-Antitrypsin Deficiency:** Misfolded mutant enzymes cannot pass out of the endoplasmic reticulum of liver cells, building up as PAS-positive round cytoplasmic globules. This induces hepatocyte apoptosis while causing devastating pulmonary emphysema due to uninhibited elastase activity in the lungs."
+        },
+        {
+          "type": "text",
+          "content": "**3. Pigments:**\n* **Lipofuscin:** An insoluble yellow-brown lipoprotein granular debris aggregate representing granular \"wear-and-tear\". It accumulates slowly over time within long-lived post-mitotic cells (cardiac myocytes, neurons) as a signature of normal aging.\n* **Haemosiderin:** A golden-brown iron-storage pigment aggregate. Accumulates locally at sites of old hemorrhage (e.g., a healing bruise) or systemically in **haemochromatosis** (genetic iron overload leading to a classic triad of cirrhosis, diabetes, and bronze skin hyperpigmentation)."
+        },
+        {
+          "type": "text",
+          "content": "**4. Calcium Calcification Pathology:**\n\n* **Dystrophic Calcification:** Deposition of calcium salts specifically within dead, dying, or degenerated tissues. Occurs in the setting of **normal systemic serum calcium levels**. *Examples:* Calcification of advanced atherosclerotic plaques, old caseous tuberculous granulomas, or areas of pancreatic fat necrosis.\n* **Metastatic Calcification:** Deposition of calcium salts within otherwise completely normal tissues. This is always driven by systemic **hypercalcaemia**. *Examples:* Hyperparathyroidism, bony metastases secreting PTHrP, or chronic vitamin D intoxication depositing calcium salts into interstitial tissues of the kidneys or gastric mucosa."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Intracellular accumulations are like the mess a city creates when its waste management system breaks down. Normal rubbish (fat, protein, pigment) accumulates when the collection trucks (metabolic enzymes, export systems) stop working. In haemochromatosis, iron floods every tissue because the iron sensor is broken. Every accumulation tells you which part of the waste management system has failed."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Cellular Ageing",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Ageing is the progressive decline in the functional capacity of cells, tissues, and organisms over time. It involves specific molecular programmes that limit cellular lifespan."
+        },
+        {
+          "type": "text",
+          "content": "**Replicative Senescence & The Hayflick Limit:** Normal differentiated human somatic cells possess a fixed, pre-programmed limit to how many times they can divide before permanently halting. This boundary is known as the **Hayflick Limit** ($50\\text{--}70$ doublings). Upon hitting this threshold, cells enter a non-dividing but metabolically active phase termed senescence."
+        },
+        {
+          "type": "text",
+          "content": "The molecular clock controlling this limit is **telomere shortening**. Somatic cells lack active telomerase machinery. Consequently, with each cycle of DNA replication, the protective terminal telomere sequences erode. When telomeres become critically short, the cell interprets this as a double-stranded DNA break, activating the p53 pathway to lock the cell into permanent cycle arrest."
+        },
+        {
+          "type": "text",
+          "content": "**Telomerase Re-activation:** Telomerase is an enzyme capable of extending telomeric repeats, maintaining cellular immortality. It is active physiologically in germ cells and stem cells, but is pathologically upregulated in over **90% of human cancers**, enabling malignant cells to bypass the Hayflick limit and achieve replicate immortality."
+        },
+        {
+          "type": "text",
+          "content": "**Core Subcellular Drivers of Aging:**\n\n* **Accumulated DNA Damage:** Lifelong cumulative insults from ambient ROS, UV radiation, and replication errors slowly compromise genome stability.\n* **Mitochondrial Decay:** Ageing mitochondria display decreased ATP synthesis efficiency alongside a massive increase in baseline electron leaks, generating more harmful ROS.\n* **Proteostasis Failure:** Intracellular protein quality-control systems (the ubiquitin-proteasome system and macroautophagy) decline with age, allowing toxic misfolded protein aggregates to accumulate over decades (e.g., amyloid-$\\beta$ and tau aggregates in Alzheimer's disease)."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Cellular ageing is like a photocopier running low on toner. The first few thousand copies are perfect. After many thousands of copies, the copies begin to deteriorate — smudged, faded, slightly misaligned. The machine does not suddenly fail; it gradually degrades. Each generation of cells is a copy with slightly more accumulated errors. The telomere shortening is like the toner indicator counting down — a molecular clock that measures how many more divisions are possible."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Amyloidosis",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Amyloidosis is a group of diseases characterised by the pathological extracellular deposition of abnormal protein fibrils structured in a specific, insoluble **\\beta-pleated sheet configuration**. This uniform structural fold gives amyloid its distinct staining features and extreme resistance to normal proteolytic clearance."
+        },
+        {
+          "type": "text",
+          "content": "**Diagnostic Criteria:** Tissues infiltrated with amyloid display a dull, brick-red staining appearance on **Congo Red stain** under standard light microscopy. When viewed under **polarised light**, the $\\beta$-pleated sheets yield a brilliant, pathognomonic **apple-green birefringence**."
+        },
+        {
+          "type": "text",
+          "content": "**The Core Clinical Amyloid Classes:**\n\n* **AL Amyloid (Amyloid Light Chain):** Derived from monoclonal immunoglobulin light chains produced by aberrant plasma cells. Classically associated with systemic **multiple myeloma**. Deposits heavily within the kidneys (inducing severe nephrotic syndrome), myocardium (restrictive cardiomyopathy), and tongue (macroglossia).\n* **AA Amyloid (Amyloid A):** Formed from serum amyloid A protein, an acute-phase reactant synthesized by hepatocytes during sustained systemic inflammation. Classically secondary to chronic conditions like Rheumatoid Arthritis, Inflammatory Bowel Disease, or Chronic Osteomyelitis. Precipitously attacks the renal parenchyma.\n* **ATTR Amyloid (Transthyretin Amyloid):** Derived from misfolded transthyretin serum transport proteins. Can present as a genetic mutant form (hereditary polyneuropathies) or as a wild-type senile form that naturally misfolds and slowly infiltrates the ventricles of elderly individuals, yielding an insidious restrictive cardiomyopathy."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Amyloid is like a city whose buildings are made from defective bricks that, once stacked, cannot be taken apart. Normal bricks (proteins) are made, used, and recycled. Amyloid proteins are misfolded into a configuration that resists all the city's demolition tools (proteases cannot break the beta-pleated sheet). The defective bricks accumulate inexorably — stiffening the walls of the heart, clogging the filters of the kidneys, jamming the wiring of the nervous system."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Teaching Receipt™ — Cellular Injury & Adaptation",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "You have completed the core sections of Cellular Injury and Adaptation. This is the foundation of all pathology."
+        },
+        {
+          "type": "text",
+          "content": "**The Big Picture:** Cells exist in a state of homeostasis maintained by energy production, membrane integrity, protein turnover, calcium regulation, and DNA surveillance. When this equilibrium is disturbed, cells respond in characteristic ways."
+        },
+        {
+          "type": "text",
+          "content": "**The Adaptation Spectrum:** Hypertrophy (bigger cells) and hyperplasia (more cells) increase capacity. Atrophy (smaller cells) reduces energy demands. Metaplasia (different cell type) provides more durable tissue. These are reversible — remove the stress, the cell normalises. When adaptation is overwhelmed, injury begins."
+        },
+        {
+          "type": "text",
+          "content": "**Rereversible vs Irreversible Injury:** The critical threshold between reversible and irreversible injury is defined by severe mitochondrial damage (flocculent densities), plasma membrane rupture, and massive calcium influx activating phospholipases, proteases, and endonucleases."
+        },
+        {
+          "type": "text",
+          "content": "**The Two Deaths:** \n\n* *Necrosis:* Uncontrolled, inflammatory, affects groups of cells. Six patterns — coagulative, liquefactive, caseous, fat necrosis, gangrenous, fibrinoid.\n* *Apoptosis:* Controlled, non-inflammatory, affects individual cells. Two pathways — intrinsic (mitochondria/BCL-2/cytochrome c/caspase-9) and extrinsic (death receptors/caspase-8). Both converge on caspase-3."
+        },
+        {
+          "type": "text",
+          "content": "**The Other Mechanisms:** Free radical injury underlies ischaemia-reperfusion, radiation, and chemical toxicity. Intracellular accumulations (fat, proteins, pigments, calcium) are morphological signatures of specific diseases. Cellular ageing involves telomere shortening, DNA damage, and proteostasis failure. Amyloidosis — Congo red with apple-green birefringence under polarised light.\n\nYou are now ready for the Deep Dive."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Deep Dive — Molecular Cell Death Pathways",
+      "isDeepDive": true,
+      "steps": [
+        {
+          "type": "text",
+          "content": "This Deep Dive explores the molecular mechanisms of cell death at a level relevant to clinical pharmacology and research."
+        },
+        {
+          "type": "text",
+          "content": "**The BCL-2 Family Protein Interactome:** The intrinsic apoptotic pathway is closely regulated by structural interactions across the BCL-2 protein family, which are defined by common BCL-2 Homology (BH) structural domains."
+        },
+        {
+          "type": "text",
+          "content": "The family is divided into three functional subgroups:\n\n* **Anti-apoptotic Guard Proteins (BCL-2, BCL-XL, MCL-1):** Multi-domain proteins that act to directly bind and sequester the pro-apoptotic effector proteins, preventing structural pore assembly.\n* **Pro-apoptotic Effectors (BAX, BAK):** Multi-domain executioner units. When activated, they form oligomeric channels through the mitochondrial outer membrane. This induces MOMP (mitochondrial outer membrane permeabilisation), driving the sudden egress of cytochrome c out into the cytoplasm.\n* **BH3-Only Stress Sensors (BIM, BID, PUMA, NOXA, BAD):** Activated by transcription or post-translational modification during cellular stress (e.g., DNA damage, growth factor deprivation). They act as death triggers by binding to anti-apoptotic guards, displacing BAX and BAK to force pore opening."
+        },
+        {
+          "type": "text",
+          "content": "*Oncogenic Exploitation:* In Follicular Lymphoma, a classic $t(14;18)$ chromosomal translocation places the *BCL-2* gene next to the highly active immunoglobulin heavy chain locus (IGH). This drives massive BCL-2 overexpression, preventing normal lymphocyte apoptosis and fueling indolent lymphoma development.\n\n*Pharmacological Breakthrough — Venetoclax:* A highly potent, selective small-molecule BH3-mimetic drug. Venetoclax directly mimics stress sensors, slotting into the hydrophobic groove of BCL-2 to displace trapped BAX/BAK units. This triggers immediate, targeted apoptosis in malignant cells (extensively deployed in Chronic Lymphocytic Leukaemia). *Hazard:* Can trigger severe, rapid tumor lysis syndrome due to instantaneous cell destruction."
+        },
+        {
+          "type": "text",
+          "content": "**Emerging Forms of Regulated Cell Death:**\n\n* **Necroptosis (Programmed Necrosis):** A caspase-independent programmed cell death cascade morphologically identical to necrosis. Activated when extracellular death signals (like TNF) fire while caspase-8 is chemically or virally inhibited. Signaling relies on the **RIPK1-RIPK3 complex**, which phosphorylates and activates the executioner protein **MLKL**. Phosphorylated MLKL translocates to the cell membrane, forming pores that disrupt ionic gradients, inducing explosive cellular rupture.\n* **Pyroptosis (Inflammatory Apoptosis):** An intensely pro-inflammatory programmed death cascade. Intracellular sensors recognize danger signals and assemble the **NLRP3 Inflammasome** complex, activating **caspase-1**. Caspase-1 directly processes and activates inflammatory cytokines (IL-$1\\beta$ and IL-18) while cleaving **gasdermin D**. The amino-terminal fragments of gasdermin D form huge pores in the plasma membrane, driving cytokine release and cell rupture. This underpins the acute inflammatory flare of gout (monosodium urate crystal triggers) and advanced atherosclerosis plaques."
+        },
+        {
+          "type": "text",
+          "content": "* **Ferroptosis (Iron-Dependent Death):** A form of regulated non-apoptotic death driven by a failure to clear iron-catalyzed lipid peroxides within cell membranes. The pivotal protective guardian is **GPX4 (Glutathione Peroxidase 4)**, which uses glutathione to reduce lipid hydroperoxides. If GPX4 is inhibited or glutathione is depleted, uninhibited iron-dependent Fenton chemistry drives an overwhelming accumulation of lipid peroxides across membranes, destroying structural lipid bilayers."
+        },
+        {
+          "type": "text",
+          "content": "**The p53 Transcriptional Demolition Protocol:**\n\nThe TP53 tumor suppressor is activated downstream of double-stranded DNA breaks or oncogene hyper-activation. It functions as a transcription factor to guide cell-fate vectors via distinct molecular targets:\n\n* **p21 (CDKN1A):** A cyclin-dependent kinase inhibitor that arrests cells at the G1/S checkpoint, halting the cell cycle to allow for DNA repair enzymes to work.\n* **GADD45:** Directly recruits DNA repair enzymes to fix the genome.\n* **MDM2:** A p53-specific E3 ubiquitin ligase that forms a negative feedback loop by marking p53 for proteasomal degradation.\n* **PUMA / NOXA / BAX:** If repair loops fail, p53 upregulates these pro-apoptotic BH3-only units, committing the cell to intrinsic apoptosis."
+        }
+      ]
+    }
+  ],
+  "teachingReceipt": {
+    "mastered": [
+      "The four major cellular adaptations — hypertrophy, hyperplasia, atrophy, and metaplasia — with physiological and pathological examples of each",
+      "The progression from reversible to irreversible injury, and the three hallmarks of irreversible injury under EM",
+      "The six patterns of necrosis and the tissue and disease context of each",
+      "The intrinsic and extrinsic pathways of apoptosis, the role of caspases, and the morphological contrast with necrosis",
+      "The mechanisms of free radical generation, antioxidant defences, and the clinical importance of ischaemia-reperfusion injury",
+      "The major categories of intracellular accumulations and their disease associations",
+      "The molecular mechanisms of cellular ageing — telomere shortening, DNA damage, mitochondrial dysfunction, and proteostasis failure",
+      "The classification and clinical consequences of amyloidosis, diagnosed by Congo red staining"
+    ]
+  },
+  "selfCheckQuestions": [
+    "A 55-year-old has a myocardial infarction. Walk through the cellular events from coronary occlusion to scar formation.",
+    "Why does the brain undergo liquefactive necrosis while the heart undergoes coagulative necrosis after ischaemia?",
+    "Explain the Hayflick limit. Why do cancer cells not have one?",
+    "Compare and contrast apoptosis and necrosis across five features: cell size, membrane integrity, inflammation, energy requirement, and pattern of involvement.",
+    "What is ischaemia-reperfusion injury and why can restoring blood flow sometimes cause additional damage?",
+    "A patient with chronic rheumatoid arthritis develops nephrotic syndrome. Biopsy shows Congo red-positive deposits with apple-green birefringence. What type of amyloid is this and what is the treatment?",
+    "What is the significance of the BCL-2 translocation in follicular lymphoma, and how does venetoclax exploit this therapeutically?",
+    "Explain why paracetamol overdose causes liver damage using the concept of free radical injury and glutathione depletion.",
+    "What are Mallory-Denk bodies and in which condition are they classically found?",
+    "Explain dystrophic vs metastatic calcification with one clinical example of each."
+  ]
+}

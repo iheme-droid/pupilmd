@@ -1,158 +1,399 @@
-import Link from 'next/link';
-import { acidBaseChapter } from '@/app/data/acidBase';
+'use client';
 
-export default function AcidBaseModule() {
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
+// Fixed path pointing directly to your root data directory JSON file
+const acidBaseChapter = require('@/data/acidBase.json');
+import TeachingReceipt from '@/app/components/TeachingReceipt';
+
+function AcidBaseCrashChapterContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const sectionParam = searchParams.get('section');
+  const currentSectionId = sectionParam ? parseInt(sectionParam) : 0;
+  // Fixed implicit any error on parameter 's'
+  const currentSection = acidBaseChapter.sections.find((s: any) => s.id === currentSectionId);
   const totalSections = acidBaseChapter.sections.length;
 
-  return (
-    <div style={{ background: '#F7F8FA', minHeight: '100vh' }}>
+  const [checkedQuestions, setCheckedQuestions] = useState<number[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section style={{
-        background: '#0D0F14',
-        padding: '56px 24px 64px',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <div style={{ position: 'absolute', top: '-80px', right: '-60px', width: '420px', height: '420px', background: 'radial-gradient(circle, rgba(255,107,53,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '-60px', left: '10%', width: '340px', height: '340px', background: 'radial-gradient(circle, rgba(255,45,85,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+  useEffect(() => {
+    const saved = localStorage.getItem(`pupilmd_teaching_receipt_${acidBaseChapter.moduleSlug}`);
+    if (saved) setCheckedQuestions(JSON.parse(saved));
+  }, []);
 
-        <div style={{ maxWidth: '760px', margin: '0 auto', position: 'relative' }}>
-          {/* Breadcrumb */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '28px' }}>
-            <Link href="/library" style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Library</Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.8rem' }}>›</span>
-            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)' }}>Year 2</span>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.8rem' }}>›</span>
-            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)' }}>General Pathology</span>
-          </div>
+  useEffect(() => {
+    localStorage.setItem(`pupilmd_progress_${acidBaseChapter.moduleSlug}`, JSON.stringify({
+      currentSection: currentSectionId,
+      lastUpdated: new Date().toISOString(),
+    }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentSectionId]);
 
-          {/* Course badge */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', background: 'rgba(255,107,53,0.2)', border: '1px solid rgba(255,107,53,0.4)', borderRadius: '99px', marginBottom: '16px' }}>
-            <span style={{ fontSize: '0.75rem' }}>🩻</span>
-            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: '#FB923C' }}>General Pathology · Year 2</span>
-          </div>
+  const handleQuestionToggle = (index: number) => {
+    const newChecked = checkedQuestions.includes(index)
+      ? checkedQuestions.filter(i => i !== index)
+      : [...checkedQuestions, index];
+    setCheckedQuestions(newChecked);
+    localStorage.setItem(`pupilmd_teaching_receipt_${acidBaseChapter.moduleSlug}`, JSON.stringify(newChecked));
+  };
 
-          <h1 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', letterSpacing: '-0.04em', color: '#fff', lineHeight: 1.12, marginBottom: '14px' }}>
-            {acidBaseChapter.chapterTitle}
-          </h1>
+  const goToSection = (id: number) => {
+    router.push(`/module/acid-base/crashchapter?section=${id}`);
+    setSidebarOpen(false);
+  };
 
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '32px', maxWidth: '560px' }}>
-            Master the fundamentals of pH regulation and electrolyte balance — through story first.
-          </p>
+  if (!currentSection) {
+    return (
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 24px' }}>
+        <p style={{ color: '#FF2D55' }}>Section not found.</p>
+        <Link href="/module/acid-base" style={{ color: '#FF6B35' }}>Back to module</Link>
+      </div>
+    );
+  }
 
-          {/* Meta pills */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' as const, marginBottom: '36px' }}>
-            {[
-              { icon: '⏱️', text: 'Under 90 mins' },
-              { icon: '📖', text: `${totalSections} sections` },
-              { icon: '✨', text: 'Marable™ storytelling' },
-              { icon: '🎓', text: 'Teaching Receipt™' },
-            ].map((pill, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 14px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '99px' }}>
-                <span style={{ fontSize: '0.8rem' }}>{pill.icon}</span>
-                <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 500, fontSize: '0.78rem', color: 'rgba(255,255,255,0.6)' }}>{pill.text}</span>
-              </div>
-            ))}
-          </div>
+  const isDeepDive = currentSection.isDeepDive;
+  const showTeachingReceipt = currentSectionId === 9;
+  const progressPct = Math.round((currentSectionId / (totalSections - 1)) * 100);
 
-          <Link href="/module/acid-base/crashchapter?section=0" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '9px',
-            padding: '15px 32px', background: '#FF6B35', color: '#fff',
-            fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.95rem',
-            borderRadius: '13px', textDecoration: 'none',
-            boxShadow: '0 8px 32px rgba(255,107,53,0.35)',
+  const parseContent = (content: string) => {
+    // Merge "**Grasp Tonic 🧃**\n\n<text>" into a single block
+    const merged = content.replace(/\*\*Grasp Tonic 🧃\*\*\n\n/g, '**Grasp Tonic 🧃** ');
+
+    return merged.split('\n\n').map((block, idx) => {
+
+      // ── Grasp Tonic ────────────────────────────────────────────
+      if (block.startsWith('**Grasp Tonic 🧃**')) {
+        const text = block.replace('**Grasp Tonic 🧃**', '').trim();
+        return (
+          <div key={idx} style={{
+            margin: '32px 0',
+            background: 'linear-gradient(135deg, #0A1F2E 0%, #0D2B1F 100%)',
+            borderRadius: '16px',
+            padding: '22px 26px',
+            border: '1px solid rgba(52,199,89,0.25)',
+            boxShadow: '0 4px 24px rgba(52,199,89,0.1)',
           }}>
-            Begin Module
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-        </div>
-      </section>
-
-      {/* ── Content ───────────────────────────────────────────── */}
-      <section style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 24px 80px', display: 'flex', flexDirection: 'column' as const, gap: '20px' }}>
-
-        {/* What you'll learn */}
-        <div style={{ background: '#fff', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.07)', overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
-          <div style={{ padding: '20px 24px', borderBottom: '1px solid rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(255,107,53,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>🧪</div>
-            <h2 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1rem', color: '#0D0F14', margin: 0 }}>What You'll Learn</h2>
-          </div>
-          <div style={{ padding: '20px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
-            {[
-              'How the body maintains pH balance through buffer systems',
-              'The four primary acid-base disorders and how to identify them',
-              'Fluid and electrolyte homeostasis mechanisms',
-              'Clinical diagnosis and treatment approaches',
-            ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', padding: '12px', background: '#F7F8FA', borderRadius: '10px' }}>
-                <span style={{ color: '#FF6B35', fontWeight: 800, fontSize: '0.75rem', marginTop: '2px', flexShrink: 0 }}>✓</span>
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', color: '#3A3F4B', lineHeight: 1.5 }}>{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Section overview */}
-        <div style={{ background: '#fff', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.07)', overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
-          <div style={{ padding: '20px 24px', borderBottom: '1px solid rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(255,107,53,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>🗂️</div>
-            <h2 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1rem', color: '#0D0F14', margin: 0 }}>Module Sections</h2>
-          </div>
-          <div style={{ padding: '12px' }}>
-            {acidBaseChapter.sections.map((section, i) => (
-              <div key={i} style={{
-                display: 'flex', alignItems: 'center', gap: '12px',
-                padding: '10px 12px', borderRadius: '10px',
-                background: section.isDeepDive ? 'rgba(255,149,0,0.04)' : 'transparent',
-                borderBottom: i < acidBaseChapter.sections.length - 1 ? '1px solid rgba(0,0,0,0.04)' : 'none',
-              }}>
-                <div style={{
-                  width: '28px', height: '28px', borderRadius: '8px', flexShrink: 0,
-                  background: section.isDeepDive ? 'rgba(255,149,0,0.1)' : 'rgba(255,107,53,0.08)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.7rem',
-                  color: section.isDeepDive ? '#FF9500' : '#FF6B35',
-                }}>
-                  {section.id}
-                </div>
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', color: '#3A3F4B', flex: 1 }}>{section.title}</span>
-                {section.isDeepDive && (
-                  <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.6rem', letterSpacing: '0.06em', textTransform: 'uppercase' as const, color: '#FF9500', background: 'rgba(255,149,0,0.1)', padding: '2px 8px', borderRadius: '99px' }}>Deep Dive</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Marable approach */}
-        <div style={{ background: '#0D0F14', borderRadius: '20px', padding: '28px', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-          <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(255,107,53,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', flexShrink: 0 }}>✨</div>
-          <div>
-            <h3 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.95rem', color: '#fff', margin: '0 0 8px' }}>The Marable™ Approach</h3>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem', lineHeight: 1.7, margin: 0 }}>
-              This module uses the story of a swimming pool's pH balance to help you understand how your body maintains acid-base equilibrium. The narrative makes complex biochemistry feel intuitive and easy to remember.
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <span style={{ fontSize: '1.2rem' }}>🧃</span>
+              <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#34C759' }}>
+                Grasp Tonic
+              </span>
+              <div style={{ flex: 1, height: '1px', background: 'rgba(52,199,89,0.2)' }} />
+            </div>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.78)', margin: 0, fontStyle: 'italic' }}>
+              {text}
             </p>
           </div>
+        );
+      }
+
+      // ── Bold section header ────────────────────────────────────
+      if (block.startsWith('**') && block.endsWith('**')) {
+        return (
+          <h3 key={idx} style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1.05rem', color: '#0D0F14', margin: '28px 0 10px', letterSpacing: '-0.01em' }}>
+            {block.replace(/\*\*/g, '')}
+          </h3>
+        );
+      }
+
+      // ── Regular paragraph with inline bold ────────────────────
+      const parts = block.split(/(\*\*[^*]+\*\*)/g);
+      return (
+        <p key={idx} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '1rem', lineHeight: 1.85, color: '#3A3F4B', marginBottom: '18px' }}>
+          {parts.map((part, i) =>
+            part.startsWith('**') && part.endsWith('**')
+              ? <strong key={i} style={{ fontWeight: 700, color: '#0D0F14' }}>{part.replace(/\*\*/g, '')}</strong>
+              : part
+          )}
+        </p>
+      );
+    });
+  };
+
+  // accent colour — orange for acid-base
+  const accent = '#FF6B35';
+  const accentGlow = 'rgba(255,107,53,0.3)';
+
+  return (
+    <div style={{ background: isDeepDive ? '#FFF8EE' : '#F7F8FA', minHeight: '100vh' }}>
+
+      {/* ── Sidebar ───────────────────────────────────────────── */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, height: '100%', width: '300px',
+        background: '#fff', boxShadow: '4px 0 32px rgba(0,0,0,0.12)',
+        zIndex: 50, transform: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1)',
+        display: 'flex', flexDirection: 'column' as const,
+      }}>
+        <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h3 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.95rem', color: '#0D0F14', margin: 0 }}>Sections</h3>
+          <button onClick={() => setSidebarOpen(false)} style={{ background: '#F7F8FA', border: 'none', borderRadius: '8px', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="16" height="16" fill="none" stroke="#7A818F" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '12px' }}>
+          {/* Fixed implicit any error on parameter 'section' */}
+          {acidBaseChapter.sections.map((section: any) => {
+            const isActive = section.id === currentSectionId;
+            const isDone = section.id < currentSectionId;
+            return (
+              <button key={section.id} onClick={() => goToSection(section.id)} style={{
+                width: '100%', textAlign: 'left' as const, padding: '10px 12px',
+                borderRadius: '10px', border: 'none', cursor: 'pointer', marginBottom: '4px',
+                background: isActive ? accent : 'transparent',
+                transition: 'all 0.18s ease',
+              }}
+                onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.background = '#F7F8FA'; }}
+                onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{
+                    width: '22px', height: '22px', borderRadius: '6px', flexShrink: 0,
+                    background: isActive ? 'rgba(255,255,255,0.2)' : isDone ? 'rgba(52,199,89,0.12)' : section.isDeepDive ? 'rgba(255,149,0,0.1)' : 'rgba(0,0,0,0.06)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '0.6rem', fontWeight: 800,
+                    color: isActive ? '#fff' : isDone ? '#34C759' : section.isDeepDive ? '#FF9500' : '#7A818F',
+                    fontFamily: "'Sora', sans-serif",
+                  }}>
+                    {isDone ? '✓' : section.id}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: isActive ? 700 : 500, fontSize: '0.78rem', color: isActive ? '#fff' : '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' as const }}>{section.title}</p>
+                  </div>
+                  {section.isDeepDive && !isActive && (
+                    <span style={{ fontSize: '0.55rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' as const, color: '#FF9500', background: 'rgba(255,149,0,0.1)', padding: '1px 5px', borderRadius: '99px', flexShrink: 0 }}>Dive</span>
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {sidebarOpen && (
+        <div onClick={() => setSidebarOpen(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 40, backdropFilter: 'blur(4px)' }} />
+      )}
+
+      {/* ── Sticky Top Bar ────────────────────────────────────── */}
+      <div style={{
+        position: 'sticky', top: 0, zIndex: 30,
+        background: 'rgba(255,255,255,0.92)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(0,0,0,0.07)',
+      }}>
+        <div style={{ height: '3px', background: '#ECEEF2' }}>
+          <div style={{
+            height: '100%',
+            width: `${progressPct}%`,
+            background: isDeepDive ? 'linear-gradient(90deg, #FF9500, #FF6B35)' : `linear-gradient(90deg, ${accent}, #FF2D55)`,
+            transition: 'width 0.5s ease',
+          }} />
+        </div>
+        <div style={{ maxWidth: '760px', margin: '0 auto', padding: '12px 24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button onClick={() => setSidebarOpen(true)} style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            padding: '7px 14px', background: '#F7F8FA', border: '1px solid rgba(0,0,0,0.08)',
+            borderRadius: '8px', cursor: 'pointer', flexShrink: 0,
+          }}>
+            <svg width="15" height="15" fill="none" stroke="#3A3F4B" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.75rem', color: '#3A3F4B' }}>Sections</span>
+          </button>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.78rem', color: '#0D0F14', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' as const }}>
+              {acidBaseChapter.chapterTitle}
+            </p>
+          </div>
+          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.72rem', color: '#7A818F', flexShrink: 0 }}>
+            {currentSectionId + 1} / {totalSections}
+          </span>
+        </div>
+      </div>
+
+      {/* ── Main Content ──────────────────────────────────────── */}
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '40px 24px 80px' }}>
+
+        {/* Section header */}
+        <div style={{ marginBottom: '32px' }}>
+          {isDeepDive && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: '10px', marginBottom: '14px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '5px 12px', background: 'rgba(255,149,0,0.1)', border: '1px solid rgba(255,149,0,0.25)', borderRadius: '99px' }}>
+                <span style={{ fontSize: '0.8rem' }}>🔬</span>
+                <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: '#FF9500' }}>Deep Dive · Optional</span>
+              </div>
+              <Link href="/library" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '6px',
+                padding: '7px 14px', background: '#0D0F14', borderRadius: '99px',
+                fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.75rem',
+                color: 'rgba(255,255,255,0.7)', textDecoration: 'none',
+                border: '1px solid rgba(255,255,255,0.08)',
+              }}>
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Library
+              </Link>
+            </div>
+          )}
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+            <div style={{
+              width: '36px', height: '36px', borderRadius: '10px', flexShrink: 0,
+              background: isDeepDive ? 'rgba(255,149,0,0.1)' : `rgba(255,107,53,0.08)`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '0.85rem',
+              color: isDeepDive ? '#FF9500' : accent,
+            }}>
+              {currentSectionId}
+            </div>
+            <h1 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 'clamp(1.3rem, 3vw, 1.75rem)', letterSpacing: '-0.03em', color: '#0D0F14', margin: 0, lineHeight: 1.2 }}>
+              {currentSection.title}
+            </h1>
+          </div>
         </div>
 
-        {/* CTA */}
-        <Link href="/module/acid-base/crashchapter?section=0" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '9px',
-          padding: '17px 32px', background: '#FF6B35', color: '#fff',
-          fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.95rem',
-          borderRadius: '13px', textDecoration: 'none',
-          boxShadow: '0 8px 32px rgba(255,107,53,0.25)',
+        {/* Content card */}
+        <div style={{
+          background: '#fff',
+          borderRadius: '20px',
+          border: `1px solid ${isDeepDive ? 'rgba(255,149,0,0.15)' : 'rgba(0,0,0,0.07)'}`,
+          boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+          padding: 'clamp(24px, 4vw, 40px)',
+          marginBottom: '28px',
         }}>
-          Begin Module
-          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </Link>
+          {parseContent(currentSection.content)}
+        </div>
 
-      </section>
+        {/* Teaching Receipt */}
+        {showTeachingReceipt && (
+          <TeachingReceipt
+            mastered={acidBaseChapter.teachingReceipt.mastered}
+            selfCheckQuestions={acidBaseChapter.teachingReceipt.selfCheckQuestions}
+            checkedQuestions={checkedQuestions}
+            moduleSlug="acid-base"
+            onQuestionToggle={handleQuestionToggle}
+          />
+        )}
+
+        {/* Checkpoint */}
+        {!isDeepDive && currentSectionId > 0 && currentSectionId % 3 === 0 && currentSectionId !== 9 && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px 20px', background: 'rgba(52,199,89,0.06)', border: '1px solid rgba(52,199,89,0.2)', borderRadius: '12px', marginBottom: '28px' }}>
+            <span style={{ fontSize: '1.2rem' }}>🎯</span>
+            <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.85rem', color: '#2D9B57', margin: 0 }}>
+              Checkpoint — {currentSectionId} sections complete. You're making great progress!
+            </p>
+          </div>
+        )}
+
+        {/* Back links */}
+        <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' as const }}>
+          <Link href="/library" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '6px',
+            padding: '8px 16px', background: '#fff',
+            border: '1px solid rgba(0,0,0,0.1)', borderRadius: '99px',
+            fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.78rem',
+            color: '#3A3F4B', textDecoration: 'none', transition: 'all 0.2s ease',
+          }}>
+            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Library
+          </Link>
+
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{
+            display: 'inline-flex', alignItems: 'center', gap: '6px',
+            padding: '8px 16px', background: '#fff',
+            border: '1px solid rgba(0,0,0,0.1)', borderRadius: '99px',
+            fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.78rem',
+            color: '#3A3F4B', cursor: 'pointer', transition: 'all 0.2s ease',
+          }}>
+            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" />
+            </svg>
+            Back to Top
+          </button>
+        </div>
+
+        {/* Navigation */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', paddingTop: '24px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+          <button
+            onClick={() => currentSectionId > 0 && goToSection(currentSectionId - 1)}
+            disabled={currentSectionId === 0}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '7px',
+              padding: '12px 20px',
+              background: currentSectionId === 0 ? '#F7F8FA' : '#fff',
+              border: `1px solid ${currentSectionId === 0 ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0.12)'}`,
+              borderRadius: '11px', cursor: currentSectionId === 0 ? 'not-allowed' : 'pointer',
+              fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.85rem',
+              color: currentSectionId === 0 ? '#C4C9D4' : '#3A3F4B',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+            </svg>
+            Previous
+          </button>
+
+          {/* Section dots */}
+          <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' as const, justifyContent: 'center', flex: 1 }}>
+            {/* Fixed implicit any error on parameter 's' */}
+            {acidBaseChapter.sections.map((s: any) => (
+              <button key={s.id} onClick={() => goToSection(s.id)} style={{
+                width: s.id === currentSectionId ? '20px' : '7px',
+                height: '7px', borderRadius: '99px', border: 'none', cursor: 'pointer',
+                background: s.id === currentSectionId
+                  ? (isDeepDive ? '#FF9500' : accent)
+                  : s.id < currentSectionId ? '#34C759' : '#ECEEF2',
+                transition: 'all 0.25s ease',
+                padding: 0,
+              }} />
+            ))}
+          </div>
+
+          <button
+            onClick={() => currentSectionId < totalSections - 1 && goToSection(currentSectionId + 1)}
+            disabled={currentSectionId === totalSections - 1}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '7px',
+              padding: '12px 20px',
+              background: currentSectionId === totalSections - 1 ? '#F7F8FA' : accent,
+              border: 'none', borderRadius: '11px',
+              cursor: currentSectionId === totalSections - 1 ? 'not-allowed' : 'pointer',
+              fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.85rem',
+              color: currentSectionId === totalSections - 1 ? '#C4C9D4' : '#fff',
+              boxShadow: currentSectionId === totalSections - 1 ? 'none' : `0 4px 16px ${accentGlow}`,
+              transition: 'all 0.2s ease',
+            }}
+          >
+            {currentSectionId === 9 ? 'Enter Deep Dive' : 'Next'}
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
+  );
+}
+
+export default function AcidBaseCrashChapter() {
+  return (
+    <Suspense fallback={
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 24px' }}>
+        <div style={{ height: '32px', background: '#ECEEF2', borderRadius: '8px', width: '60%', marginBottom: '16px' }} />
+        <div style={{ height: '16px', background: '#ECEEF2', borderRadius: '8px', width: '40%' }} />
+      </div>
+    }>
+      <AcidBaseCrashChapterContent />
+    </Suspense>
   );
 }

@@ -10,7 +10,8 @@ export interface SelfCheckQuestion {
 
 interface TeachingReceiptProps {
   mastered: string[];
-  selfCheckQuestions: string[];
+  // Fixed typing: It can be a simple string or the full object with hints/explanations
+  selfCheckQuestions: (string | SelfCheckQuestion)[]; 
   checkedQuestions: number[];
   moduleSlug: string;
   onQuestionToggle: (index: number) => void;
@@ -61,13 +62,13 @@ export default function TeachingReceipt({
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: '14px',
-        flexWrap: 'wrap' as const,
+        flexWrap: 'wrap',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(52,199,89,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', flexShrink: 0 }}>🎓</div>
           <div>
-            <h2 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '1.1rem', color: '#fff', margin: '0 0 3px', letterSpacing: '-0.02em' }}>Teaching Receipt™</h2>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)', margin: 0 }}>
+            <h2 style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 800, fontSize: '1.1rem', color: '#fff', margin: '0 0 3px', letterSpacing: '-0.02em' }}>Teaching Receipt™</h2>
+            <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)', margin: 0 }}>
               You've completed the core sections. Here's what you now understand:
             </p>
           </div>
@@ -75,7 +76,7 @@ export default function TeachingReceipt({
 
         {/* Learning Mode toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.75rem', color: learningMode ? '#34C759' : 'rgba(255,255,255,0.4)' }}>
+          <span style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 600, fontSize: '0.75rem', color: learningMode ? '#34C759' : 'rgba(255,255,255,0.4)' }}>
             {learningMode ? '🌱 Learning Mode ON' : '✅ Check Mode'}
           </span>
           <button
@@ -107,8 +108,8 @@ export default function TeachingReceipt({
           display: 'flex', alignItems: 'flex-start', gap: '10px',
         }}>
           <span style={{ fontSize: '1rem', flexShrink: 0 }}>🌱</span>
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.85rem', color: '#2D9B57', lineHeight: 1.6, margin: 0 }}>
-            <strong style={{ fontFamily: "'Sora', sans-serif" }}>Learning Mode is ON.</strong>{' '}
+          <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '0.85rem', color: '#2D9B57', lineHeight: 1.6, margin: 0 }}>
+            <strong style={{ fontFamily: "var(--font-sora), sans-serif" }}>Learning Mode is ON.</strong>{' '}
             This is not a test. Use hints and full answers freely — the goal is understanding, not performance.
             Check off each question once you genuinely understand it well enough to explain it to someone else.
           </p>
@@ -117,14 +118,14 @@ export default function TeachingReceipt({
 
       {/* ── What you mastered ─────────────────────────────── */}
       <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.07)', borderTop: 'none', padding: '24px 28px' }}>
-        <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#7A818F', marginBottom: '14px' }}>
+        <p style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7A818F', marginBottom: '14px' }}>
           What You Now Understand
         </p>
-        <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '9px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
           {mastered.map((item, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', padding: '12px 14px', background: 'rgba(52,199,89,0.05)', borderRadius: '10px', border: '1px solid rgba(52,199,89,0.12)' }}>
               <span style={{ color: '#34C759', fontWeight: 800, fontSize: '0.75rem', marginTop: '2px', flexShrink: 0 }}>✓</span>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.875rem', color: '#3A3F4B', lineHeight: 1.55 }}>{item}</span>
+              <span style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '0.875rem', color: '#3A3F4B', lineHeight: 1.55 }}>{item}</span>
             </div>
           ))}
         </div>
@@ -133,10 +134,10 @@ export default function TeachingReceipt({
       {/* ── Self-check ────────────────────────────────────── */}
       <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.07)', borderTop: 'none', padding: '24px 28px', borderRadius: '0 0 20px 20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-          <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#7A818F', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7A818F', margin: 0 }}>
             Self-Check Questions
           </p>
-          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.82rem', color: pct === 100 ? '#34C759' : '#0A84FF' }}>
+          <span style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 700, fontSize: '0.82rem', color: pct === 100 ? '#34C759' : '#0A84FF' }}>
             {checkedQuestions.length} / {selfCheckQuestions.length}
           </span>
         </div>
@@ -155,14 +156,14 @@ export default function TeachingReceipt({
         {/* Encouragement */}
         {encouragement && !allChecked && (
           <div style={{ padding: '12px 16px', background: 'rgba(10,132,255,0.05)', borderRadius: '12px', border: '1px solid rgba(10,132,255,0.12)', marginBottom: '18px' }}>
-            <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.83rem', color: '#0A84FF', margin: 0 }}>
+            <p style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 600, fontSize: '0.83rem', color: '#0A84FF', margin: 0 }}>
               {encouragement}
             </p>
           </div>
         )}
 
         {/* Questions */}
-        <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '12px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {selfCheckQuestions.map((item, i) => {
             const isChecked = checkedQuestions.includes(i);
             const hintShown = shownHints.includes(i);
@@ -199,7 +200,7 @@ export default function TeachingReceipt({
                   <span
                     onClick={() => onQuestionToggle(i)}
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "var(--font-dm-sans), sans-serif",
                       fontSize: '0.9rem',
                       color: isChecked ? '#2D9B57' : '#3A3F4B',
                       lineHeight: 1.6,
@@ -214,7 +215,7 @@ export default function TeachingReceipt({
 
                 {/* Learning Mode buttons */}
                 {learningMode && !isChecked && q.hint && (
-                  <div style={{ padding: '0 16px 14px', display: 'flex', gap: '8px', flexWrap: 'wrap' as const }}>
+                  <div style={{ padding: '0 16px 14px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                     {q.hint && (
                       <button
                         onClick={() => toggleHint(i)}
@@ -223,7 +224,7 @@ export default function TeachingReceipt({
                           padding: '6px 14px', borderRadius: '99px',
                           border: '1px solid rgba(10,132,255,0.3)',
                           background: hintShown ? 'rgba(10,132,255,0.1)' : 'transparent',
-                          fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.73rem',
+                          fontFamily: "var(--font-sora), sans-serif", fontWeight: 600, fontSize: '0.73rem',
                           color: '#0A84FF', cursor: 'pointer', transition: 'all 0.18s ease',
                         }}
                       >
@@ -238,7 +239,7 @@ export default function TeachingReceipt({
                           padding: '6px 14px', borderRadius: '99px',
                           border: '1px solid rgba(88,86,214,0.3)',
                           background: explanationShown ? 'rgba(88,86,214,0.1)' : 'transparent',
-                          fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.73rem',
+                          fontFamily: "var(--font-sora), sans-serif", fontWeight: 600, fontSize: '0.73rem',
                           color: '#5856D6', cursor: 'pointer', transition: 'all 0.18s ease',
                         }}
                       >
@@ -251,16 +252,16 @@ export default function TeachingReceipt({
                 {/* Hint */}
                 {hintShown && !isChecked && (
                   <div style={{ margin: '0 16px 14px', padding: '12px 14px', background: 'rgba(10,132,255,0.06)', borderRadius: '10px', border: '1px solid rgba(10,132,255,0.15)' }}>
-                    <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: '#0A84FF', margin: '0 0 6px' }}>💡 Hint</p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.875rem', color: '#3A3F4B', lineHeight: 1.7, margin: 0 }}>{q.hint}</p>
+                    <p style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#0A84FF', margin: '0 0 6px' }}>💡 Hint</p>
+                    <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '0.875rem', color: '#3A3F4B', lineHeight: 1.7, margin: 0 }}>{q.hint}</p>
                   </div>
                 )}
 
                 {/* Full explanation */}
                 {explanationShown && !isChecked && (
                   <div style={{ margin: '0 16px 14px', padding: '14px 16px', background: 'rgba(88,86,214,0.05)', borderRadius: '10px', border: '1px solid rgba(88,86,214,0.15)' }}>
-                    <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase' as const, color: '#5856D6', margin: '0 0 8px' }}>📖 Full Answer</p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.875rem', color: '#3A3F4B', lineHeight: 1.78, margin: 0 }}>{q.explanation}</p>
+                    <p style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#5856D6', margin: '0 0 8px' }}>📖 Full Answer</p>
+                    <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '0.875rem', color: '#3A3F4B', lineHeight: 1.78, margin: 0 }}>{q.explanation}</p>
                     <button
                       onClick={() => {
                         onQuestionToggle(i);
@@ -270,7 +271,7 @@ export default function TeachingReceipt({
                       style={{
                         marginTop: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px',
                         padding: '8px 16px', background: '#34C759', border: 'none', borderRadius: '9px',
-                        fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.78rem',
+                        fontFamily: "var(--font-sora), sans-serif", fontWeight: 700, fontSize: '0.78rem',
                         color: '#fff', cursor: 'pointer',
                       }}
                     >
@@ -290,7 +291,7 @@ export default function TeachingReceipt({
           borderRadius: '12px',
           border: `1px solid ${allChecked ? 'rgba(52,199,89,0.2)' : 'rgba(10,132,255,0.1)'}`,
         }}>
-          <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '0.85rem', color: allChecked ? '#2D9B57' : '#0A84FF', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-sora), sans-serif", fontWeight: 600, fontSize: '0.85rem', color: allChecked ? '#2D9B57' : '#0A84FF', margin: 0 }}>
             {allChecked
               ? "🎉 Exceptional work! You've mastered this module. The Deep Dive awaits — it's optional but worth it."
               : learningMode

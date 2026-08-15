@@ -1,0 +1,275 @@
+{
+  "moduleSlug": "anatomical-terminology",
+  "chapterTitle": "Introduction to Anatomical Terminology & Planes",
+  "sections": [
+    {
+      "id": 0,
+      "title": "The Marable™ — The Map and the Coordinate System",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Imagine you are an air traffic controller or a global explorer tasked with guiding a team to a specific, hidden treasure chest hidden deep inside a mountainous island. You have a radio link to your team on the ground, but there is a major problem: they do not know which way is North, they have no concept of 'up' or 'down' relative to your charts, and everyone is standing in a random, chaotic circle looking at each other.\n\nIf you tell them to 'take three steps to the left and look under the rock,' chaos breaks out. One person's left is another person's right. If someone is lying down resting, their 'left' shifts entirely. Your instructions are useless, and the mission fails.\n\nTo fix this, you establish an ironclad, non-negotiable rule: before anyone speaks or moves, they must stand facing forward, arms straight down at their sides, with their palms flat out facing you. This is your baseline reference map — the Anatomical Position. No matter if a team member is upside down, curled in a ball, or walking backward later on, every map coordinate you send out is based exclusively on how their body parts align while standing in this specific position.\n\nNext, to cut through the three-dimensional space of the island, you drop three massive, invisible glass sheets right through their bodies. One slices them cleanly into front and back halves (Frontal/Coronal Plane). Another splits them down the exact midline into left and right halves (Sagittal Plane). The third cuts horizontally across their waist into top and bottom halves (Transverse/Axial Plane).\n\nNow, your coordinates are flawless. When you radio down and say 'the treasure is superior and deep to the transverse slice at the level of the navel,' every single explorer knows exactly where to dig. Welcome to the universal blueprint of human anatomy — the coordinate system that ensures clinicians across the globe never misguide their scalpels."
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "The Standard Anatomical Position & Body Quadrants",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "In medical practice, clinical descriptions of any structure or pathological lesion assume a standardized orientation known as the Standard Anatomical Position. Regardless of whether a patient is lying supine on an operating table, prone in an ICU bed, or turned sideways during an ultrasound, all spatial relationships are described as if the patient is in this position."
+        },
+        {
+          "type": "text",
+          "content": "Definitive Criteria of the Anatomical Position:\n• Body is standing erect, facing directly forward.\n• Upper limbs are positioned close to the sides of the trunk.\n• Palms of the hands face directly forward (anteriorly) with fingers extended.\n• Lower limbs are parallel, with feet flat on the floor and toes pointing forward."
+        },
+        {
+          "type": "text",
+          "content": "Clinical Caveat — Right vs. Left: Anatomical right and left always refer to the patient's right and left sides, never the observer's perspective. When viewing a plain chest X-ray or a CT slice, the patient's right side will be positioned on the left side of your viewing screen."
+        },
+        {
+          "type": "text",
+          "content": "Abdominopelvic Quadrants and Regions:\nTo localize abdominal pain, palpable masses, or surgical incisions, the abdomen is divided into spatial compartments using two primary mapping systems:"
+        },
+        {
+          "type": "text",
+          "content": "The Four-Quadrant Grid: Formed by the intersection of the horizontal transumbilical plane and the vertical median plane through the umbilicus (L3-L4 level).\n• Right Upper Quadrant (RUQ): Contains the liver (right lobe), gallbladder, duodenum, head of pancreas, right kidney/adrenal gland, and hepatic flexure of the colon.\n• Left Upper Quadrant (LUQ): Contains the stomach, spleen, liver (left lobe), body/tail of pancreas, left kidney/adrenal gland, and splenic flexure of the colon.\n• Right Lower Quadrant (RLQ): Contains the caecum, appendix, ascending colon, right ovary/fallopian tube, and right ureter.\n• Left Lower Quadrant (LLQ): Contains the descending colon, sigmoid colon, left ovary/fallopian tube, and left ureter."
+        },
+        {
+          "type": "text",
+          "content": "The Nine-Region Grid: Formed by two vertical midclavicular lines, a superior subcostal plane (through the inferior border of the 10th costal cartilage), and an inferior transtubercular plane (joining the iliac tubercles).\n• Top Row: Right Hypochondriac, Epigastric, Left Hypochondriac.\n• Middle Row: Right Lumbar (Flank), Umbilical, Left Lumbar (Flank).\n• Bottom Row: Right Iliac (Inguinal), Hypogastric (Pubic), Left Iliac (Inguinal)."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "When a patient presents with acute abdominal distress, your quadrants provide immediate diagnostic sorting. Acute pain localized strictly to the RLQ strongly points to inflammation of the vermiform appendix (appendicitis). Conversely, acute pain localized to the RUQ, especially if it spikes following a fatty meal, implicates gallbladder disease (cholecystitis)."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Anatomical Planes of Section",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Anatomical descriptions, surgical approaches, and diagnostic imaging modalities (CT, MRI, Ultrasound) rely entirely on three mutually perpendicular geometric planes slicing through the human body."
+        },
+        {
+          "type": "text",
+          "content": "1. Sagittal Planes\n• Definition: Vertical planes passing longitudinally through the body from front to back, dividing it into left and right portions.\n• Median (Midsagittal) Plane: The specific unique vertical plane that passes directly through the midline of the body, dividing it into equal, symmetrical right and left halves.\n• Parasagittal Plane: Any vertical plane running parallel to the median plane, dividing the body into unequal right and left portions."
+        },
+        {
+          "type": "text",
+          "content": "2. Frontal / Coronal Planes\n• Definition: Vertical planes passing longitudinally through the body at right angles to the sagittal plane.\n• Orientation: Divides the whole body or an individual organ into Anterior (ventral/front) and Posterior (dorsal/back) portions."
+        },
+        {
+          "type": "text",
+          "content": "3. Transverse / Axial / Horizontal Planes\n• Definition: Horizontal planes passing through the body at right angles to both the sagittal and coronal planes.\n• Orientation: Divides the body into Superior (upper) and Inferior (lower) portions. In clinical cross-sectional imaging (CT and MRI), slices are presented from an 'inferior view' — as if you are standing at the supine patient's feet looking up into their body."
+        },
+        {
+          "type": "text",
+          "content": "4. Oblique Planes\n• Definition: Any plane or slice section that cuts through the body at an angle that is not parallel to any of the standard orthogonal planes (sagittal, coronal, or transverse)."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Think of the planes as slicing a loaf of bread. A sagittal slice separates the left crust from the right crust. A coronal slice cuts the loaf from top to bottom along its length, separating the front face from the back face. A transverse slice cuts across the loaf horizontally, creating standard individual pieces from top to bottom."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Directional & Relational Terms",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Directional terms serve as the precise grammar of medicine, allowing clinicians to describe the exact position of one anatomical structure relative to another without ambiguity."
+        },
+        {
+          "type": "text",
+          "content": "Anterior (Ventral) vs. Posterior (Dorsal):\n• Anterior: Closer to or facing the front surface of the body. Example: The sternum is anterior to the heart.\n• Posterior: Closer to or facing the back surface of the body. Example: The spine is posterior to the aorta."
+        },
+        {
+          "type": "text",
+          "content": "Superior (Cranial/Cephalic) vs. Inferior (Caudal):\n• Superior: Closer to the vertex (highest point) of the skull. Example: The clavicle is superior to the rib cage.\n• Inferior: Closer to the soles of the feet. Example: The liver is inferior to the diaphragm."
+        },
+        {
+          "type": "text",
+          "content": "Medial vs. Lateral:\n• Medial: Closer to the midline/median plane of the body. Example: The ulna is medial to the radius in the anatomical position.\n• Lateral: Further away from the midline/median plane. Example: The ears are lateral to the eyes."
+        },
+        {
+          "type": "text",
+          "content": "Proximal vs. Distal (Used primarily for limbs and tubular tracts):\n• Proximal: Closer to the point of origin, attachment of a limb, or the trunk. Example: The shoulder joint is proximal to the elbow.\n• Distal: Further away from the point of origin or attachment. Example: The fingernails are at the distal end of the digits."
+        },
+        {
+          "type": "text",
+          "content": "Superficial vs. Deep:\n• Superficial: Closer to the external surface of the body. Example: The skin is superficial to the skeletal muscles.\n• Deep: Further away from the external surface, toward the core. Example: The femur is deep to the quadriceps muscle group."
+        },
+        {
+          "type": "text",
+          "content": "Specialized Hand and Foot Orientation Terms:\n• Palmar vs. Dorsal (Hand): The front surface of the hand is the palmar surface (palm); the back surface is the dorsal surface.\n• Plantar vs. Dorsal (Foot): The inferior surface (sole) of the foot is the plantar surface; the upper surface facing superiorly is the dorsal surface."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Be careful when applying proximal and distal outside of limbs. In the gastrointestinal tract, 'proximal' means closer to the mouth (the entry point), while 'distal' means closer to the anus (the exit point). Hence, the stomach is proximal to the jejunum."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Terms of Anatomical Movement",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Anatomical movements track actions occurring at joint complexes. Movement definitions are always baseline-referenced back to how the bones shift relative to the standard anatomical position."
+        },
+        {
+          "type": "text",
+          "content": "Flexion vs. Extension (Sagittal Plane Movements):\n• Flexion: A movement that decreases the angle between the articulating bones, usually moving in an anterior direction. Exception: Knee flexion moves the lower leg posteriorly.\n• Extension: A movement that increases the angle between the articulating bones, typically straightening a bent joint in a posterior direction."
+        },
+        {
+          "type": "text",
+          "content": "Abduction vs. Adduction (Frontal Plane Movements):\n• Abduction: Moving a limb or digit away from the midline of the body (or away from the middle finger/second toe for hand/foot digits).\n• Adduction: Moving a limb or digit toward the midline of the body or axial reference line."
+        },
+        {
+          "type": "text",
+          "content": "Rotation (Transverse Plane Movements):\n• Turning or revolving a part of the body around its longitudinal long axis.\n• Medial (Internal) Rotation: Brings the anterior surface of a limb closer to the midline.\n• Lateral (External) Rotation: Takes the anterior surface of a limb further away from the midline."
+        },
+        {
+          "type": "text",
+          "content": "Specialized Forearm and Foot Movements:\n• Pronation: Rotates the radius medially so that the palm faces posteriorly (if arms are at the side) or inferiorly. The radius crosses over the ulna.\n• Supination: Rotates the forearm bones laterally, returning the radius to its parallel position with the ulna so that the palm faces anteriorly (anatomical baseline position).\n• Inversion (Foot): Moves the plantar surface (sole) of the foot toward the midline/median plane.\n• Eversion (Foot): Moves the plantar surface of the foot laterally, away from the median plane."
+        },
+        {
+          "type": "text",
+          "content": "Dorsiflexion vs. Plantarflexion:\n• Dorsiflexion: Flexion at the ankle joint, lifting the toes up off the ground toward the shin.\n• Plantarflexion: Bending the foot downward at the ankle joint, pushing the toes toward the ground (standing on your tip-toes)."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "An easy mnemonic to remember forearm rotation is that Supination allows you to hold a bowl of Soup in your palm. To Poronate is to Pour the soup out onto the floor."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Anatomical Variation & Imaging Principles",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "Human anatomy textbooks illustrate the most common structural arrangements found in roughly 70% to 80% of individuals. However, benign variations are common in clinical practice."
+        },
+        {
+          "type": "text",
+          "content": "Anatomical Variations: Critical to distinguish from pathology. Variations include differences in the branching patterns of blood vessels (e.g., variations in the branching of the arch of the aorta) or accessory muscle bellies. They typically do not compromise physiological function."
+        },
+        {
+          "type": "text",
+          "content": "Situs Inversus: A rare genetic condition where the standard structural arrangement of internal thoracic and abdominal organs is completely mirrored or reversed across the midline. The apex of the heart points to the right (dextrocardia), the liver is in the LUQ, and the spleen sits in the RUQ."
+        },
+        {
+          "type": "text",
+          "content": "Orientation Paradigms in Modern Medical Imaging:\nWhen looking at images, understanding the plane and viewing orientation is essential for safety:"
+        },
+        {
+          "type": "text",
+          "content": "• Computed Tomography (CT) and Magnetic Resonance Imaging (MRI): Axial (transverse) images are displayed in standard radiological orientation. You view the slice from bottom-to-top, as if looking from the supine patient's feet. The left side of the image display represents the right side of the patient's body.\n• Conventional Radiography (X-Rays): Displayed as if you are standing directly in front of the patient in anatomical position facing them. The patient's right side is on your left."
+        },
+        {
+          "type": "grasp-tonic",
+          "content": "Failing to orient yourself to radiological perspective can lead to catastrophic surgical errors, such as operating on the wrong limb or removing the wrong kidney. Always cross-check the orientation markers ('R' and 'L') on the screen against the assumed anatomical orientation."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Teaching Receipt — Anatomical Terminology & Planes",
+      "isDeepDive": false,
+      "steps": [
+        {
+          "type": "text",
+          "content": "You have completed the structural foundation for anatomical tracking. These terms constitute the universal reference language of clinical medicine."
+        },
+        {
+          "type": "text",
+          "content": "Anatomical Position Baseline: Facing forward, arms down, palms flat out. All spatial tracking is fixed to this reference state. Patient right and left are absolute and independent of the observer's viewing stance."
+        },
+        {
+          "type": "text",
+          "content": "The Plane Triad Matrix: (1) Sagittal cuts divide right from left; the median plane sits perfectly at the midline. (2) Coronal/Frontal cuts divide anterior (ventral) from posterior (dorsal). (3) Transverse/Axial cuts divide superior (cranial) from inferior (caudal)."
+        },
+        {
+          "type": "text",
+          "content": "Spatial and Movement Mapping: Proximal/distal trace line origins on limbs and tracts. Superficial/deep trace proximity to the skin sheet. Flexion reduces joint angles; extension straightens them. Abduction pulls away from the midline; adduction closes back in. Forearms supinate to face anteriorly and pronate to face posteriorly. Feet invert inward and evert outward."
+        },
+        {
+          "type": "text",
+          "content": "Radiological Interpretation Rules: CT and MRI scans present axial slices viewed from the feet up. This mirrors the patient's right side to your left screen space. Structural variations are common, but severe flipped configurations like Situs Inversus must be actively recognized to prevent surgical errors.\n\nYou are now ready for the Deep Dive."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Deep Dive — Clinical Spatial Mapping & Fascial Spaces",
+      "isDeepDive": true,
+      "steps": [
+        {
+          "type": "text",
+          "content": "This Deep Dive explores advanced spatial correlations, focusing on fascial planes, clinical spaces, and the cross-sectional anatomy of the neck and retroperitoneum as described in Gray's Anatomy."
+        },
+        {
+          "type": "text",
+          "content": "Fascial Planes and Potential Spaces: Anatomy is not merely a collection of solid, static organs; it is bounded by continuous connective tissue sheets called fascia. Deep fascial sheets line muscle compartments and investments, creating actual and potential clinical spaces along which infections and fluid track."
+        },
+        {
+          "type": "text",
+          "content": "The Retropharyngeal Space (The 'Danger Space' of the Neck): A classic clinical manifestation of fascial plane tracking. Located posterior to the pharynx, it is bounded anteriorly by the buccopharyngeal fascia and posteriorly by the prevertebral fascia."
+        },
+        {
+          "type": "text",
+          "content": "Buccopharyngeal Fascia <-> Retropharyngeal Space <-> Prevertebral Fascia\n\n• This space forms a continuous, unobstructed conduit extending vertically from the base of the skull straight down into the posterior mediastinum of the thorax.\n• Clinical Consequence: A localized dental infection or pharyngeal abscess can breach the buccopharyngeal fascia, entering the retropharyngeal space. Once inside this potential space, the infection can rapidly track inferiorly into the chest via gravity, causing acute mediastinitis — a highly fatal inflammatory condition."
+        },
+        {
+          "type": "text",
+          "content": "Retroperitoneal Spatial Segmentation: In the abdominopelvic cavity, the peritoneum creates a strict spatial dividing line. Organs located posterior to the parietal peritoneal lining are retroperitoneal, whereas those suspended within the peritoneal cavity are intraperitoneal."
+        },
+        {
+          "type": "text",
+          "content": "To recall the retroperitoneal structures under stress, clinicians use the classic medical acronym SAD PUCKER:\n• Superficial/Suprarrenal (adrenal) glands\n• Aorta and Inferior Vena Cava\n• Duodenum (except the proximal 1st segment)\n• Pancreas (head, neck, and body — tail is intraperitoneal)\n• Ureters\n• Colon (ascending and descending segments only)\n• Kidneys\n• Esophagus (abdominal portion)\n• Rectum"
+        },
+        {
+          "type": "text",
+          "content": "The Transpyloric Plane of Addison: An advanced horizontal landmark plane used to locate deep viscera. It is a transverse plane intersecting halfway between the jugular notch of the sternum and the superior border of the pubic symphysis (typically tracking at the L1 vertebral level).\n\nSlicing cleanly through this single specific transverse plane cuts directly through the following key clinical structures:\n• The pylorus of the stomach.\n• The duodenojejunal flexure.\n• The neck of the pancreas.\n• The hila of both kidneys (where renal vessels enter).\n• The origin of the superior mesenteric artery from the aorta.\n• The termination of the spinal cord (conus medullaris)."
+        }
+      ]
+    }
+  ],
+  "teachingReceipt": {
+    "mastered": [
+      "The definitive diagnostic criteria for the standard anatomical position and the absolute nature of patient right vs. left",
+      "The anatomical boundaries and clinical organ contents of the four abdominopelvic quadrants and nine topographic regions",
+      "The structural definitions and geometric relationships of the sagittal, midsagittal, parasagittal, coronal, and transverse planes",
+      "The accurate clinical application of relative directional terms including anterior/posterior, superior/inferior, medial/lateral, proximal/distal, and superficial/deep",
+      "The mechanics of multi-planar joint movements including flexion/extension, abduction/adduction, internal/external rotation, pronation/supination, inversion/eversion, and dorsiflexion/plantarflexion",
+      "The orientation paradigms of cross-sectional CT/MRI imaging views relative to conventional X-ray presentation",
+      "The pathophysiology of fluid and infection tracking along fascial planes, exemplified by retropharyngeal space spread into the mediastinum",
+      "The definitive structural grouping of retroperitoneal viscera using the SAD PUCKER model",
+      "The accurate L1 level structural topography intersected by the Transpyloric Plane of Addison"
+    ]
+  },
+  "selfCheckQuestions": [
+    "A patient presents with severe abdominal pain localized to the right hypochondriac region. Which organs are likely involved?",
+    "When looking at an axial CT scan of the abdomen, the liver appears on the left side of your monitor screen. Explain why this is correct.",
+    "A stab wound cuts completely through the median plane of the chest. Which major structural bones or vessels would be transected first?",
+    "Explain why an infection in the retropharyngeal space can cause chest pain and dyspnoea. What is this space called?",
+    "A patient fractures their forearm, losing the ability to pronate. Which anatomical movement is preserved, and what does it look like?",
+    "Classify the following organs as either intraperitoneal or retroperitoneal: Spleen, Descending Colon, Stomach, Kidney.",
+    "At which specific vertebral body level does the Transpyloric Plane of Addison track, and which part of the pancreas does it cross?",
+    "What is the difference between inversion and eversion of the foot, and which joint complex do these movements occur at?",
+    "A surgeon makes an incision distal to the elbow but proximal to the wrist on the lateral side of the forearm. What region is this?",
+    "Describe the anatomical presentation of a patient with complete Situs Inversus. How would this alter your physical examination for appendicitis?"
+  ]
+}
