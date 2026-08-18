@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 interface Course {
   name: string;
-  slug: string; // Used to target the correct .docx file
+  slug: string;
 }
 
 interface Category {
@@ -23,9 +23,7 @@ export default function MarableDirectory() {
     clinical: true,
   });
 
-  // Track the active selected course object
   const [activeCourse, setActiveCourse] = useState<Course | null>(null);
-  // Store parsed HTML from the DOCX file
   const [storyHtml, setStoryHtml] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -34,7 +32,6 @@ export default function MarableDirectory() {
     setExpandedCategories((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  // Dynamically load and parse the DOCX file from public/stories/
   const handleCourseClick = async (course: Course) => {
     setActiveCourse(course);
     setLoading(true);
@@ -42,22 +39,20 @@ export default function MarableDirectory() {
     setStoryHtml('');
 
     try {
-      // 1. Fetch the DOCX file as an ArrayBuffer
       const response = await fetch(`/stories/${course.slug}.docx`);
       if (!response.ok) {
-        throw new Error(`Could not find the document "public/stories/${course.slug}.docx"`);
+        throw new Error(`Document file public/stories/${course.slug}.docx not found.`);
       }
       const arrayBuffer = await response.arrayBuffer();
 
-      // 2. Import mammoth dynamically (client-side only)
+      // Client-side dynamic import of mammoth
       const mammoth = await import('mammoth');
-
-      // 3. Convert to clean HTML
       const result = await mammoth.convertToHtml({ arrayBuffer });
       setStoryHtml(result.value);
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || 'Failed to load this story. Please ensure the DOCX file exists in public/stories/');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to load document.';
+      console.error(errorMessage);
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -147,10 +142,7 @@ export default function MarableDirectory() {
                     cursor: 'pointer',
                     borderRadius: '8px',
                     userSelect: 'none',
-                    transition: 'background 0.2s',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.03)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
                 >
                   <svg
                     width="12"
@@ -171,8 +163,6 @@ export default function MarableDirectory() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A818F" strokeWidth="2" style={{ flexShrink: 0 }}>
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
                   </svg>
 
                   <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#3A3F4B', display: 'flex', alignItems: 'center', gap: '6px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -204,12 +194,6 @@ export default function MarableDirectory() {
                           cursor: 'pointer',
                           background: isActive ? 'rgba(255, 45, 85, 0.06)' : 'transparent',
                           transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          if (!isActive) e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.02)';
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!isActive) e.currentTarget.style.backgroundColor = 'transparent';
                         }}
                       >
                         <svg 
@@ -246,8 +230,6 @@ export default function MarableDirectory() {
 
       {/* ── MAIN CONTENT AREA ─────────────────── */}
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0D0F14', height: '100%', position: 'relative', overflowY: 'auto' }}>
-        
-        {/* Toggle Sidebar Button */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
           style={{
@@ -265,7 +247,6 @@ export default function MarableDirectory() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backdropFilter: 'blur(8px)',
           }}
         >
           {sidebarOpen ? (
@@ -281,15 +262,12 @@ export default function MarableDirectory() {
           )}
         </button>
 
-        {/* Dynamic Display Area */}
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '80px 40px 40px', boxSizing: 'border-box' }}>
-          
           {activeCourse ? (
-            /* ACTIVE STATE: Rendering the DOCX File Content dynamically */
             <div style={{ width: '100%', maxWidth: '740px', color: '#fff', alignSelf: 'flex-start' }}>
               <div style={{ marginBottom: '24px' }}>
                 <span style={{ fontSize: '0.8rem', color: '#FF2D55', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Marable Core Curriculum</span>
-                <h1 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '2.4rem', marginTop: '6px', marginBottom: '12px', letterSpacing: '-0.02em', color: '#fff' }}>
+                <h1 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: '2.4rem', marginTop: '6px', marginBottom: '12px', color: '#fff' }}>
                   {activeCourse.name}
                 </h1>
                 <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.1)' }} />
@@ -297,23 +275,19 @@ export default function MarableDirectory() {
 
               {loading && (
                 <div style={{ textAlign: 'center', padding: '60px 0', color: 'rgba(255,255,255,0.4)' }}>
-                  <div style={{ fontSize: '1.8rem', animation: 'spin 1.5s infinite linear', marginBottom: '12px' }}>🌀</div>
-                  <p style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.95rem' }}>Translating story documents to script...</p>
+                  <p style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.95rem' }}>Translating story document...</p>
                 </div>
               )}
 
               {error && (
                 <div style={{ background: 'rgba(255,59,48,0.1)', border: '1px solid rgba(255,59,48,0.3)', borderRadius: '16px', padding: '24px', color: '#FF453A', textAlign: 'center' }}>
-                  <span style={{ fontSize: '1.5rem', display: 'block', marginBottom: '8px' }}>⚠️</span>
                   <p style={{ fontWeight: 600, margin: '0 0 4px' }}>Document Loading Error</p>
                   <p style={{ fontSize: '0.85rem', color: 'rgba(255,69,58,0.8)', margin: 0 }}>{error}</p>
                 </div>
               )}
 
-              {/* RENDERED DOCX HTML CONTENT WITH PREMIUM READING STYLES */}
               {!loading && !error && storyHtml && (
                 <article 
-                  className="docx-story-content"
                   dangerouslySetInnerHTML={{ __html: storyHtml }} 
                   style={{
                     lineHeight: '1.85',
@@ -325,7 +299,6 @@ export default function MarableDirectory() {
               )}
             </div>
           ) : (
-            /* DEFAULT WELCOME STATE: Displaying the Main Community Banner Image */
             <div style={{
               width: '100%',
               maxWidth: '1000px',
@@ -355,45 +328,17 @@ export default function MarableDirectory() {
               }} />
 
               <div style={{ position: 'absolute', bottom: '40px', textAlign: 'center', zIndex: 2, padding: '0 24px' }}>
-                <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)', color: '#FFFFFF', margin: '0 0 12px', textShadow: '0 4px 16px rgba(0,0,0,0.5)', letterSpacing: '-0.03em' }}>
+                <p style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)', color: '#FFFFFF', margin: '0 0 12px', letterSpacing: '-0.03em' }}>
                   Feel the concept. Master the science.
                 </p>
-                <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 'clamp(0.85rem, 1.5vw, 1rem)', maxWidth: '600px', margin: '0 auto', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 'clamp(0.85rem, 1.5vw, 1rem)', maxWidth: '600px', margin: '0 auto' }}>
                   Select any course from the left directory sidebar to instantly load its story.
                 </p>
               </div>
             </div>
           )}
-
         </div>
       </main>
-
-      {/* Basic styles to cleanly render your converted docx typographic tags (Headings, Paragraphs, Bolded Text, etc.) */}
-      <style jsx global>{`
-        .docx-story-content h1, .docx-story-content h2, .docx-story-content h3 {
-          font-family: 'Sora', sans-serif !important;
-          color: #ffffff !important;
-          margin-top: 2rem !important;
-          margin-bottom: 1rem !important;
-          font-weight: 800 !important;
-          letter-spacing: -0.02em;
-        }
-        .docx-story-content h1 { font-size: 1.8rem !important; }
-        .docx-story-content h2 { font-size: 1.5rem !important; }
-        .docx-story-content h3 { font-size: 1.25rem !important; }
-        .docx-story-content p {
-          margin-bottom: 1.5rem !important;
-          color: rgba(255, 255, 255, 0.8) !important;
-        }
-        .docx-story-content strong {
-          color: #FF2D55 !important; /* Emphasized words get a soft brand pink glow */
-          font-weight: 700;
-        }
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 }
